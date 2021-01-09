@@ -1,14 +1,14 @@
 import axios from 'axios'
 
 const service = axios.create({
-  baseURL: '',
+  // baseURL: '',
   timeout: 5000,
   withCredentials: true
 })
 
 const err = (error) => {
   if (error.response) {
-    const data = error.response.data
+    // const data = error.response.data
 
     switch (error.response.status) {
       case 500:
@@ -22,11 +22,12 @@ const err = (error) => {
 }
 
 service.interceptors.request.use(config => {
-  // TODO
+  config.headers = { 'Content-type': 'application/json' }
+  return config
 })
 
 service.interceptors.response.use(response => {
-  // TODO
+  return response
 }, err)
 
 export default service

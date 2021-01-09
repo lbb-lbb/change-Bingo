@@ -1,20 +1,48 @@
 import Vue from 'vue'
-import VueRouter from 'vue-loader'
+import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/home'
+    path: '/',
+    redirect: '/home'
   },
   {
-    path: '/about'
+    path: '/home',
+    component: () => import('../view/BaseLayout'),
+    children: [
+      {
+        path: '/',
+        name: 'Home',
+        component: () => import('../view/HomeLayout')
+      },
+      {
+        path: '/blog',
+        name: 'Blog',
+        component: () => import('../view/BlogLayout')
+      },
+      {
+        path: '/openSource',
+        name: 'OpenSource',
+        component: () => import('../view/Open-SourceLayout')
+      },
+      {
+        path: '/wiki',
+        name: 'Wiki',
+        component: () => import('../view/WikiLayout')
+      },
+      {
+        path: '/about',
+        name: 'About',
+        component: () => import('../view/AboutLayout')
+      }
+    ]
   }
 ]
 
-const router = new VueRouter({
+export default new VueRouter({
   routes,
-  mode: 'history'
+  mode: 'hash'
 })
 
-export default router

@@ -1,10 +1,18 @@
 <template>
-    <div id="app">你好啊，webpack!!!</div>
+    <div>
+        <router-view />
+    </div>
 </template>
 
 <script>
+import { getSomeThing } from './api'
+
 export default {
-  name: 'App'
+  name: 'App',
+  data() {
+    return {}
+  },
+  methods: {}
 }
 </script>
 
@@ -12,7 +20,4 @@ export default {
 
 </style>
 <style>
-    body{
-        background: antiquewhite;
-    }
 </style>
