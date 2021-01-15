@@ -36,13 +36,18 @@ const routes = [
         path: '/about',
         name: 'About',
         component: () => import('../view/AboutLayout')
+      },
+      {
+        path: '/view',
+        name: 'View',
+        component: () => import('../view/ViewLayout')
       }
     ]
   }
 ]
 
 export default new VueRouter({
-  routes,
-  mode: 'hash'
+  mode: 'history',
+  routes
 })
 

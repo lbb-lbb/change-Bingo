@@ -16,3 +16,26 @@ export function getHomeData(params) {
     data: params
   })
 }
+
+export function getBingoData() {
+  return request({
+    url: '/bingo',
+    method: 'get'
+  })
+}
+
+export function watchArticle(id) {
+  return request({
+    url: '/view',
+    method: 'get',
+    query: id
+  })
+}
+
+export function getGlobalSearchData(data) {
+  return request({
+    url: '/search',
+    method: 'post',
+    data: data
+  })
+}

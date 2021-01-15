@@ -8,11 +8,11 @@ module.exports = merge(common, {
     rules: [
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader']
+        use: ['style-loader', 'css-loader', 'less-loader']
       }
     ]
   },
-  devtool: 'inline-source-map',
+  devtool: 'source-map',
 
   mode: 'development',
 
@@ -25,7 +25,8 @@ module.exports = merge(common, {
     },
     inline: true,
     hot: true,
-    open: true
+    open: true,
+    historyApiFallback: true
   }
 
 })

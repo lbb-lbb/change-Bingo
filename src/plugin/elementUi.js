@@ -12,7 +12,11 @@ import {
   Avatar,
   Pagination,
   Col,
-  Tag
+  Tag,
+  Autocomplete,
+  Icon,
+  Card,
+  Row
 } from 'element-ui'
 
 Vue.use(Button)
@@ -27,3 +31,7 @@ Vue.use(Button)
   .use(Pagination)
   .use(Col)
   .use(Tag)
+  .use(Autocomplete)
+  .use(Icon)
+  .use(Card)
+  .use(Row)
