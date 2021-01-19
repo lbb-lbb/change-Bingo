@@ -9,13 +9,14 @@
                 </div>
             </el-card>
         </div>
-        <RightMenuLayout :list-title="filterClassify" />
+        <RightMenuLayout :list-title="filterData"/>
     </div>
 </template>
 
 <script>
 import { getBingoData } from '../api'
 import RightMenuLayout from './RightMenuLayout'
+
 export default {
   name: 'BlogLayout',
   components: { RightMenuLayout },
@@ -57,28 +58,47 @@ export default {
 }
 </script>
 
-<style scoped>
-.card{
-    display: flex;
-    flex-wrap: wrap;
-}
-.list{
-    flex: 1 1 70%;
-    margin: 0 auto;
-}
-.content{
-    display: flex;
-    align-items: baseline;
-}
-p{
-    font-size: 15px;
-}
-.title{
-    margin-left: 10px;
-    color: #4183c4;
-    cursor:pointer;
-}
-.title:hover{
-    text-decoration: underline;
-}
+<style lang="less" scoped>
+    .card {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .list {
+        flex: 1 1 70%;
+        margin: 0 auto;
+    }
+
+    .content {
+        display: flex;
+        align-items: baseline;
+    }
+
+    .el-card {
+        /deep/ .el-card__body {
+            padding: 10px 10px 20px 10px;
+        }
+
+        /deep/ .el-card__header {
+            padding: 10px 0 0 10px;
+            border-bottom: none;
+        }
+
+        margin-bottom: 5vh;
+        margin-right: 1vw;
+    }
+
+    p {
+        font-size: 17px;
+    }
+
+    .title {
+        margin-left: 10px;
+        color: #4183c4;
+        cursor: pointer;
+    }
+
+    .title:hover {
+        text-decoration: underline;
+    }
 </style>

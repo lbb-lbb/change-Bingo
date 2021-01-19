@@ -7,7 +7,7 @@ module.exports = merge(common, {
   module: {
     rules: [
       {
-        test: /\.css$/,
+        test: /\.(less|css)$/,
         use: ['style-loader', 'css-loader', 'less-loader']
       }
     ]
@@ -21,7 +21,7 @@ module.exports = merge(common, {
   ],
   devServer: {
     proxy: {
-      '/api': 'http://lxylbb.top:'
+      '/api': 'http://lxylbb.top:3000'
     },
     inline: true,
     hot: true,

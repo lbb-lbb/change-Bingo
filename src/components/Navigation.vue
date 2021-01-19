@@ -1,9 +1,20 @@
 <template>
     <div>
-        <ul>Blog Categories
-            <li v-for="(item, index) in ListTitle" :key="index"><a :title="item" :href="'#'+item">{{item}}</a></li>
+        <ul>{{ ListTitle ? 'Blog Categories': ''}}
+            <li v-for="(item, index) in ListTitle" :key="index">
+                <a :title="index" :href="'#'+index">{{index}} (<span>{{item.length}}</span>)</a>
+            </li>
         </ul>
-        <a v-for="(item, index) in PageTitle" :key="index" :title="item" :href="'#'+item">{{item}}</a>
+        <ul>{{ PageTitle ? '文章目录': ''}}
+            <li v-for="(item, index) in PageTitle" :class="item.nodeName" :key="index">
+                <a :title="item.innerText" :href="'#'+item.id">{{item.innerText}}</a>
+                <ul>
+                    <li v-for="(item2, index2) in item.children" :key="index2" :class="item2.nodeName">
+                        <a :title="item2.innerText" :href="'#'+item2.id">{{item2.innerText}}</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
     </div>
 </template>
 
@@ -12,12 +23,12 @@ export default {
   name: 'Navigation',
   props: {
     ListTitle: {
-      type: Array,
-      default: () => []
+      type: Object,
+      default: undefined
     },
     PageTitle: {
       type: Array,
-      default: () => []
+      default: undefined
     }
   }
 }
@@ -32,6 +43,16 @@ export default {
     a:hover {
         color: #4183c4;
         text-decoration: underline;
+    }
+    li {
+        list-style-type:none;
+    }
+    .H2{
+        margin-left: 15px;
+    }
+
+    .H3{
+        margin-left: 25px;
     }
 
 </style>

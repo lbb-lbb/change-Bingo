@@ -4,10 +4,12 @@
             <el-card v-for="(item, index) in data.data" shadow="hover" :key="index">
                 <h2 slot="header" @click="goWatch(item.id)">{{item.title}}</h2>
                 <p>{{item.content}}</p>
-                <i class="el-icon-date"></i>
-                <el-tag type="info" size="small" effect="plain">{{item.time}}</el-tag>
-                <i class="el-icon-bank-card"></i>
-                <el-tag type="info" size="small" effect="plain">{{item.classify}}</el-tag>
+                <div class="tag-message">
+                    <i class="el-icon-date"></i>
+                    <el-tag type="info" size="small" effect="plain">{{item.time}}</el-tag>
+                    <i class="el-icon-bank-card"></i>
+                    <el-tag type="info" size="small" effect="plain">{{item.classify}}</el-tag>
+                </div>
             </el-card>
             <div class="page">
                 <el-pagination
@@ -59,7 +61,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="less" scoped>
     h2 {
         font-weight: 400;
         color: #4183c4;
@@ -83,9 +85,23 @@ export default {
 
     .list {
         margin: 0 auto;
-        flex: 0 0 70%;
+        flex: 1 1 70%;
     }
     .page{
         margin: 10px auto;
+    }
+    .el-card {
+        /deep/ .el-card__body {
+            padding: 10px 10px 20px 10px;
+        }
+        /deep/ .el-card__header {
+            padding: 10px 0 0 10px;
+            border-bottom: none;
+        }
+        margin-bottom: 5vh;
+        margin-right: 1vw;
+    }
+    .tag-message{
+        margin-top: 10px;
     }
 </style>

@@ -3,14 +3,14 @@
         <el-header>
             <div class="header-left" @click="$router.push('/')">
                 <el-avatar alt="头像" src="./public/头像.jpg"></el-avatar>
-                <h2>Lbb</h2>
+                <h1>Lbb</h1>
             </div>
-            <el-menu mode="horizontal" router background-color="#6699CC" text-color="rgba(255, 255, 255, .5)" active-text-color="#ffffff">
-                <el-menu-item index="home">首页</el-menu-item>
-                <el-menu-item index="blog">博客</el-menu-item>
-                <el-menu-item index="openSource">随笔</el-menu-item>
-                <el-menu-item index="wiki">常用工具</el-menu-item>
-                <el-menu-item index="about">关于</el-menu-item>
+            <el-menu mode="horizontal" router background-color="#6699CC" text-color="rgba(255, 255, 255, .5)" :default-active="activeRouter" active-text-color="#ffffff">
+                <el-menu-item index="/home">首页</el-menu-item>
+                <el-menu-item index="/blog">博客</el-menu-item>
+                <el-menu-item index="/openSource">随笔</el-menu-item>
+                <el-menu-item index="/wiki">常用工具</el-menu-item>
+                <el-menu-item index="/about">关于</el-menu-item>
             </el-menu>
         </el-header>
         <el-main>
@@ -24,19 +24,24 @@
 
 <script>
 export default {
-  name: 'BaseLayout'
+  name: 'BaseLayout',
+  computed: {
+    activeRouter: function() {
+      return this.$route.path
+    }
+  }
 }
 </script>
 
-<style scoped>
+<style lang="less" scoped>
     @media screen and (min-width:300px){
-        h2{
-            color: blue;
-        }
         a{
             text-decoration: none;
             color: black;
             opacity: 0.5;
+        }
+        h1{
+            margin-left: 3px;
         }
         .el-container{
             margin: 0 auto;
@@ -47,12 +52,13 @@ export default {
         }
         .el-header{
             display: flex;
+            justify-content: space-between;
             flex-wrap: wrap;
             align-items: center;
             background: #6699CC;
             color: #ffffff;
             height: auto !important;
-            padding: 10px 0 0 10px;
+            padding: 0 0 0 10px;
         }
         .el-header .header-left{
             flex: 0 0 20vw;
@@ -61,7 +67,8 @@ export default {
             cursor:pointer
         }
         .el-header .el-menu{
-            flex: 1 1 auto;
+            flex: 0 1 auto;
+            margin-left: 10px;
         }
         .el-main{
             flex: 1 1 100%;
@@ -73,23 +80,30 @@ export default {
             text-align: center;
             margin: 0;
         }
-    }
-
-    @media screen and (min-width:768px) {
-        h2{
-            color: violet;
+        .el-menu {
+            /deep/ .el-menu-item {
+                padding: 0 6px;
+            }
         }
+    }
+    @media screen and (min-width:540px) {
+        .el-menu {
+            /deep/ .el-menu-item {
+                padding: 0 20px;
+            }
+        }
+    }
+    @media screen and (min-width:768px) {
+
     }
 
     @media screen and (min-width:992px){
-        h2{
-            color: chartreuse;
+        .el-header, .el-main, .el-footer{
+            padding: 0 calc((100% - 992px)/2);
         }
     }
 
     @media screen and (min-width:1200px){
-        h2{
-            color: gold;
-        }
+
     }
 </style>
