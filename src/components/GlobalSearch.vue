@@ -1,5 +1,13 @@
 <template>
-    <el-autocomplete v-model="data" placeholder="请输入搜索关键字" value-key="value" :fetch-suggestions="goSearch" />
+    <el-autocomplete
+        v-model="data"
+        size="small"
+        popper-class="search-card"
+        placeholder="请输入标题关键字"
+        value-key="title"
+        :fetch-suggestions="goSearch"
+        @select="goWatch"
+    />
 </template>
 
 <script>
@@ -13,13 +21,26 @@ export default {
   },
   methods: {
     async goSearch(str, callback) {
-      const { data } = await getGlobalSearchData(str)
-      callback(data)
+      if (str) {
+        const { result } = await getGlobalSearchData({title: str})
+        callback(result)
+      }
+    },
+    goWatch(val) {
+      this.$router.push({
+        path: '/view',
+        query: { id: val.id }
+      })
     }
   }
 }
 </script>
 
 <style scoped>
-
+</style>
+<style>
+.search-card {
+  color: #4183c4 !important;
+  font-weight: bold !important;
+}
 </style>

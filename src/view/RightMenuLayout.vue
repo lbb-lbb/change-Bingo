@@ -1,9 +1,8 @@
 <template>
-    <div>
-        <h5>Search</h5>
-        <global-search/>
-        <Navigation v-bind="$attrs" />
-    </div>
+  <div class="right-box">
+    <global-search/>
+    <Navigation v-bind="$attrs" />
+  </div>
 </template>
 
 <script>
@@ -19,5 +18,7 @@ export default {
 </script>
 
 <style scoped>
-
+.right-box {
+  margin-top: 20px;
+}
 </style>

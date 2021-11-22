@@ -44,6 +44,9 @@ export default {
         color: #4183c4;
         text-decoration: underline;
     }
+    ul {
+      margin-top: 20px;
+    }
     li {
         list-style-type:none;
     }

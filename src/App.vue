@@ -19,7 +19,8 @@ export default {
 </style>
 <style>
 *{
-    font-family: Arial,"Hiragino Sans GB","冬青黑","Microsoft YaHei","微软雅黑",SimSun,"宋体",Helvetica,Tahoma,Arial sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial,
+    Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
     margin: 0;
     padding: 0;
 }

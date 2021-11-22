@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const service = axios.create({
-  // baseURL: '',
+  baseURL: 'http://localhost:3005',
   timeout: 5000,
   withCredentials: true
 })
@@ -27,7 +27,7 @@ service.interceptors.request.use(config => {
 })
 
 service.interceptors.response.use(response => {
-  return response
+  return response.data
 }, err)
 
 export default service

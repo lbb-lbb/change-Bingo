@@ -11,9 +11,9 @@ export function getSomeThing() {
 
 export function getHomeData(params) {
   return request({
-    url: '/home',
-    method: 'post',
-    data: params
+    url: '/show/articleList',
+    method: 'get',
+    params: params
   })
 }
 
@@ -32,10 +32,10 @@ export function watchArticle(id) {
   })
 }
 
-export function getGlobalSearchData(data) {
+export function getGlobalSearchData(params) {
   return request({
-    url: '/search',
-    method: 'post',
-    data: data
+    url: '/show/articleList',
+    method: 'get',
+    params: params
   })
 }
