@@ -2,8 +2,7 @@
     <el-container>
         <el-header>
             <div class="header-left" @click="$router.push('/')">
-                <el-avatar alt="头像" src="./public/头像.jpg"></el-avatar>
-                <h1>Lbb</h1>
+                show something
             </div>
             <el-menu mode="horizontal" router background-color="#6699CC" text-color="rgba(255, 255, 255, .5)" :default-active="activeRouter" active-text-color="#ffffff">
                 <el-menu-item index="/home">首页</el-menu-item>
@@ -78,7 +77,7 @@ export default {
         }
         .footer{
             text-align: center;
-            margin: 0;
+            margin-top: 20px;
         }
         .el-menu {
             /deep/ .el-menu-item {

@@ -4,7 +4,10 @@ import store from './store/index'
 import App from './App.vue'
 import 'element-ui/lib/theme-chalk/index.css'
 import './plugin/elementUi'
-import '../mock/index'
+// import '../mock/index'
+import * as api from './api/index'
+
+Vue.prototype.$dao = api
 
 new Vue({
   store,

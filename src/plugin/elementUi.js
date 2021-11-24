@@ -16,7 +16,11 @@ import {
   Autocomplete,
   Icon,
   Card,
-  Row
+  Row,
+  Form,
+  FormItem,
+  Input,
+  Divider
 } from 'element-ui'
 
 Vue.use(Button)
@@ -35,3 +39,7 @@ Vue.use(Button)
   .use(Icon)
   .use(Card)
   .use(Row)
+  .use(Form)
+  .use(FormItem)
+  .use(Input)
+  .use(Divider)

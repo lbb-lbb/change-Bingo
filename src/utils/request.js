@@ -3,7 +3,7 @@ import axios from 'axios'
 const service = axios.create({
   baseURL: 'http://localhost:3005',
   timeout: 5000,
-  withCredentials: true
+  // withCredentials: true
 })
 
 const err = (error) => {

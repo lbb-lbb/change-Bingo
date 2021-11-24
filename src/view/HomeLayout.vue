@@ -29,9 +29,7 @@
 </template>
 
 <script>
-import { getHomeData } from '../api'
 import RightMenuLayout from './RightMenuLayout'
-
 export default {
   name: 'HomeLayout',
   components: {
@@ -49,7 +47,7 @@ export default {
   },
   methods: {
     async getPageData() {
-      let { result, success, total } = await getHomeData(this.pages)
+      let { result, success, total } = await this.$dao.getHomeData(this.pages)
       if (success) {
         this.data = result
       }
@@ -68,52 +66,52 @@ export default {
 </script>
 
 <style lang="less" scoped>
-    h2 {
-        font-weight: bold;
-        color: #4183c4;
-        font-size: 18px;
-        cursor: pointer;
-    }
+h2 {
+  font-weight: bold;
+  color: #4183c4;
+  font-size: 18px;
+  cursor: pointer;
+}
 
-    h2:hover {
-        text-decoration: underline;
-    }
+h2:hover {
+  text-decoration: underline;
+}
 
-    p {
-        color: #666;
-        font-size: 14px;
-    }
+p {
+  color: #666;
+  font-size: 14px;
+}
 
-    .card {
-        display: flex;
-        flex-wrap: wrap;
-        min-height: 100vh;
-    }
+.card {
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 100vh;
+}
 
-    .list {
-        margin: 20px auto 0 auto;
-        flex: 1 1 70%;
-    }
-    .message {
-        font-size: 12px;
-        color: #999999;
-        margin-bottom: 10px;
-    }
-    .page{
-        margin: 10px auto;
-        text-align: center;
-    }
-    .el-card {
-        /deep/ .el-card__body {
-            padding: 10px 10px 20px 10px;
-        }
-        /deep/ .el-card__header {
-            padding: 10px 0 0 10px;
-            border-bottom: none;
-        }
-        margin-right: 1vw;
-    }
-    .tag-message{
-        margin-top: 10px;
-    }
+.list {
+  margin: 20px auto 0 auto;
+  flex: 1 1 70%;
+}
+.message {
+  font-size: 12px;
+  color: #999999;
+  margin-bottom: 10px;
+}
+.page{
+  margin: 10px auto;
+  text-align: center;
+}
+.el-card {
+  /deep/ .el-card__body {
+    padding: 10px 10px 20px 10px;
+  }
+  /deep/ .el-card__header {
+    padding: 10px 0 0 10px;
+    border-bottom: none;
+  }
+  margin-right: 1vw;
+}
+.tag-message{
+  margin-top: 10px;
+}
 </style>
