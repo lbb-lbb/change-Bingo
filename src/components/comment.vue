@@ -5,6 +5,7 @@
         <el-input
             v-model="formData.comment"
             clearable
+            ref="comment"
             type="textarea"
             placeholder="如评论不显示，请等候管理员人工审核"
             maxlength="400"
@@ -93,6 +94,9 @@ export default {
           }
         }
       })
+    },
+    focus() {
+      this.$refs.comment.focus()
     }
   }
 }

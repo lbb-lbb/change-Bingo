@@ -4,7 +4,7 @@
       <div class="m-b-15" v-for="(item1, index1) in this.filterData" :key="index1">
         <h2 class="m-b-5" :id="index1">{{index1}}</h2>
         <div class="content m-b-5" v-for="(item2, index2) in item1" :key="index2">
-          <p>{{item2.creatTime}}</p>
+          <p>{{item2.creatTime.substring(8,11)}}</p>
           <p class="title" @click="goWatch(item2.id)">{{item2.title}}</p>
         </div>
       </div>
@@ -16,7 +16,7 @@
 <script>
 import RightMenuLayout from './RightMenuLayout'
 export default {
-  name: 'BlogLayout',
+  name: 'TimeClassifyLayout',
   components: { RightMenuLayout },
   data() {
     return {
@@ -27,7 +27,7 @@ export default {
     filterClassify: function() {
       if (this.data) {
         let filter = []
-        filter = [...new Set(this.data.map(v => v.category))]
+        filter = [...new Set(this.data.map(v => v.creatTime.substring(0,8)))]
         return filter
       } else {
         return []
@@ -36,7 +36,7 @@ export default {
     filterData: function() {
       const data = {}
       this.filterClassify.forEach(val => {
-        data[val] = this.data.filter(v => v.category === val)
+        data[val] = this.data.filter(v => v.creatTime.indexOf(val) > -1)
       })
       return data
     }
@@ -81,6 +81,17 @@ h2 {
 .content {
   display: flex;
   align-items: baseline;
+}
+.content:before {
+  content: '';
+  border: 1px solid #000;
+  vertical-align: middle;
+  background-color: #000;
+  display: inline-block; // 此句为css样式展示重点🏁
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  margin-right: 12px;
 }
 .title {
   margin-left: 10px;

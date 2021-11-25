@@ -6,8 +6,8 @@
             </div>
             <el-menu mode="horizontal" router background-color="#6699CC" text-color="rgba(255, 255, 255, .5)" :default-active="activeRouter" active-text-color="#ffffff">
                 <el-menu-item index="/home">首页</el-menu-item>
-                <el-menu-item index="/blog">博客</el-menu-item>
-                <el-menu-item index="/openSource">随笔</el-menu-item>
+                <el-menu-item index="/blog">分类</el-menu-item>
+                <el-menu-item index="/openSource">归档</el-menu-item>
                 <el-menu-item index="/wiki">常用工具</el-menu-item>
                 <el-menu-item index="/about">关于</el-menu-item>
             </el-menu>

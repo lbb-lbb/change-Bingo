@@ -20,7 +20,6 @@
           标签：<el-tag v-for="item in tag" :key="item" type="danger" size="mini" effect="plain">{{item}}</el-tag>
         </div>
         <div>
-          <Comment :title-id="this.$route.query.id" />
           <CommentGroup :id="this.$route.query.id" />
         </div>
       </div>

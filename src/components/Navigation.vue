@@ -1,16 +1,18 @@
 <template>
-    <div>
-        <ul>{{ ListTitle ? 'Blog Categories': ''}}
-            <li v-for="(item, index) in ListTitle" :key="index">
-                <a :title="index" :href="'#'+index">{{index}} (<span>{{item.length}}</span>)</a>
-            </li>
-        </ul>
-        <ul>{{ PageTitle ? '文章目录': ''}}
-            <li v-for="(item, index) in PageTitle" :class="item.nodeName" :key="index">
-                <a :title="item.innerText" :href="'#'+item.id">{{item.innerText}}</a>
-            </li>
-        </ul>
-    </div>
+  <div>
+    <h3>{{ ListTitle ? '分类目录': ''}}</h3>
+    <ul>
+      <li v-for="(item, index) in ListTitle" :key="index">
+        <a :title="index" :href="'#'+index">{{index}} (<span>{{item.length}}</span>)</a>
+      </li>
+    </ul>
+    <h3>{{ PageTitle ? '文章目录': ''}}</h3>
+    <ul>
+      <li v-for="(item, index) in PageTitle" :class="item.nodeName" :key="index">
+        <a :title="item.innerText" :href="'#'+item.id">{{item.innerText}}</a>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
@@ -40,19 +42,15 @@ a:hover {
   text-decoration: underline;
 }
 ul {
-  margin-top: 20px;
+  margin-top: 10px;
 }
 li {
   list-style-type:none;
   margin-bottom: 10px;
 
 }
-.H2{
-  margin-left: 15px;
-}
-
-.H3{
-  margin-left: 25px;
+H3{
+  margin-top: 10px;
 }
 
 </style>

@@ -25,7 +25,7 @@ const routes = [
       {
         path: '/openSource',
         name: 'OpenSource',
-        component: () => import('../view/Open-SourceLayout')
+        component: () => import('../view/TimeClassifyLayout')
       },
       {
         path: '/wiki',
