@@ -24,7 +24,7 @@
         </el-pagination>
       </div>
     </div>
-    <RightMenuLayout/>
+    <RightMenuLayout class="right-menu-layout"/>
   </div>
 </template>
 
@@ -89,8 +89,12 @@ p {
 }
 
 .list {
+  box-sizing: border-box;
   margin: 20px auto 0 auto;
   flex: 1 1 70%;
+}
+.right-menu-layout {
+  flex: 0 0 300px;
 }
 .message {
   font-size: 12px;

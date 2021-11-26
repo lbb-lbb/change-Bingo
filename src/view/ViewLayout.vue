@@ -115,13 +115,10 @@ export default {
 }
 .list{
   flex: 1 1 70%;
-  margin-right: 20px;
-  box-shadow: 1px 1px 6px #ccc;
-  padding: 20px 20px 0 35px ;
+  box-sizing: border-box;
 }
 .right-menu-layout{
-  box-shadow: 1px 1px 6px #ccc;
-  padding: 20px;
+  flex: 0 0 300px;
 }
 .end-tip {
   display: flex;

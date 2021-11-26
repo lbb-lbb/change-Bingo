@@ -63,9 +63,6 @@ export default {
   display: flex;
   flex-wrap: wrap;
 }
-h2 {
-  border-bottom: 1px solid #ccc;
-}
 .m-b-15 {
   margin-top: 15px;
 }
@@ -73,21 +70,29 @@ h2 {
   margin-top: 5px
 }
 .list {
+  box-sizing: border-box;
   flex: 1 1 70%;
   margin: 0 auto;
   padding: 20px
 }
-
+.right-menu-layout{
+  flex: 0 0 300px;
+}
 .content {
   display: flex;
+  position: relative;
   align-items: baseline;
+  border-bottom: 1px dashed #ccc;
+  padding: 10px 10px 5px 0;
+  margin-left: 30px;
 }
 .content:before {
   content: '';
+  position: absolute;
+  top: 19px;
+  left: -13px;
   border: 1px solid #000;
-  vertical-align: middle;
   background-color: #000;
-  display: inline-block; // 此句为css样式展示重点🏁
   width: 3px;
   height: 3px;
   border-radius: 50%;
@@ -103,7 +108,6 @@ h2 {
   text-decoration: underline;
 }
 .right-menu-layout{
-  box-shadow: 1px 1px 6px #ccc;
   padding: 20px;
 }
 </style>

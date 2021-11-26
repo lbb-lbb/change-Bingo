@@ -39,7 +39,7 @@
         <Comment v-if="showComment === reply.id" :title-id="id" :pid="item.id" :reply-id="reply.id" @submit="submit" />
       </div>
     </div>
-    <div class="page">
+    <div v-if="pages.count > pages.pageSize * pages.pageNo" class="page">
       <el-pagination
         small
         background
@@ -106,7 +106,6 @@ export default {
       this.getComment()
     },
     addComment() {
-      console.log(this.$refs.comment)
       this.$refs.comment.focus()
     }
   },

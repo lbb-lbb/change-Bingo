@@ -43,6 +43,28 @@ const routes = [
         component: () => import('../view/ViewLayout')
       }
     ]
+  },
+  {
+    path: '/login',
+    name: 'Login'
+  },
+  {
+    path: '/user',
+    name: 'User',
+    children: [
+      {
+        path: '/notification',
+        name: 'Notification'
+      },
+      {
+        path: '/setting',
+        name: 'Setting'
+      },
+      {
+        path: 'write',
+        name: 'Write'
+      }
+    ]
   }
 ]
 // 解决报错

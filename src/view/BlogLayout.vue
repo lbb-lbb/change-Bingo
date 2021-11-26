@@ -4,7 +4,7 @@
       <div class="m-b-15" v-for="(item1, index1) in this.filterData" :key="index1">
         <h2 class="m-b-5" :id="index1">{{index1}}</h2>
         <div class="content m-b-5" v-for="(item2, index2) in item1" :key="index2">
-          <p>{{item2.creatTime}}</p>
+          <p>{{item2.creatTime.substring(0,11)}}</p>
           <p class="title" @click="goWatch(item2.id)">{{item2.title}}</p>
         </div>
       </div>
@@ -63,9 +63,7 @@ export default {
   display: flex;
   flex-wrap: wrap;
 }
-h2 {
-  border-bottom: 1px solid #ccc;
-}
+
 .m-b-15 {
   margin-top: 15px;
 }
@@ -73,14 +71,32 @@ h2 {
   margin-top: 5px
 }
 .list {
+  box-sizing: border-box;
   flex: 1 1 70%;
   margin: 0 auto;
   padding: 20px
 }
-
+.right-menu-layout{
+  flex: 0 0 300px;
+}
 .content {
   display: flex;
+  position: relative;
   align-items: baseline;
+  border-bottom: 1px dashed #ccc;
+  padding: 10px 10px 5px 0;
+  margin-left: 30px;
+}
+.content:before {
+  content: '';
+  position: absolute;
+  top: 19px;
+  left: -13px;
+  border: 1px solid #000;
+  background-color: #000;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
 }
 .title {
   margin-left: 10px;
@@ -92,7 +108,6 @@ h2 {
   text-decoration: underline;
 }
 .right-menu-layout{
-  box-shadow: 1px 1px 6px #ccc;
   padding: 20px;
 }
 </style>
