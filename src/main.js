@@ -4,6 +4,7 @@ import store from './store/index'
 import App from './App.vue'
 import 'element-ui/lib/theme-chalk/index.css'
 import './plugin/elementUi'
+import '../public/css/icon/iconfont.css'
 // import '../mock/index'
 import * as api from './api/index'
 

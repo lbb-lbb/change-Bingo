@@ -46,11 +46,13 @@ const routes = [
   },
   {
     path: '/login',
-    name: 'Login'
+    name: 'Login',
+    component: () => import('../view/Login')
   },
   {
     path: '/user',
     name: 'User',
+    component: () => import('../view/userLayout'),
     children: [
       {
         path: '/notification',

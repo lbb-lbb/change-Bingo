@@ -7,6 +7,14 @@ export function getSomeThing() {
   })
 }
 
+export function Login(params = {}) {
+  return request({
+    url: '/user/login',
+    method: 'post',
+    data: params
+  })
+}
+
 export function getHomeData(params = {}) {
   return request({
     url: '/show/articleList',
