@@ -32,7 +32,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['setUser', 'setToken']),
+    ...mapActions(['setUser', 'setToken', 'setLogin']),
     login() {
       this.$refs.from.validate(async valid => {
         if (valid) {
@@ -40,6 +40,7 @@ export default {
           if (success) {
             this.setUser(result)
             this.setToken(token)
+            this.setLogin(true)
             this.$router.push('/user')
           }
         }

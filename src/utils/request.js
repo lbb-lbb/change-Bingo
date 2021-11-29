@@ -1,5 +1,5 @@
 import axios from 'axios'
-
+import store from '../store/index'
 const service = axios.create({
   baseURL: 'http://localhost:3005',
   timeout: 5000,
@@ -9,7 +9,6 @@ const service = axios.create({
 const err = (error) => {
   if (error.response) {
     // const data = error.response.data
-
     switch (error.response.status) {
       case 500:
         break
@@ -23,6 +22,7 @@ const err = (error) => {
 
 service.interceptors.request.use(config => {
   config.headers = { 'Content-type': 'application/json' }
+  config.headers = { 'Authorization': `Bearer ${store.getters.getToken}` }
   return config
 })
 

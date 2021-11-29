@@ -55,6 +55,11 @@ const routes = [
     component: () => import('../view/userLayout'),
     children: [
       {
+        path: '/',
+        name: 'userHome',
+        component: () => import('../view/HomeLayout')
+      },
+      {
         path: '/notification',
         name: 'Notification'
       },

@@ -6,11 +6,13 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     user: util.getSessionStorage('user') || {},
-    token: util.getSessionStorage('token') || ''
+    token: util.getSessionStorage('token') || "",
+    login: util.getSessionStorage('login') || false,
   },
   getters: {
     getUser: state => state.user,
-    token: state => state.token
+    getToken: state => state.token,
+    getLogin: state => state.login
   },
   mutations: {
     setUser(state, data) {
@@ -20,6 +22,10 @@ export default new Vuex.Store({
     setToken(state, data) {
       state.token = data
       util.setSessionStorage('token', data)
+    },
+    setLogin(state, data) {
+      state.login = data
+      util.setSessionStorage('login', data)
     }
   },
   actions: {
@@ -28,6 +34,9 @@ export default new Vuex.Store({
     },
     setToken({commit}, data) {
       commit('setToken', data)
+    },
+    setLogin({commit}, data) {
+      commit('setLogin', data)
     }
   }
 })

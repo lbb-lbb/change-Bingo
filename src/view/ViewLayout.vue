@@ -4,8 +4,16 @@
       <div class="head">
         <el-avatar alt="头像" src="./public/头像.jpg"></el-avatar>
         <div class="message">
-          <div><el-tag type="danger" size="mini" effect="plain">作者</el-tag> 再回首恍然如梦</div>
-          <div>写了多少篇文章的人，回复了多少人</div>
+          <div>
+            <div><el-tag type="danger" size="mini" effect="plain">作者</el-tag> 再回首恍然如梦</div>
+            <div>写了多少篇文章的人，回复了多少人</div>
+          </div>
+          <div v-if="getLogin" class="action">
+            <span class="icon iconfont icon-bianji" style="font-size: 12px"></span>
+            <span>编辑</span>
+            <span class="icon iconfont icon-bianji" style="font-size: 12px"></span>
+            <span>删除</span>
+          </div>
         </div>
       </div>
       <div class="main">
@@ -20,7 +28,7 @@
           标签：<el-tag v-for="item in tag" :key="item" type="danger" size="mini" effect="plain">{{item}}</el-tag>
         </div>
         <div>
-          <CommentGroup :id="this.$route.query.id" />
+          <CommentGroup :is-user="getLogin" :id="this.$route.query.id" />
         </div>
       </div>
     </div>
@@ -33,6 +41,7 @@ import RightMenuLayout from './RightMenuLayout'
 import Comment from '../components/comment.vue'
 import CommentGroup from '../components/CommentGroup.vue'
 import { marked } from 'marked'
+import { mapGetters } from 'vuex'
 export default {
   name: 'ViewLayout',
   components: {
@@ -49,6 +58,7 @@ export default {
     }
   },
   computed: {
+    ...mapGetters(['getLogin']),
     needList: function() {
       const arr = []
       for (let i in this.list) {
@@ -93,9 +103,21 @@ export default {
     float: left;
   }
   .message {
+    display: flex;
+    justify-content: space-between;
     font-size: 12px;
     color: #999999;
     margin-left: 50px;
+    .action {
+      align-self: center;
+      span:nth-child(2n+1) {
+        margin-left: 10px;
+      }
+      span:hover {
+        cursor: pointer;
+        color: #1e80ff;
+      }
+    }
   }
 }
 .main {

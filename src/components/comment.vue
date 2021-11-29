@@ -3,30 +3,32 @@
     <el-form :model="formData" :rules="rules" ref="ruleForm" size="small">
       <el-form-item label="评论" prop="comment">
         <el-input
-            v-model="formData.comment"
-            clearable
-            ref="comment"
-            type="textarea"
-            placeholder="如评论不显示，请等候管理员人工审核"
-            maxlength="400"
-            show-word-limit
-            :autosize="{ minRows: 3, maxRows: 6 }"
+          v-model="formData.comment"
+          clearable
+          ref="comment"
+          type="textarea"
+          placeholder="如评论不显示，请等候管理员人工审核"
+          maxlength="400"
+          show-word-limit
+          :autosize="{ minRows: 3, maxRows: 6 }"
         />
       </el-form-item>
       <el-form-item label="称呼" prop="name">
         <el-input
-            v-model="formData.name"
-            maxlength="20"
-            clearable
-            show-word-limit
+          v-if="!isUser"
+          v-model="formData.name"
+          maxlength="20"
+          clearable
+          show-word-limit
         />
       </el-form-item>
       <el-form-item label="联系邮箱" prop="email">
         <el-input
-            v-model="formData.email"
-            maxlength="50"
-            clearable
-            show-word-limit
+          v-if="!isUser"
+          v-model="formData.email"
+          maxlength="50"
+          clearable
+          show-word-limit
         />
       </el-form-item>
     </el-form>
@@ -51,6 +53,10 @@ export default {
     replyId: {
       type: String,
       default: ''
+    },
+    isUser:{
+      type: Boolean,
+      default: false
     }
   },
   data () {
@@ -85,7 +91,8 @@ export default {
             pid: this.pid,
             replyId: this.replyId
           }
-          let { success, message } = await this.$dao.submitComment(params)
+          const replayType = this.isUser ? this.$dao.replayComment : this.$dao.submitComment
+          let { success, message } = await replayType(params)
           if (success) {
             this.$refs['ruleForm'].resetFields()
             this.$emit('submit')

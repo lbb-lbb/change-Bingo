@@ -30,6 +30,7 @@
 
 <script>
 import RightMenuLayout from './RightMenuLayout'
+import { mapGetters } from 'vuex'
 export default {
   name: 'HomeLayout',
   components: {
@@ -45,9 +46,18 @@ export default {
       data: []
     }
   },
+  computed: {
+    ...mapGetters(['getLogin'])
+  },
   methods: {
     async getPageData() {
       let { result, success, total } = await this.$dao.getHomeData(this.pages)
+      if (success) {
+        this.data = result
+      }
+    },
+    async getUserPageData() {
+      let { result, success, total } = await this.$dao.getUserHomeData(this.pages)
       if (success) {
         this.data = result
       }
@@ -59,8 +69,12 @@ export default {
       })
     }
   },
-  created() {
-    this.getPageData(this.pages)
+  mounted() {
+    if (this.getLogin) {
+      this.getUserPageData()
+    } else {
+      this.getPageData(this.pages)
+    }
   }
 }
 </script>

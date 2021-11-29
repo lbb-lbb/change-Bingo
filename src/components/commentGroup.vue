@@ -2,7 +2,7 @@
   <div class="top">
     <div class="m-b-20 space name border-bottom">
       <div>{{pages.count}}条评论</div>
-      <div class="add-comment" @click="addComment">添加新评论</div>
+      <div v-if="!isUser" class="add-comment" @click="addComment">添加新评论</div>
     </div>
     <div class="m-b-20" v-for="item in commentGroup" :key="item.id">
       <div class="m-b-20 border-bottom">
@@ -15,10 +15,19 @@
               <span class="time">{{item.creatTime}}</span>
             </div>
             <div class="comment">{{item.comment}}</div>
-            <div class="reply-button" @click="replyComment(item.id)">{{showComment === item.id ? '取消回复' : '回复'}}</div>
+            <div>
+              <div class="reply-button" @click="replyComment(item.id)">
+                <span class="icon iconfont icon-xiaohuifu" style="font-size: 12px"></span>
+                {{showComment === item.id ? '取消回复' : '回复'}}
+              </div>
+              <div v-if="isUser" class="reply-button" @click="deleteComment(2, item.id)">
+                <span class="icon iconfont icon-xiaohuifu" style="font-size: 12px"></span>
+                删除
+              </div>
+            </div>
           </div>
         </div>
-        <Comment v-if="showComment === item.id" :title-id="id" :pid="item.id" @submit="submit" />
+        <Comment :is-user="isUser" v-if="showComment === item.id" :title-id="id" :pid="item.id" @submit="submit" />
       </div>
       <div class="reply m-b-20 border-bottom" v-for="reply in item.reply" :key="reply.id">
         <div class="comment-space">
@@ -33,10 +42,19 @@
               “{{reply.replyGroup[0].comment.length> 20 ?
               reply.replyGroup[0].comment.substr(0, 20) + '...'
               : reply.replyGroup[0].comment}}”</div>
-            <div class="reply-button" @click="replyComment(reply.id)">{{showComment === reply.id ? '取消回复' : '回复'}}</div>
+            <div>
+              <div class="reply-button" @click="replyComment(reply.id)">
+                <span class="icon iconfont icon-xiaohuifu" style="font-size: 12px"></span>
+                {{showComment === reply.id ? '取消回复' : '回复'}}
+              </div>
+              <div v-if="isUser" class="reply-button" @click="deleteComment(2, reply.id)">
+                <span class="icon iconfont icon-xiaohuifu" style="font-size: 12px"></span>
+                删除
+              </div>
+            </div>
           </div>
         </div>
-        <Comment v-if="showComment === reply.id" :title-id="id" :pid="item.id" :reply-id="reply.id" @submit="submit" />
+        <Comment :is-user="isUser" v-if="showComment === reply.id" :title-id="id" :pid="item.id" :reply-id="reply.id" @submit="submit" />
       </div>
     </div>
     <div v-if="pages.count > pages.pageSize * pages.pageNo" class="page">
@@ -49,8 +67,10 @@
         @current-change="getComment()">
       </el-pagination>
     </div>
-    <div class="end-tip">添加新评论</div>
-    <Comment :title-id="id" ref="comment" @submit="submit" />
+    <div v-if="!isUser">
+      <div class="end-tip">添加新评论</div>
+      <Comment :title-id="id" ref="comment" @submit="submit" />
+    </div>
   </div>
 </template>
 
@@ -65,6 +85,10 @@ export default {
     id: {
       type: String,
       required: true
+    },
+    isUser: {
+      type: Boolean,
+      default: false
     }
   },
   data () {
@@ -107,6 +131,14 @@ export default {
     },
     addComment() {
       this.$refs.comment.focus()
+    },
+    deleteComment(status, id) {
+      let params = {
+        status: status,
+        titleId: this.id,
+        id: id
+      }
+      this.$dao.deleteComment(params)
     }
   },
   mounted () {
@@ -167,12 +199,16 @@ export default {
     flex: 1 1 auto;
   }
   .reply-button {
+    display: inline-block;
     margin-right: 16px;
-    max-width: 50px;
+    max-width: 70px;
     line-height: 20px;
     font-size: 12px;
     cursor: pointer;
     color: #86909c;
+  }
+  .reply-button:hover {
+    color: #1e80ff;
   }
 }
 .reply {
