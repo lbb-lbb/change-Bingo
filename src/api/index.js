@@ -10,7 +10,7 @@ export function Login(params = {}) {
 
 export function getHomeData(params = {}) {
   return request({
-    url: '/show/articleList',
+    url: '/common/articleList',
     method: 'get',
     params: params
   })
@@ -33,7 +33,7 @@ export function getUserHomeData(params = {}) {
  */
 export function getArticleInfo(params ={}) {
   return request({
-    url: '/show/articleInfo',
+    url: '/common/articleInfo',
     method: 'get',
     params: params
   })
@@ -41,7 +41,7 @@ export function getArticleInfo(params ={}) {
 
 export function getGlobalSearchData(params ={}) {
   return request({
-    url: '/show/articleList',
+    url: '/common/articleList',
     method: 'get',
     params: params
   })
@@ -49,7 +49,7 @@ export function getGlobalSearchData(params ={}) {
 
 export function submitComment(params ={}) {
   return request({
-    url: '/comment/create',
+    url: '/discuss/create',
     method: 'post',
     data: params
   })
@@ -72,7 +72,18 @@ export function deleteComment(params = {}){
 
 export function getComment(params ={}) {
   return request({
-    url: '/comment/getComment',
+    url: '/discuss/getComment',
+    method: 'get',
+    params: params
+  })
+}
+
+/**
+ * 用户下对评论的操作
+ */
+export function changeComment(params = {}) {
+  return request({
+    url: '/page/getCommentList',
     method: 'get',
     params: params
   })

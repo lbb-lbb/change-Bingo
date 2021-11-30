@@ -5,11 +5,18 @@
         show something
       </div>
       <div>
-        <div class="link" @click="goPath('/home')">首页</div>
-        <div class="link" @click="goPath('/blog')">分类</div>
-        <div class="link" @click="goPath('/openSource')">归档</div>
-        <div class="link" @click="goPath('/wiki')">联系/留言</div>
-        <div class="link" @click="goPath('/about')">关于</div>
+        <div class="link" @click="goPath('/home')">写文章</div>
+        <div class="link" @click="goPath('/user/notification')">通知</div>
+        <div v-if="!getLogin" class="link" @click="goPath('/login')">登录</div>
+        <div v-else class="link">
+          <el-avatar alt="头像" src="./public/头像.jpg"></el-avatar>
+           <el-dropdown trigger="click" @command="handleCommand">
+            <span class="el-dropdown-link">名称</span>
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item command="loginOut">推出登录</el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
+        </div>
       </div>
     </el-header>
     <el-main>
@@ -22,11 +29,24 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'userLayout',
+  computed: {
+    ...mapGetters(['getLogin'])
+  },
   methods: {
+    ...mapActions(['setLogin', 'setToken', 'setUser']),
     goPath(path) {
       this.$router.push(path)
+    },
+    handleCommand(command) {
+      switch (command) {
+        case 'loginOut':
+          this.setToken('')
+          this.setUser({})
+          this.setLogin(false)
+      }
     }
   },
 
@@ -62,6 +82,10 @@ export default {
       margin-left: 10px;
       color: rgba(255,255,255,.5);
       cursor: pointer;
+      vertical-align: middle;
+      .el-dropdown-link {
+        vertical-align: middle;
+      }
     }
     .link:hover {
       color: #ffffff;

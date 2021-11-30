@@ -20,7 +20,12 @@ import {
   Form,
   FormItem,
   Input,
-  Divider
+  Divider,
+  Dropdown,
+  DropdownMenu,
+  DropdownItem,
+  Tabs,
+  TabPane
 } from 'element-ui'
 
 Vue.use(Button)
@@ -43,3 +48,8 @@ Vue.use(Button)
   .use(FormItem)
   .use(Input)
   .use(Divider)
+  .use(Dropdown)
+  .use(DropdownMenu)
+  .use(DropdownItem)
+  .use(Tabs)
+  .use(TabPane)

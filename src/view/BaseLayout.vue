@@ -6,10 +6,10 @@
       </div>
      <div>
        <div class="link" @click="goPath('/home')">首页</div>
-       <div class="link" @click="goPath('/blog')">分类</div>
-       <div class="link" @click="goPath('/openSource')">归档</div>
-       <div class="link" @click="goPath('/wiki')">联系/留言</div>
-       <div class="link" @click="goPath('/about')">关于</div>
+       <div class="link" @click="goPath('/home/blog')">分类</div>
+       <div class="link" @click="goPath('/home/openSource')">归档</div>
+       <div class="link" @click="goPath('/home/wiki')">联系/留言</div>
+       <div class="link" @click="goPath('/home/about')">关于</div>
      </div>
     </el-header>
     <el-main>

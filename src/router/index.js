@@ -13,32 +13,32 @@ const routes = [
     component: () => import('../view/BaseLayout'),
     children: [
       {
-        path: '/',
+        path: '',
         name: 'Home',
         component: () => import('../view/HomeLayout')
       },
       {
-        path: '/blog',
+        path: 'blog',
         name: 'Blog',
         component: () => import('../view/BlogLayout')
       },
       {
-        path: '/openSource',
+        path: 'openSource',
         name: 'OpenSource',
         component: () => import('../view/TimeClassifyLayout')
       },
       {
-        path: '/wiki',
+        path: 'wiki',
         name: 'Wiki',
         component: () => import('../view/WikiLayout')
       },
       {
-        path: '/about',
+        path: 'about',
         name: 'About',
         component: () => import('../view/AboutLayout')
       },
       {
-        path: '/view',
+        path: 'view',
         name: 'View',
         component: () => import('../view/ViewLayout')
       }
@@ -50,21 +50,21 @@ const routes = [
     component: () => import('../view/Login')
   },
   {
-    path: '/user',
-    name: 'User',
+    path: '/user/',
     component: () => import('../view/userLayout'),
     children: [
       {
-        path: '/',
+        path: '',
         name: 'userHome',
         component: () => import('../view/HomeLayout')
       },
       {
-        path: '/notification',
-        name: 'Notification'
+        path: 'notification',
+        name: 'Notification',
+        component: () => import('../components/Message')
       },
       {
-        path: '/setting',
+        path: 'setting',
         name: 'Setting'
       },
       {
@@ -88,6 +88,7 @@ VueRouter.prototype.replace = function push(location, onResolve, onReject) {
   return originalReplace.call(this, location).catch(err => err)
 }
 export default new VueRouter({
+  publicPath: '/',
   mode: 'history',
   routes
 })
