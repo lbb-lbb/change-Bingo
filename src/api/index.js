@@ -62,7 +62,7 @@ export function replayComment(params = {}) {
   })
 }
 
-export function deleteComment(params = {}){
+export function changeComment(params = {}){
   return request({
     url: '/page/article/comment/status',
     method: 'post',
@@ -79,9 +79,9 @@ export function getComment(params ={}) {
 }
 
 /**
- * 用户下对评论的操作
+ * 用户下根据状态返回评论列表
  */
-export function changeComment(params = {}) {
+export function commentList(params = {}) {
   return request({
     url: '/page/getCommentList',
     method: 'get',

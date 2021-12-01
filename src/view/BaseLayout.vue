@@ -77,7 +77,7 @@ export default {
     flex: 1 1 100%;
   }
   .el-footer{
-    border-top: 1px solid #ccc;
+
   }
   .footer{
     text-align: center;

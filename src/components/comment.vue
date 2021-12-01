@@ -13,18 +13,16 @@
           :autosize="{ minRows: 3, maxRows: 6 }"
         />
       </el-form-item>
-      <el-form-item label="称呼" prop="name">
+      <el-form-item v-if="!isUser" label="称呼" prop="name">
         <el-input
-          v-if="!isUser"
           v-model="formData.name"
           maxlength="20"
           clearable
           show-word-limit
         />
       </el-form-item>
-      <el-form-item label="联系邮箱" prop="email">
+      <el-form-item v-if="!isUser" label="联系邮箱" prop="email">
         <el-input
-          v-if="!isUser"
           v-model="formData.email"
           maxlength="50"
           clearable

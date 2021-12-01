@@ -20,7 +20,7 @@
                 <span class="icon iconfont icon-xiaohuifu" style="font-size: 12px"></span>
                 {{showComment === item.id ? '取消回复' : '回复'}}
               </div>
-              <div v-if="isUser" class="reply-button" @click="deleteComment(2, item.id)">
+              <div v-if="isUser" class="reply-button" @click="deleteComment(3, item.id)">
                 <span class="icon iconfont icon-xiaohuifu" style="font-size: 12px"></span>
                 删除
               </div>
@@ -47,7 +47,7 @@
                 <span class="icon iconfont icon-xiaohuifu" style="font-size: 12px"></span>
                 {{showComment === reply.id ? '取消回复' : '回复'}}
               </div>
-              <div v-if="isUser" class="reply-button" @click="deleteComment(2, reply.id)">
+              <div v-if="isUser" class="reply-button" @click="deleteComment(3, reply.id)">
                 <span class="icon iconfont icon-xiaohuifu" style="font-size: 12px"></span>
                 删除
               </div>
@@ -132,13 +132,19 @@ export default {
     addComment() {
       this.$refs.comment.focus()
     },
-    deleteComment(status, id) {
+    async deleteComment(status, id) {
       let params = {
         status: status,
         titleId: this.id,
         id: id
       }
-      this.$dao.deleteComment(params)
+      let {success} = await this.$dao.changeComment(params)
+      if (success) {
+        this.$message.success('删除成功')
+        await this.getComment()
+      } else {
+        this.$message.error('删除失败')
+      }
     }
   },
   mounted () {

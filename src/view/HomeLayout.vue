@@ -64,7 +64,7 @@ export default {
     },
     goWatch(id) {
       this.$router.push({
-        path: '/view',
+        path: '/home/view',
         query: { id: id }
       })
     }

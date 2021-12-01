@@ -88,7 +88,6 @@ VueRouter.prototype.replace = function push(location, onResolve, onReject) {
   return originalReplace.call(this, location).catch(err => err)
 }
 export default new VueRouter({
-  publicPath: '/',
   mode: 'history',
   routes
 })

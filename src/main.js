@@ -5,10 +5,12 @@ import App from './App.vue'
 import 'element-ui/lib/theme-chalk/index.css'
 import './plugin/elementUi'
 import '../public/css/icon/iconfont.css'
+import {Message} from 'element-ui'
 // import '../mock/index'
 import * as api from './api/index'
 
 Vue.prototype.$dao = api
+Vue.prototype.$message = Message
 
 new Vue({
   store,
