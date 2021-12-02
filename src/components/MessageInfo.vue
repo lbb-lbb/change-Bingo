@@ -10,7 +10,7 @@
             <div class="comment">{{item.comment}}</div>
             <div class="reply-comment" v-if="item.replyGroup">“{{item.replyGroup.comment}}”</div>
           </div>
-          <div class="title" :title="item.title">{{item.title}}</div>
+          <div class="title" :title="item.title" @click="goWatch(item.titleId)">{{item.title}}</div>
         </div>
         <div class="action">
           <div>{{item.creatTime}}</div>
@@ -105,6 +105,12 @@ export default {
       this.showComment = ''
       this.getComment()
     },
+    goWatch(id) {
+      this.$router.push({
+        path: '/home/view',
+        query: { id: id }
+      })
+    }
   },
   mounted () {
     this.getComment()

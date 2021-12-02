@@ -13,7 +13,8 @@
            <el-dropdown trigger="click" @command="handleCommand">
             <span class="el-dropdown-link">名称</span>
             <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item command="loginOut">推出登录</el-dropdown-item>
+              <el-dropdown-item command="setting">设置</el-dropdown-item>
+              <el-dropdown-item command="loginOut">注销</el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
         </div>
@@ -46,6 +47,9 @@ export default {
           this.setToken('')
           this.setUser({})
           this.setLogin(false)
+          break
+        case 'setting':
+          this.$router.push('/user/setting')
       }
     }
   },

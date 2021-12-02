@@ -89,4 +89,31 @@ export function commentList(params = {}) {
   })
 }
 
+/**
+ * 修改用户资料
+ */
+export function setUserInfo(params ={}) {
+  return request({
+    url: '/user/editMessage',
+    method: 'post',
+    data: params
+  })
+}
+/**
+ * 修改用户密码
+ */
+export function setUserPassword(params ={}) {
+  return request({
+    url: '/user/changePassword',
+    method: 'post',
+    data: params
+  })
+}
+/**
+ * 上传图片地址
+ */
+export function getUpload() {
+  return `http://localhost:3005/user/upload`
+}
+
 

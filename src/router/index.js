@@ -51,7 +51,7 @@ const routes = [
   },
   {
     path: '/user/',
-    component: () => import('../view/userLayout'),
+    component: () => import('../view/UserLayout'),
     children: [
       {
         path: '',
@@ -65,7 +65,8 @@ const routes = [
       },
       {
         path: 'setting',
-        name: 'Setting'
+        name: 'Setting',
+        component: () => import('../view/Setting')
       },
       {
         path: 'write',
