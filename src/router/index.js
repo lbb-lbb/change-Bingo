@@ -70,7 +70,8 @@ const routes = [
       },
       {
         path: 'write',
-        name: 'Write'
+        name: 'Write',
+        component: () => import('../view/Write')
       }
     ]
   }

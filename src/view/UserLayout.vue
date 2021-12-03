@@ -5,7 +5,7 @@
         show something
       </div>
       <div>
-        <div class="link" @click="goPath('/home')">写文章</div>
+        <div class="link" @click="goPath('/user/write')">写文章</div>
         <div class="link" @click="goPath('/user/notification')">通知</div>
         <div v-if="!getLogin" class="link" @click="goPath('/login')">登录</div>
         <div v-else class="link">
