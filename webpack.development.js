@@ -12,7 +12,7 @@ module.exports = merge(common, {
       }
     ]
   },
-  devtool: 'source-map',
+  devtool: '#eval-source-map',
 
   mode: 'development',
 

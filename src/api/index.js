@@ -31,7 +31,7 @@ export function getUserHomeData(params = {}) {
  * @param params
  * @returns {AxiosPromise}
  */
-export function getArticleInfo(params ={}) {
+export function getArticleInfo(params = {}) {
   return request({
     url: '/common/articleInfo',
     method: 'get',
@@ -39,7 +39,7 @@ export function getArticleInfo(params ={}) {
   })
 }
 
-export function getGlobalSearchData(params ={}) {
+export function getGlobalSearchData(params = {}) {
   return request({
     url: '/common/articleList',
     method: 'get',
@@ -70,7 +70,7 @@ export function changeComment(params = {}){
   })
 }
 
-export function getComment(params ={}) {
+export function getComment(params = {}) {
   return request({
     url: '/discuss/getComment',
     method: 'get',
@@ -92,7 +92,7 @@ export function commentList(params = {}) {
 /**
  * 修改用户资料
  */
-export function setUserInfo(params ={}) {
+export function setUserInfo(params = {}) {
   return request({
     url: '/user/editMessage',
     method: 'post',
@@ -102,7 +102,7 @@ export function setUserInfo(params ={}) {
 /**
  * 修改用户密码
  */
-export function setUserPassword(params ={}) {
+export function setUserPassword(params = {}) {
   return request({
     url: '/user/changePassword',
     method: 'post',
@@ -112,8 +112,12 @@ export function setUserPassword(params ={}) {
 /**
  * 上传图片地址
  */
-export function getUpload() {
-  return `http://localhost:3005/user/upload`
+export function getUpload(params = {}) {
+  return request({
+    url: '/user/upload',
+    method: 'post',
+    data: params
+  })
 }
 
 
