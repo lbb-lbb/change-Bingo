@@ -1,17 +1,64 @@
 <template>
   <div>
-    <el-form :model="formData" :rules="rules">
+    <el-form :model="formData" :rules="rules" ref="form">
       <el-form-item prop="title">
-        <el-input v-model="formData.title" placeholder="请输入标题" />
+        <el-input
+          v-model="formData.title"
+          placeholder="请输入标题"
+          show-word-limit
+          maxlength="50"
+        />
       </el-form-item>
       <el-form-item prop="abstract">
-        <el-input v-model="formData.abstract" placeholder="请输入摘要" />
+        <el-input
+          type="textarea"
+          show-word-limit maxlength="500"
+          :autosize="{minRows:3, minRows:6}"
+          v-model="formData.abstract"
+          placeholder="请输入摘要"
+        />
       </el-form-item>
       <el-form-item prop="category">
-        <el-input v-model="formData.category" placeholder="请输入分类" />
+        <el-select
+          style="width: 100%"
+          v-model="formData.category"
+          placeholder="请选择或创建一个分类"
+          multiple
+          filterable
+          default-first-option
+          allow-create
+        >
+          <el-option
+            v-for="item in category"
+            :key="item"
+            :label="item"
+            :value="item">
+          </el-option>
+        </el-select>
       </el-form-item>
-      <el-form-item prop="category">
-        <el-input v-model="formData.tag" placeholder="请输入标签" />
+      <el-form-item prop="tag">
+        <el-select
+          style="width: 100%"
+          v-model="formData.tag"
+          placeholder="请选择或创建标签"
+          filterable
+          multiple
+          default-first-option
+          allow-create
+        >
+          <el-option
+            v-for="item in tags"
+            :key="item"
+            :label="item"
+            :value="item">
+          </el-option>
+          </el-select>
+      </el-form-item>
+      <el-form-item style="text-align: right">
+        <el-button v-if="this.$route.query.id" type="primary" size="small" @click="createArticle">创建新文章</el-button>
+        <el-button type="primary" size="small" @click="submit(0)">保存为草稿</el-button>
+        <el-button type="primary" size="small" @click="submit(1)">提交</el-button>
+        <el-button type="primary" size="small" @click="submit(2)">提交并发布</el-button>
       </el-form-item>
       <el-form-item prop="content">
         <mavon-editor ref="editor" v-model="formData.content" @save="submit" @imgAdd="uploadImage" @imgDel="removeImage" />
@@ -43,7 +90,9 @@ export default {
         tag: [{ required: true, message: '必填', trigger: 'blur' }],
         category: [{ required: true, message: '必填', trigger: 'blur' }],
         content: [{ required: true, message: '必填', trigger: 'blur' }]
-      }
+      },
+      tags: [],
+      category: [],
     }
   },
   methods: {
@@ -61,11 +110,53 @@ export default {
     removeImage () {
 
     },
-    submit () {
-
+    submit (status) {
+      this.$refs.form.validate(async valid => {
+        if(valid) {
+          let params = {
+            ...this.formData,
+            status: status,
+            tag: this.formData.tag.join(','),
+            category: this.formData.category.join(','),
+            id: this.$route.query.id ? this.$route.query.id : ''
+          }
+          let res = await this.$dao.createArticle(params)
+          if (res.success) {
+            this.$message.success('成功')
+          }
+        }
+      })
+    },
+    async getArticleMessage () {
+      let res = await this.$dao.articleClassify()
+      if(res.success) {
+        this.tags = res.result.tags
+        this.category = res.result.category
+      }
+    },
+    async getArticleInfo () {
+      if (this.$route.query.id) {
+        const { success, result } = await this.$dao.getArticleInfo({id: this.$route.query.id})
+        if (success) {
+          this.formData.content = result.content
+          this.formData.abstract = result.abstract
+          this.formData.tag = result.tag.split(',')
+          this.formData.category = result.category.split(',')
+          this.formData.title = result.title
+        }
+      } else {
+        console.log(this.$options.data())
+        this.formData = this.$options.data().formData
+      }
+    },
+    createArticle() {
+      this.$router.push('/user/write')
+      this.getArticleInfo()
     }
   },
   mounted () {
+    this.getArticleMessage()
+    this.getArticleInfo()
   }
 
 }

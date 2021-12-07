@@ -26,7 +26,9 @@ import {
   DropdownItem,
   Tabs,
   TabPane,
-  Upload
+  Upload,
+  Select,
+  Option
 } from 'element-ui'
 
 Vue.use(Button)
@@ -55,3 +57,5 @@ Vue.use(Button)
   .use(Tabs)
   .use(TabPane)
   .use(Upload)
+  .use(Select)
+  .use(Option)

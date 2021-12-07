@@ -9,10 +9,14 @@
             <div>写了多少篇文章的人，回复了多少人</div>
           </div>
           <div v-if="getLogin" class="action">
-            <span class="icon iconfont icon-bianji" style="font-size: 12px"></span>
-            <span>编辑</span>
-            <span class="icon iconfont icon-bianji" style="font-size: 12px"></span>
-            <span>删除</span>
+            <div @click="editArticle">
+              <span class="icon iconfont icon-bianji" style="font-size: 12px"></span>
+              <span>编辑</span>
+            </div>
+            <div @click="deleteArticle">
+              <span class="icon iconfont icon-bianji" style="font-size: 12px"></span>
+              <span>删除</span>
+            </div>
           </div>
         </div>
       </div>
@@ -82,6 +86,15 @@ export default {
           this.list = document.getElementById('content').children
         })
       }
+    },
+    editArticle() {
+      this.$router.push({path: '/user/write', query: {id: this.$route.query.id}})
+    },
+    async deleteArticle() {
+      let res = await this.$dao.changeArticle({ status: 3, id: this.$route.query.id })
+      if (res.success) {
+        this.$message.success('删除成功')
+      }
     }
   },
   mounted() {
@@ -92,7 +105,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.card {
+card {
   display: flex;
   flex-wrap: wrap;
 }
@@ -110,10 +123,11 @@ export default {
     margin-left: 50px;
     .action {
       align-self: center;
+      display: flex;
       span:nth-child(2n+1) {
         margin-left: 10px;
       }
-      span:hover {
+      div:hover {
         cursor: pointer;
         color: #1e80ff;
       }

@@ -120,4 +120,34 @@ export function getUpload(params = {}) {
   })
 }
 
+/**
+ * 创建文章
+ */
+export function createArticle(params = {}) {
+  return request({
+    url: 'page/article/create',
+    method: 'post',
+    data: params
+  })
+}
+
+/**
+ * 修改文章状态
+ */
+export function changeArticle(params = {}) {
+  return request({
+    url: 'page/article/status',
+    method: 'post',
+    data: params
+  })
+}
+/**
+ * 返回文章所有分类
+ */
+export function articleClassify() {
+  return request({
+    url: 'page/article/classifyList',
+    method: 'get'
+  })
+}
 
