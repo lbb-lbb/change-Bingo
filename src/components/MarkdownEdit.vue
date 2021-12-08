@@ -61,7 +61,7 @@
         <el-button type="primary" size="small" @click="submit(2)">提交并发布</el-button>
       </el-form-item>
       <el-form-item prop="content">
-        <mavon-editor ref="editor" v-model="formData.content" @save="submit" @imgAdd="uploadImage" @imgDel="removeImage" />
+        <mavon-editor class="editor" ref="editor" v-model="formData.content" @save="submit" @imgAdd="uploadImage" @imgDel="removeImage" />
       </el-form-item>
     </el-form>
   </div>
@@ -163,5 +163,7 @@ export default {
 </script>
 
 <style scoped>
-
+.editor {
+  min-height:600px;
+}
 </style>

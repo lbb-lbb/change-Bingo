@@ -2,7 +2,7 @@
   <div class="card">
     <div class="list">
       <div class="head">
-        <el-avatar alt="头像" src="./public/头像.jpg"></el-avatar>
+        <el-avatar alt="头像" :src="article.head"></el-avatar>
         <div class="message">
           <div>
             <div><el-tag type="danger" size="mini" effect="plain">作者</el-tag> 再回首恍然如梦</div>
@@ -105,7 +105,8 @@ export default {
 </script>
 
 <style lang="less" scoped>
-card {
+.card {
+  padding: 20px 0;
   display: flex;
   flex-wrap: wrap;
 }
@@ -135,6 +136,9 @@ card {
   }
 }
 .main {
+  #content img {
+    width: 100% !important;
+  }
   .title {
     color: #6699CC;
     margin-bottom: 15px;

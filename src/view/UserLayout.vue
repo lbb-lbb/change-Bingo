@@ -2,16 +2,16 @@
   <el-container>
     <el-header>
       <div class="header-left" @click="$router.push('/')">
-        show something
+        图标
       </div>
-      <div>
-        <div class="link" @click="goPath('/user/write')">写文章</div>
-        <div class="link" @click="goPath('/user/notification')">通知</div>
-        <div v-if="!getLogin" class="link" @click="goPath('/login')">登录</div>
+      <div class="header-right">
+        <router-link class="link" to="/user/write">写文章</router-link>
+        <router-link class="link" to="/user/notification">通知</router-link>
+        <router-link v-if="!getLogin" class="link" to="/login">登录</router-link>
         <div v-else class="link">
-          <el-avatar alt="头像" src="./public/头像.jpg"></el-avatar>
+          <el-avatar alt="头像" :src="getUser.head"></el-avatar>
            <el-dropdown trigger="click" @command="handleCommand">
-            <span class="el-dropdown-link">名称</span>
+            <span class="el-dropdown-link">名称<i class="el-icon-arrow-down el-icon--right"/></span>
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item command="setting">设置</el-dropdown-item>
               <el-dropdown-item command="loginOut">注销</el-dropdown-item>
@@ -21,7 +21,9 @@
       </div>
     </el-header>
     <el-main>
-      <router-view/>
+      <transition name="fade-slide" mode="out-in" appear>
+        <router-view/>
+      </transition>
     </el-main>
     <el-footer>
       <div class="footer"><a href="http://beian.miit.gov.cn">津ICP备2020008713号</a></div>
@@ -34,7 +36,7 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'userLayout',
   computed: {
-    ...mapGetters(['getLogin'])
+    ...mapGetters(['getLogin', 'getUser'])
   },
   methods: {
     ...mapActions(['setLogin', 'setToken', 'setUser']),
@@ -62,7 +64,6 @@ export default {
   a{
     text-decoration: none;
     color: black;
-    opacity: 0.5;
   }
   h1{
     margin-left: 3px;
@@ -81,19 +82,31 @@ export default {
     background: #6699CC;
     color: #ffffff;
     .link{
-      flex: 0 1 auto;
-      display: inline-block;
+      display: flex;
+      align-items: center;
+      padding: 6px;
+      border-radius: 2px;
+      align-self: center;
       margin-left: 10px;
-      color: rgba(255,255,255,.5);
+      color: #ffffff;
       cursor: pointer;
-      vertical-align: middle;
       .el-dropdown-link {
-        vertical-align: middle;
+        margin-left: 5px;
+        color: #ffffff;
       }
     }
     .link:hover {
       color: #ffffff;
+      background-color: rgba(255, 255, 255, 0.2);
     }
+    .router-link-active {
+      color: #ffffff;
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+  }
+  .el-header .header-right {
+    display: flex;
+    align-items: center;
   }
   .el-header .header-left{
     flex: 0 0 20vw;

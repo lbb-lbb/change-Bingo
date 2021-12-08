@@ -157,6 +157,8 @@ export default {
         }
       }
       .title {
+        padding: 6px;
+        border-radius: 2px;
         flex: 0 0 75px;
         overflow: hidden;
         text-overflow: ellipsis;

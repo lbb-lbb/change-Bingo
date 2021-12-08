@@ -68,7 +68,6 @@
       </el-pagination>
     </div>
     <div v-if="!isUser">
-      <div class="end-tip">添加新评论</div>
       <Comment :title-id="id" ref="comment" @submit="submit" />
     </div>
   </div>

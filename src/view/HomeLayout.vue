@@ -13,7 +13,7 @@
           <el-tag type="info" size="mini" effect="plain">{{item.category}}</el-tag>
         </div>
       </el-card>
-      <div class="page">
+      <div class="page" v-if="pages.count > pages.pageSize * pages.pageNo">
         <el-pagination
             small
             background
@@ -41,7 +41,8 @@ export default {
       pages: {
         pageNo: 1,
         pageSize: 10,
-        title: ''
+        title: '',
+        count: 0
       },
       data: []
     }
@@ -51,15 +52,17 @@ export default {
   },
   methods: {
     async getPageData() {
-      let { result, success, total } = await this.$dao.getHomeData(this.pages)
+      let { result, success, count } = await this.$dao.getHomeData(this.pages)
       if (success) {
         this.data = result
+        this.count = count
       }
     },
     async getUserPageData() {
-      let { result, success, total } = await this.$dao.getUserHomeData(this.pages)
+      let { result, success, count } = await this.$dao.getUserHomeData(this.pages)
       if (success) {
         this.data = result
+        this.count = count
       }
     },
     goWatch(id) {

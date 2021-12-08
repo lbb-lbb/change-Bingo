@@ -1,6 +1,8 @@
 <template>
     <div>
-        <router-view />
+      <transition name="fade-slide" mode="out-in" appear>
+        <router-view/>
+      </transition>
     </div>
 </template>
 
@@ -26,5 +28,18 @@ export default {
 }
 body{
     min-width: 300px;
+}
+.fade-slide-leave-active,
+.fade-slide-enter-active {
+  transition: all 0.3s;
+}
+
+.fade-slide-enter-from {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+
+.fade-slide-leave-to {
+  opacity: 0
 }
 </style>

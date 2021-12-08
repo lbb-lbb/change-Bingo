@@ -22,6 +22,23 @@ export default {
     return {
       tabPosition: 'left'
     }
+  },
+  mounted () {
+    window.addEventListener('resize', this.$util.throttle(() => {
+      if (document.body.offsetWidth < 475) {
+        this.tabPosition = 'top'
+      } else {
+        this.tabPosition = 'left'
+      }
+    }, 300))
+    if (document.body.offsetWidth < 475) {
+      this.tabPosition = 'top'
+    } else {
+      this.tabPosition = 'left'
+    }
+  },
+  destroyed () {
+    window.removeEventListener("resize", this.$util.throttle)
   }
 }
 </script>

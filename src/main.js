@@ -8,9 +8,11 @@ import '../public/css/icon/iconfont.css'
 import {Message} from 'element-ui'
 // import '../mock/index'
 import * as api from './api/index'
+import * as util from './utils/util'
 
 Vue.prototype.$dao = api
 Vue.prototype.$message = Message
+Vue.prototype.$util = util
 
 new Vue({
   store,

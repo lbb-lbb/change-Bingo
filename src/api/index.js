@@ -113,6 +113,7 @@ export function setUserPassword(params = {}) {
  * 上传图片地址
  */
 export function getUpload(params = {}) {
+  console.log(request)
   return request({
     url: '/user/upload',
     method: 'post',

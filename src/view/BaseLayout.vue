@@ -2,18 +2,20 @@
   <el-container>
     <el-header>
       <div class="header-left" @click="$router.push('/')">
-        show something
+        图标
       </div>
      <div>
-       <div class="link" @click="goPath('/home')">首页</div>
-       <div class="link" @click="goPath('/home/blog')">分类</div>
-       <div class="link" @click="goPath('/home/openSource')">归档</div>
-       <div class="link" @click="goPath('/home/wiki')">联系/留言</div>
-       <div class="link" @click="goPath('/home/about')">关于</div>
+       <router-link class="link" to="/home" exact replace>首页</router-link>
+       <router-link class="link" to="/home/blog" exact replace>分类</router-link>
+       <router-link class="link" to="/home/openSource" exact replace>归档</router-link>
+       <router-link class="link" to="/home/wiki" exact replace>联系/留言</router-link>
+       <router-link class="link" to="/home/about" exact replace>关于</router-link>
      </div>
     </el-header>
     <el-main>
-      <router-view/>
+      <transition name="fade-slide" mode="out-in" appear>
+        <router-view/>
+      </transition>
     </el-main>
     <el-footer>
       <div class="footer"><a href="http://beian.miit.gov.cn">津ICP备2020008713号</a></div>
@@ -38,7 +40,6 @@ export default {
   a{
     text-decoration: none;
     color: black;
-    opacity: 0.5;
   }
   h1{
     margin-left: 3px;
@@ -57,14 +58,21 @@ export default {
     background: #6699CC;
     color: #ffffff;
     .link{
+      padding: 6px;
+      border-radius: 2px;
       flex: 0 1 auto;
       display: inline-block;
       margin-left: 10px;
-      color: rgba(255,255,255,.5);
+      color: #ffffff;
       cursor: pointer;
     }
     .link:hover {
       color: #ffffff;
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    .router-link-active {
+      color: #ffffff;
+      background-color: rgba(255, 255, 255, 0.2);
     }
   }
   .el-header .header-left{
@@ -75,9 +83,10 @@ export default {
   }
   .el-main{
     flex: 1 1 100%;
+    background-color: #ffffff;
   }
   .el-footer{
-
+    background-color: #ffffff;
   }
   .footer{
     text-align: center;
@@ -101,11 +110,8 @@ export default {
 }
 
 @media screen and (min-width:992px){
-  .el-header{
+  .el-footer, .el-main, .el-header {
     padding: 0 calc((100% - 1200px)/2);
-  }
-  .el-footer, .el-main {
-    margin: 0 calc((100% - 1200px)/2);
   }
 }
 
