@@ -2,6 +2,7 @@ const path = require('path')
 
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin.js')
+const Dotenv  = require('dotenv-webpack')
 
 module.exports = {
   entry: './src/main.js',
@@ -41,7 +42,8 @@ module.exports = {
       template: path.join(__dirname, './public/index.html'), // 需要复制到内存的文件路径
       filename: 'index.html' // 复制完成后的文件名
     }),
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+    new Dotenv ()
   ],
 
   resolve: {

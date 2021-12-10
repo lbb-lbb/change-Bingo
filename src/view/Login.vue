@@ -17,6 +17,7 @@
 
 <script>
 import { mapActions } from 'vuex'
+import { Encrypt, Decrypt } from '../utils/secret'
 export default {
   name: 'Login',
   data () {
@@ -36,7 +37,11 @@ export default {
     login() {
       this.$refs.from.validate(async valid => {
         if (valid) {
-          const { success, result, token } = await this.$dao.Login(this.formData)
+          let a = Encrypt(this.formData.password)
+          console.log(a)
+          console.log(Decrypt(a))
+          let params = { ...this.formData, password: Encrypt(this.formData.password) }
+          const { success, result, token } = await this.$dao.Login(params)
           if (success) {
             this.setUser(result)
             this.setToken(token)
@@ -47,8 +52,7 @@ export default {
       })
     }
   }
-}
-</script>
+}</script>
 
 <style scoped>
 .container {
