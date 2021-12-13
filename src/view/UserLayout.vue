@@ -11,7 +11,7 @@
         <div v-else class="link">
           <el-avatar alt="头像" :src="getUser.head"></el-avatar>
            <el-dropdown trigger="click" @command="handleCommand">
-            <span class="el-dropdown-link">名称<i class="el-icon-arrow-down el-icon--right"/></span>
+            <span class="el-dropdown-link">{{getUser.name}}<i class="el-icon-arrow-down el-icon--right"/></span>
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item command="setting">设置</el-dropdown-item>
               <el-dropdown-item command="loginOut">注销</el-dropdown-item>
@@ -63,16 +63,12 @@ export default {
 @media screen and (min-width:300px){
   a{
     text-decoration: none;
-    color: black;
   }
   h1{
     margin-left: 3px;
   }
   .el-container{
     margin: 0 auto;
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
   }
   .el-header{
     display: flex;
@@ -81,6 +77,10 @@ export default {
     align-items: center;
     background: #6699CC;
     color: #ffffff;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    top: 0;
     .link{
       display: flex;
       align-items: center;
@@ -115,10 +115,13 @@ export default {
     cursor:pointer
   }
   .el-main{
-    flex: 1 1 100%;
+    min-height: calc(100vh - 120px);
+    margin-top: 60px !important;
   }
   .el-footer{
-
+    background-color: #ffffff;
+    font-size: 12px;
+    color: #86909c;
   }
   .footer{
     text-align: center;

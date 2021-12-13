@@ -5,7 +5,7 @@
         <el-avatar alt="头像" :src="article.head"></el-avatar>
         <div class="message">
           <div>
-            <div><el-tag type="danger" size="mini" effect="plain">作者</el-tag> 再回首恍然如梦</div>
+            <div><el-tag type="danger" size="mini" effect="plain">作者</el-tag> {{article && article.userName}}</div>
             <div>写了多少篇文章的人，回复了多少人</div>
           </div>
           <div v-if="getLogin" class="action">
@@ -14,7 +14,7 @@
               <span>编辑</span>
             </div>
             <div @click="deleteArticle">
-              <span class="icon iconfont icon-bianji" style="font-size: 12px"></span>
+              <span class="icon iconfont icon-shanchu1" style="font-size: 12px"></span>
               <span>删除</span>
             </div>
           </div>
@@ -26,6 +26,7 @@
           <div>评论：{{article.commentCount}}  阅读：{{article.readCount}}  喜欢：{{article.likeCount}}</div>
           <div>{{article.creatTime}}</div>
         </div>
+        <div class="abstract">{{article.abstract}}</div>
         <div id="content" v-html="html"></div>
         <div class="end-tip">文章已经结束了</div>
         <div class="tag">
@@ -136,6 +137,15 @@ export default {
   }
 }
 .main {
+  .abstract {
+    margin-top: 20px;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    color: #666;
+    border-left: 4px solid #cbcbcb;
+    background-color: #f8f8f8;
+  }
   #content img {
     width: 100% !important;
   }
@@ -182,5 +192,8 @@ export default {
 .tag {
   border: 1px dashed #ccc;
   padding: 20px 20px 20px 35px ;
+  .el-tag {
+    margin-right: 5px;
+  }
 }
 </style>

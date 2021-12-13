@@ -5,8 +5,6 @@ const iv = CryptoJS.enc.Utf8.parse(process.env.PASSWORD_KEY);   //十六位十�
 
 //解密方法
 export function Decrypt(word) {
-    console.log(process.env)
-    console.log(iv)
     let encryptedHexStr = CryptoJS.enc.Hex.parse(word);
     let srcs = CryptoJS.enc.Base64.stringify(encryptedHexStr);
     let decrypt = CryptoJS.AES.decrypt(srcs, key, { iv: iv, mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.Pkcs7 });

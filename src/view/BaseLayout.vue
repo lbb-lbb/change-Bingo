@@ -39,16 +39,12 @@ export default {
 @media screen and (min-width:300px){
   a{
     text-decoration: none;
-    color: black;
   }
   h1{
     margin-left: 3px;
   }
   .el-container{
     margin: 0 auto;
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
   }
   .el-header{
     display: flex;
@@ -56,6 +52,10 @@ export default {
     flex-wrap: wrap;
     align-items: center;
     background: #6699CC;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
     color: #ffffff;
     .link{
       padding: 6px;
@@ -82,11 +82,14 @@ export default {
     cursor:pointer
   }
   .el-main{
-    flex: 1 1 100%;
-    background-color: #ffffff;
+    min-height: calc(100vh - 120px);
+    margin-top: 60px !important;
   }
   .el-footer{
     background-color: #ffffff;
+    font-size: 12px;
+    color: #86909c;
+
   }
   .footer{
     text-align: center;

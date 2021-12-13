@@ -21,7 +21,7 @@
                 {{showComment === item.id ? '取消回复' : '回复'}}
               </div>
               <div v-if="isUser" class="reply-button" @click="deleteComment(3, item.id)">
-                <span class="icon iconfont icon-xiaohuifu" style="font-size: 12px"></span>
+                <span class="icon iconfont icon-shanchu1" style="font-size: 12px;"></span>
                 删除
               </div>
             </div>
@@ -48,7 +48,7 @@
                 {{showComment === reply.id ? '取消回复' : '回复'}}
               </div>
               <div v-if="isUser" class="reply-button" @click="deleteComment(3, reply.id)">
-                <span class="icon iconfont icon-xiaohuifu" style="font-size: 12px"></span>
+                <span class="icon iconfont icon-shanchu1" style="font-size: 12px;"></span>
                 删除
               </div>
             </div>

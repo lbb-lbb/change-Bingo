@@ -19,6 +19,8 @@
 </template>
 
 <script>
+import {Encrypt} from "../utils/secret";
+import {mapActions} from 'vuex'
 export default {
   name: 'UserAccount',
   components: {
@@ -47,13 +49,26 @@ export default {
     }
   },
   methods: {
-    async submit() {
-      let { success, message } = await this.$dao.setUserPassword(this.formData)
-      if (success) {
-        this.$message.success('修改成功, 退出登录生效')
-      } else {
-        this.$message.error(message || '修改失败')
-      }
+    ...mapActions(['setUser']),
+    submit() {
+      this.$refs.form.validate(async valid => {
+        if (valid) {
+          let params = {
+            oldPassword : Encrypt(this.formData.oldPassword),
+            password : Encrypt(this.formData.password)
+          }
+          let { success, message } = await this.$dao.setUserPassword(params)
+          if (success) {
+            this.$message.success('修改成功, 3s后退出到登录页')
+            this.setUser({})
+            setTimeout(()  => {
+              this.$router.push({path: '/login'})
+            },3000)
+          } else {
+            this.$message.error(message || '修改失败')
+          }
+        }
+      })
     }
   }
 }
