@@ -7,12 +7,32 @@
 </template>
 
 <script>
+import {mapActions} from 'vuex'
 export default {
   name: 'App',
   data() {
     return {}
   },
-  methods: {}
+  methods: {
+    ...mapActions(['setIsPhone'])
+  },
+  mounted () {
+    window.addEventListener('resize', this.$util.throttle(() => {
+      if (document.body.offsetWidth < 475) {
+        this.setIsPhone(true)
+      } else {
+        this.setIsPhone(false)
+      }
+    }, 300))
+    if (document.body.offsetWidth < 475) {
+      this.setIsPhone(true)
+    } else {
+      this.setIsPhone(false)
+    }
+  },
+  destroyed () {
+    window.removeEventListener("resize", this.$util.throttle)
+  }
 }
 </script>
 
@@ -21,8 +41,7 @@ export default {
 </style>
 <style>
 *{
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial,
-    Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+    font-family: Arial,"Hiragino Sans GB","冬青黑","Microsoft YaHei","微软雅黑",SimSun,"宋体",Helvetica,Tahoma,Arial sans-serif;
     margin: 0;
     padding: 0;
 }

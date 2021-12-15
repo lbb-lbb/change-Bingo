@@ -8,11 +8,13 @@ export default new Vuex.Store({
     user: util.getSessionStorage('user') || {},
     token: util.getSessionStorage('token') || "",
     login: util.getSessionStorage('login') || false,
+    isPhone: util.getSessionStorage('isPhone') || false
   },
   getters: {
     getUser: state => state.user,
     getToken: state => state.token,
-    getLogin: state => state.login
+    getLogin: state => state.login,
+    getIsPhone: state => state.isPhone
   },
   mutations: {
     setUser(state, data) {
@@ -26,6 +28,10 @@ export default new Vuex.Store({
     setLogin(state, data) {
       state.login = data
       util.setSessionStorage('login', data)
+    },
+    setIsPhone(state, data) {
+      state.isPhone = data
+      util.setSessionStorage('isPhone', data)
     }
   },
   actions: {
@@ -37,6 +43,9 @@ export default new Vuex.Store({
     },
     setLogin({commit}, data) {
       commit('setLogin', data)
+    },
+    setIsPhone({commit}, data) {
+      commit('setIsPhone', data)
     }
   }
 })

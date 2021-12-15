@@ -1,5 +1,5 @@
 <template>
-  <el-tabs :tab-position="tabPosition">
+  <el-tabs :tab-position="getIsPhone ? 'top':'left'">
     <el-tab-pane label="个人资料">
       <UserInformation />
     </el-tab-pane>
@@ -12,6 +12,7 @@
 <script>
 import UserInformation from './UserInformation'
 import UserAccount from './UserAccount'
+import {mapGetters} from "vuex";
 export default {
   name: 'Setting',
   components: {
@@ -20,25 +21,10 @@ export default {
   },
   data () {
     return {
-      tabPosition: 'left'
     }
   },
-  mounted () {
-    window.addEventListener('resize', this.$util.throttle(() => {
-      if (document.body.offsetWidth < 475) {
-        this.tabPosition = 'top'
-      } else {
-        this.tabPosition = 'left'
-      }
-    }, 300))
-    if (document.body.offsetWidth < 475) {
-      this.tabPosition = 'top'
-    } else {
-      this.tabPosition = 'left'
-    }
-  },
-  destroyed () {
-    window.removeEventListener("resize", this.$util.throttle)
+  computed: {
+    ...mapGetters(['getIsPhone'])
   }
 }
 </script>

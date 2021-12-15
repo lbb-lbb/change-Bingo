@@ -57,31 +57,10 @@ li {
   margin-left: 15px;
   position: relative;
 }
-.H2:before {
-  content: '';
-  position: absolute;
-  top: 10px;
-  left: -13px;
-  border: 1px solid #000;
-  background-color: #000;
-  width: 3px;
-  height: 3px;
-  border-radius: 50%;
-}
 .H3{
   margin-top: 10px;
   margin-left: 30px;
   position: relative;
-}
-.H3:before {
-  content: '';
-  position: absolute;
-  top: 10px;
-  left: -13px;
-  border: 1px solid #000;
-  width: 3px;
-  height: 3px;
-  border-radius: 50%;
 }
 .classify {
   border: 1px solid #ccc;

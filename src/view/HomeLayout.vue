@@ -5,7 +5,7 @@
         <h2 slot="header" @click="goWatch(item.id)">{{item.title}}</h2>
         <div class="message">{{item.userName}}</div>
         <div class="message">评论：{{item.commentCount}}  阅读：{{item.readCount}}  喜欢：{{item.likeCount}}</div>
-        <p>{{item.abstract}}</p>
+        <p class="abstract">{{item.abstract}}</p>
         <div class="tag-message message">
           <i class="el-icon-date"></i>
           <el-tag type="info" size="mini" effect="plain">{{item.creatTime}}</el-tag>
@@ -13,14 +13,14 @@
           <el-tag type="info" size="mini" effect="plain">{{item.category}}</el-tag>
         </div>
       </el-card>
-      <div class="page" v-if="pages.count > pages.pageSize * pages.pageNo">
+      <div class="page" v-show="pages.count > pages.pageSize * pages.pageNo">
         <el-pagination
             small
             background
             layout="prev, pager, next"
             :page-count="pages.pageSize"
             :current-page.sync="pages.pageNo"
-            @current-change="getPageData()">
+            @current-change="getList()">
         </el-pagination>
       </div>
     </div>
@@ -55,14 +55,22 @@ export default {
       let { result, success, count } = await this.$dao.getHomeData(this.pages)
       if (success) {
         this.data = result
-        this.count = count
+        this.pages.count = count
       }
     },
     async getUserPageData() {
       let { result, success, count } = await this.$dao.getUserHomeData(this.pages)
       if (success) {
         this.data = result
-        this.count = count
+        this.pages.count = count
+      }
+    },
+    getList(){
+      console.log(1)
+      if (this.getLogin) {
+        this.getUserPageData()
+      } else {
+        this.getPageData()
       }
     },
     goWatch(id) {
@@ -73,11 +81,7 @@ export default {
     }
   },
   mounted() {
-    if (this.getLogin) {
-      this.getUserPageData()
-    } else {
-      this.getPageData(this.pages)
-    }
+    this.getList()
   }
 }
 </script>
@@ -112,6 +116,13 @@ p {
 }
 .right-menu-layout {
   flex: 0 0 300px;
+}
+.abstract {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 .message {
   font-size: 12px;

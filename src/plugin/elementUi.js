@@ -28,7 +28,8 @@ import {
   TabPane,
   Upload,
   Select,
-  Option
+  Option,
+  Drawer
 } from 'element-ui'
 
 Vue.use(Button)
@@ -59,3 +60,5 @@ Vue.use(Button)
   .use(Upload)
   .use(Select)
   .use(Option)
+  .use(Divider)
+  .use(Drawer)

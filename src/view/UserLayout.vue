@@ -4,7 +4,8 @@
       <div class="header-left" @click="$router.push('/')">
         图标
       </div>
-      <div class="header-right">
+      <i v-if="getIsPhone" class="el-icon-s-fold" @click="drawer = !drawer" />
+      <div v-else class="header-right">
         <router-link class="link" to="/user/write">写文章</router-link>
         <router-link class="link" to="/user/notification">通知</router-link>
         <router-link v-if="!getLogin" class="link" to="/login">登录</router-link>
@@ -19,6 +20,25 @@
           </el-dropdown>
         </div>
       </div>
+      <el-drawer
+          custom-class="right-drawer"
+          wrapperClosable
+          size="40%"
+          :modal="false"
+          title="我是标题"
+          :visible.sync="drawer"
+          :with-header="false"
+      >
+        <router-link v-if="!getLogin" class="link" to="/login">登录</router-link>
+        <div v-else class="link">
+        <el-avatar alt="头像" :src="getUser.head"></el-avatar>
+          {{getUser.name}}
+        </div>
+        <router-link class="link" to="/user/write">写文章</router-link>
+        <router-link class="link" to="/user/notification">通知</router-link>
+        <router-link class="link" to="/user/setting">设置</router-link>
+        <div class="link" @click="handleCommand('loginOut')">注销</div>
+      </el-drawer>
     </el-header>
     <el-main>
       <transition name="fade-slide" mode="out-in" appear>
@@ -35,8 +55,20 @@
 import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'userLayout',
+  data () {
+    return {
+      drawer: false
+    }
+  },
   computed: {
-    ...mapGetters(['getLogin', 'getUser'])
+    ...mapGetters(['getLogin', 'getUser', 'getIsPhone'])
+  },
+  watch: {
+    'getIsPhone': function (val) {
+      if (!val){
+        this.drawer = false
+      }
+    }
   },
   methods: {
     ...mapActions(['setLogin', 'setToken', 'setUser']),
@@ -113,6 +145,20 @@ export default {
     align-items: center;
     display: flex;
     cursor:pointer
+  }
+  .el-header {
+    /deep/ .el-drawer__body{
+      background: #6699CC;
+    }
+  }
+  .el-header .right-menu {
+    background: #6699CC;
+    height: 400px;
+    .link {
+      display: block;
+      padding: 10px;
+      margin-left: 0;
+    }
   }
   .el-main{
     min-height: calc(100vh - 120px);

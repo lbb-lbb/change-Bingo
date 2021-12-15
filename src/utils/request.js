@@ -1,7 +1,7 @@
 import axios from 'axios'
 import store from '../store/index'
 const service = axios.create({
-  baseURL: 'http://localhost:3005',
+  baseURL: process.env.BASE_URL,
   timeout: 5000,
   // withCredentials: true
 })
@@ -21,6 +21,8 @@ const err = (error) => {
 }
 
 service.interceptors.request.use(config => {
+  console.log(process.env.BASE_URL)
+  console.log(process.env.PASSWORD_IV)
   config.headers = { 'Content-type': 'application/json' }
   config.headers = { 'Authorization': `Bearer ${store.getters.getToken}` }
   return config

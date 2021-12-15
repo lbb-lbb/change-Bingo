@@ -23,7 +23,6 @@
           style="width: 100%"
           v-model="formData.category"
           placeholder="请选择或创建一个分类"
-          multiple
           filterable
           default-first-option
           allow-create
@@ -117,11 +116,14 @@ export default {
             ...this.formData,
             status: status,
             tag: this.formData.tag.join(','),
-            category: this.formData.category.join(','),
+            category: this.formData.category,
             id: this.$route.query.id ? this.$route.query.id : ''
           }
           let res = await this.$dao.createArticle(params)
           if (res.success) {
+            if(res.id) {
+              await this.$router.replace({path: '/user/write', query: {id: res.id}})
+            }
             this.$message.success('成功')
           }
         }

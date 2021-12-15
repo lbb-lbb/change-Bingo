@@ -45,6 +45,8 @@
 import RightMenuLayout from './RightMenuLayout'
 import Comment from '../components/comment.vue'
 import CommentGroup from '../components/CommentGroup.vue'
+import highlight from 'highlight.js'
+import 'highlight.js/styles/atom-one-dark.css'
 import { marked } from 'marked'
 import { mapGetters } from 'vuex'
 export default {
@@ -85,6 +87,8 @@ export default {
         this.tag = result.tag.replace(/，/ig,',').split(',')
         this.$nextTick(() => {
           this.list = document.getElementById('content').children
+          highlight.highlightAll();
+
         })
       }
     },
@@ -146,9 +150,6 @@ export default {
     border-left: 4px solid #cbcbcb;
     background-color: #f8f8f8;
   }
-  #content img {
-    width: 100% !important;
-  }
   .title {
     color: #6699CC;
     margin-bottom: 15px;
@@ -194,6 +195,24 @@ export default {
   padding: 20px 20px 20px 35px ;
   .el-tag {
     margin-right: 5px;
+  }
+}
+</style>
+<style lang="less">
+#content {
+  h1, h2 {
+    margin: 15px 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+  }
+  h3 {
+    margin: 10px 0;
+  }
+  p {
+    margin-bottom: 10x;
+  }
+  img {
+    width: 100%;
   }
 }
 </style>
