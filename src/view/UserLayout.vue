@@ -119,7 +119,6 @@ export default {
     align-items: center;
   }
   .el-header .header-left{
-    flex: 0 0 20vw;
     align-items: center;
     display: flex;
     cursor:pointer

@@ -99,7 +99,6 @@ export default {
   }
 
   .el-header .header-left {
-    flex: 0 0 20vw;
     align-items: center;
     display: flex;
     cursor: pointer

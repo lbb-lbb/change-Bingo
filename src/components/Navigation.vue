@@ -54,7 +54,7 @@ li {
   margin-bottom: 20px;
   overflow: hidden;
   background: #23232C;
-  padding: 20px
+  padding: 20px;
 }
 .H1 {
   margin-top: 10px;

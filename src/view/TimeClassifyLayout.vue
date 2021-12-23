@@ -114,7 +114,4 @@ export default {
 .title:hover {
   text-decoration: underline;
 }
-.right-menu-layout{
-  padding: 20px;
-}
 </style>

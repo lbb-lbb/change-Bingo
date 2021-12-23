@@ -64,9 +64,11 @@ body{
 .fade-slide-leave-to {
   opacity: 0
 }
-/deep/.el-input__inner {
-  border-radius: 14px !important;
-  background-color: #13131A !important;
-  color: #dfdfdf !important;
+.el-input {
+  /deep/.el-input__inner {
+    border-radius: 14px !important;
+    background-color: #13131A !important;
+    color: #dfdfdf !important;
+  }
 }
 </style>

@@ -15,6 +15,7 @@
       </div>
       <div class="page" v-show="pages.count > pages.pageSize * pages.pageNo">
         <el-pagination
+            small
             background
             color="#13131a"
             layout="prev, pager, next"
@@ -88,7 +89,6 @@ export default {
 
 <style lang="less" scoped>
 h2 {
-  text-align: center;
   margin: 10px 20px;
   font-size: 18px;
   font-weight: 700;

@@ -1,5 +1,5 @@
 <template>
-  <div class="right-box">
+  <div>
     <global-search/>
     <Navigation v-bind="$attrs" />
   </div>

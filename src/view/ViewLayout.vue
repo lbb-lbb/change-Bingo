@@ -168,6 +168,7 @@ export default {
 }
 .list{
   flex: 1 1 70%;
+  box-sizing: border-box;
   border-radius: 20px;
   background: #23232C;
 }
