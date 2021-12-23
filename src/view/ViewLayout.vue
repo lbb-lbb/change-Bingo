@@ -116,7 +116,7 @@ export default {
   flex-wrap: wrap;
 }
 .head {
-  padding-bottom: 20px;
+  padding: 20px;
   border-bottom: 1px solid #eee;
   .el-avatar {
     float: left;
@@ -141,14 +141,16 @@ export default {
   }
 }
 .main {
+  padding: 20px;
   .abstract {
     margin-top: 20px;
-    padding-bottom: 5px;
     margin-bottom: 10px;
-    padding-left: 10px;
-    color: #666;
-    border-left: 4px solid #cbcbcb;
-    background-color: #f8f8f8;
+    padding: 0 10px 5px 10px;
+    color: #dfdfdf;
+    border-radius: 10px;
+    border-left: 4px solid #dfdfdf;
+    border-right: 4px solid #dfdfdf;
+    background-color: #13131A;
   }
   .title {
     color: #6699CC;
@@ -166,10 +168,13 @@ export default {
 }
 .list{
   flex: 1 1 70%;
-  box-sizing: border-box;
+  border-radius: 20px;
+  background: #23232C;
 }
 .right-menu-layout{
   flex: 0 0 300px;
+  box-sizing: border-box;
+  margin-left: 20px;
 }
 .end-tip {
   display: flex;
@@ -213,6 +218,9 @@ export default {
   }
   img {
     width: 100%;
+  }
+  code {
+    border-radius: 20px
   }
 }
 </style>

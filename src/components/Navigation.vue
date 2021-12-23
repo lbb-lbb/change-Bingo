@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="card">
     <h3>{{ ListTitle ? '分类目录': ''}}</h3>
     <ul>
       <li class="classify" v-for="(item, index) in ListTitle" :key="index">
@@ -36,7 +36,7 @@ export default {
 a{
   display: block;
   text-decoration: none;
-  color: #4183c4;
+  color: #dfdfdf;
 }
 a:hover {
   color: #4183c4;
@@ -48,6 +48,13 @@ ul {
 li {
   list-style-type:none;
   margin-bottom: 10px;
+}
+.card {
+  border-radius: 20px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  background: #23232C;
+  padding: 20px
 }
 .H1 {
   margin-top: 10px;
@@ -63,13 +70,13 @@ li {
   position: relative;
 }
 .classify {
-  border: 1px solid #ccc;
+  background-color: #13131a;
   position: relative;
   padding: 10px 15px;
-  margin-bottom: -1px;
+  margin-bottom: 5px;
   display: flex;
   justify-content: space-between;
-  border-radius: 3px
+  border-radius: 18px
 }
 .badge {
   display: inline-block;

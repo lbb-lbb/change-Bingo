@@ -1,25 +1,25 @@
 <template>
   <el-container>
     <el-header>
-      <div class="header-left" @click="$router.push('/')">
-        图标
-      </div>
-      <i v-if="getIsPhone" class="el-icon-s-fold" @click="drawer = !drawer" />
-      <div v-else class="header-right">
-        <router-link class="link" to="/user/write">写文章</router-link>
-        <router-link class="link" to="/user/notification">通知</router-link>
-        <router-link v-if="!getLogin" class="link" to="/login">登录</router-link>
-        <div v-else class="link">
-          <el-avatar alt="头像" :src="getUser.head"></el-avatar>
-           <el-dropdown trigger="click" @command="handleCommand">
-            <span class="el-dropdown-link">{{getUser.name}}<i class="el-icon-arrow-down el-icon--right"/></span>
-            <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item command="setting">设置</el-dropdown-item>
-              <el-dropdown-item command="loginOut">注销</el-dropdown-item>
-            </el-dropdown-menu>
-          </el-dropdown>
+      <div class="header-left">
+        <i class="el-icon-s-fold" @click="$router.push('/')" />
+        <div v-if="!getIsPhone" class="header-right">
+          <router-link class="link" to="/user/write">写文章</router-link>
+          <router-link class="link" to="/user/notification">通知</router-link>
+          <router-link v-if="!getLogin" class="link" to="/login">登录</router-link>
+          <div v-else class="link">
+            <el-avatar alt="头像" :src="getUser.head"></el-avatar>
+            <el-dropdown trigger="click" @command="handleCommand">
+              <span class="el-dropdown-link">{{getUser.name}}<i class="el-icon-arrow-down el-icon--right"/></span>
+              <el-dropdown-menu slot="dropdown">
+                <el-dropdown-item command="setting">设置</el-dropdown-item>
+                <el-dropdown-item command="loginOut">注销</el-dropdown-item>
+              </el-dropdown-menu>
+            </el-dropdown>
+          </div>
         </div>
       </div>
+      <i v-if="getIsPhone" class="el-icon-s-fold" @click="drawer = !drawer" />
       <el-drawer
           custom-class="right-drawer"
           wrapperClosable
@@ -107,34 +107,12 @@ export default {
     justify-content: space-between;
     flex-wrap: wrap;
     align-items: center;
-    background: #6699CC;
+    background: #23232C;
     color: #ffffff;
     position: fixed;
     width: 100%;
     z-index: 100;
     top: 0;
-    .link{
-      display: flex;
-      align-items: center;
-      padding: 6px;
-      border-radius: 2px;
-      align-self: center;
-      margin-left: 10px;
-      color: #ffffff;
-      cursor: pointer;
-      .el-dropdown-link {
-        margin-left: 5px;
-        color: #ffffff;
-      }
-    }
-    .link:hover {
-      color: #ffffff;
-      background-color: rgba(255, 255, 255, 0.2);
-    }
-    .router-link-active {
-      color: #ffffff;
-      background-color: rgba(255, 255, 255, 0.2);
-    }
   }
   .el-header .header-right {
     display: flex;
@@ -146,19 +124,38 @@ export default {
     display: flex;
     cursor:pointer
   }
-  .el-header {
-    /deep/ .el-drawer__body{
-      background: #6699CC;
-    }
+  /deep/ .el-drawer__body{
+    background: #23232C;
   }
-  .el-header .right-menu {
-    background: #6699CC;
+  .right-menu {
     height: 400px;
     .link {
       display: block;
       padding: 10px;
       margin-left: 0;
     }
+  }
+  .link{
+    display: flex;
+    align-items: center;
+    padding: 6px;
+    border-radius: 2px;
+    align-self: center;
+    margin-left: 10px;
+    color: #ffffff;
+    cursor: pointer;
+    .el-dropdown-link {
+      margin-left: 5px;
+      color: #ffffff;
+    }
+  }
+  .link:hover {
+    color: #ffffff;
+    background-color: #6193BB;
+  }
+  .router-link-active {
+    color: #ffffff;
+    background-color: #6193BB;
   }
   .el-main{
     min-height: calc(100vh - 120px);

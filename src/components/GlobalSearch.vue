@@ -1,13 +1,17 @@
 <template>
+  <div class="card">
+    <h3 class="m-b-15">搜索</h3>
     <el-autocomplete
         v-model="data"
         size="small"
+        style="width: 100%;background: red"
         popper-class="search-card"
-        placeholder="请输入标题关键字"
+        placeholder="搜索文章..."
         value-key="title"
         :fetch-suggestions="goSearch"
         @select="goWatch"
     />
+  </div>
 </template>
 
 <script>
@@ -37,6 +41,17 @@ export default {
 </script>
 
 <style scoped>
+.card {
+  border-radius: 20px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  background: #23232C;
+  padding: 20px;
+  height: 100px;
+}
+.m-b-15 {
+  margin-bottom: 15px
+}
 </style>
 <style>
 .search-card {

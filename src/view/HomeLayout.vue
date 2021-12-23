@@ -1,22 +1,22 @@
 <template>
   <div class="card">
     <div class="list">
-      <el-card v-for="(item, index) in data" shadow="hover" :key="index">
+      <div v-for="(item, index) in data" class="card-list" :key="index">
         <h2 slot="header" @click="goWatch(item.id)">{{item.title}}</h2>
-        <div class="message">{{item.userName}}</div>
-        <div class="message">评论：{{item.commentCount}}  阅读：{{item.readCount}}  喜欢：{{item.likeCount}}</div>
+        <div class="message-left">{{item.userName}}</div>
+        <div class="message-right">评论：{{item.commentCount}}  阅读：{{item.readCount}}  喜欢：{{item.likeCount}}</div>
         <p class="abstract">{{item.abstract}}</p>
         <div class="tag-message message">
           <i class="el-icon-date"></i>
-          <el-tag type="info" size="mini" effect="plain">{{item.creatTime}}</el-tag>
+          <el-tag type="info" size="mini" color="#000" effect="dark">{{item.creatTime}}</el-tag>
           <i class="el-icon-bank-card"></i>
-          <el-tag type="info" size="mini" effect="plain">{{item.category}}</el-tag>
+          <el-tag type="info" size="mini" color="#000" effect="dark">{{item.category}}</el-tag>
         </div>
-      </el-card>
+      </div>
       <div class="page" v-show="pages.count > pages.pageSize * pages.pageNo">
         <el-pagination
-            small
             background
+            color="#13131a"
             layout="prev, pager, next"
             :page-count="pages.pageSize"
             :current-page.sync="pages.pageNo"
@@ -88,10 +88,11 @@ export default {
 
 <style lang="less" scoped>
 h2 {
-  font-weight: bold;
-  color: #4183c4;
+  text-align: center;
+  margin: 10px 20px;
   font-size: 18px;
-  cursor: pointer;
+  font-weight: 700;
+  color: #fff;
 }
 
 h2:hover {
@@ -99,7 +100,7 @@ h2:hover {
 }
 
 p {
-  color: #666;
+  color: #dfdfdf;
   font-size: 14px;
 }
 
@@ -107,15 +108,25 @@ p {
   display: flex;
   flex-wrap: wrap;
   min-height: 100vh;
+  margin-top: 20px;
 }
 
 .list {
   box-sizing: border-box;
-  margin: 20px auto 0 auto;
+  margin: 0 auto;
   flex: 1 1 70%;
+}
+.card-list {
+  min-height: 200px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  background: #23232C;
 }
 .right-menu-layout {
   flex: 0 0 300px;
+  box-sizing: border-box;
+  margin-left: 20px;
 }
 .abstract {
   overflow: hidden;
@@ -123,27 +134,28 @@ p {
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+  margin: 20px;
 }
-.message {
+.message-left {
+  display: inline-block;
+  text-align: left;
+  margin: 5px 20px;
+  font-size: 14px;
+  color: #dfdfdf;
+}
+.message-right {
+  display: inline-block;
+  text-align: right;
+  margin: 5px 20px;
   font-size: 12px;
-  color: #999999;
-  margin-bottom: 10px;
+  color: #dfdfdf;
 }
 .page{
   margin: 10px auto;
   text-align: center;
 }
-.el-card {
-  /deep/ .el-card__body {
-    padding: 10px 10px 20px 10px;
-  }
-  /deep/ .el-card__header {
-    padding: 10px 0 0 10px;
-    border-bottom: none;
-  }
-  margin-right: 1vw;
-}
 .tag-message{
-  margin-top: 10px;
+  color: #fff;
+  margin: 10px 20px 20px 20px;
 }
 </style>

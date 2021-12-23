@@ -1,9 +1,9 @@
 <template>
-    <div>
-      <transition name="fade-slide" mode="out-in" appear>
-        <router-view/>
-      </transition>
-    </div>
+  <div>
+    <transition name="fade-slide" mode="out-in" appear>
+      <router-view/>
+    </transition>
+  </div>
 </template>
 
 <script>
@@ -39,14 +39,17 @@ export default {
 <style scoped>
 
 </style>
-<style>
+<style lang="less">
 *{
-    font-family: Arial,"Hiragino Sans GB","冬青黑","Microsoft YaHei","微软雅黑",SimSun,"宋体",Helvetica,Tahoma,Arial sans-serif;
-    margin: 0;
-    padding: 0;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,
+  "Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  margin: 0;
+  padding: 0;
 }
 body{
-    min-width: 300px;
+  min-width: 300px;
+  background-image: url("./public/images/mainBg.jpg");
+  color: #dfdfdf;
 }
 .fade-slide-leave-active,
 .fade-slide-enter-active {
@@ -60,5 +63,10 @@ body{
 
 .fade-slide-leave-to {
   opacity: 0
+}
+/deep/.el-input__inner {
+  border-radius: 14px !important;
+  background-color: #13131A !important;
+  color: #dfdfdf !important;
 }
 </style>

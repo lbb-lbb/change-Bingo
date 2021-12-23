@@ -62,6 +62,7 @@ export default {
 .card {
   display: flex;
   flex-wrap: wrap;
+  margin-top: 20px;
 }
 
 .m-b-15 {
@@ -74,10 +75,16 @@ export default {
   box-sizing: border-box;
   flex: 1 1 70%;
   margin: 0 auto;
-  padding: 20px
+  padding: 20px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #23232C;
+  color: #dfdfdf;
 }
 .right-menu-layout{
   flex: 0 0 300px;
+  box-sizing: border-box;
+  margin-left: 20px;
 }
 .content {
   display: flex;
@@ -92,11 +99,12 @@ export default {
   position: absolute;
   top: 19px;
   left: -13px;
-  border: 1px solid #000;
-  background-color: #000;
+  border: 1px solid #dfdfdf;
+  background-color: #dfdfdf;
   width: 3px;
   height: 3px;
   border-radius: 50%;
+  opacity: 0.7;
 }
 .title {
   margin-left: 10px;
