@@ -69,7 +69,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url("../../public/images/login.jpeg");
+  background-image: url("../public/images/login.jpeg");
   position: absolute;
   z-index: 1;
   height: 100%;

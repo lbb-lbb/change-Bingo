@@ -1,25 +1,40 @@
 const path = require('path')
-
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin.js')
 const Dotenv  = require('dotenv-webpack')
-
 module.exports = {
   entry: './src/main.js',
+  optimization: {
+    splitChunks: {
+      chunks: 'async',
+      minSize: 20000,
+      minRemainingSize: 0,
+      minChunks: 1,
+      maxAsyncRequests: 30,
+      maxInitialRequests: 30,
+      enforceSizeThreshold: 50000,
+      cacheGroups: {
+        defaultVendors: {
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10,
+          reuseExistingChunk: true,
+        },
+        commons: {
+          name: "commons",
+          chunks: "initial",
+          minChunks: 2
+        }
+      },
+    }
 
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'app.js',
-    publicPath: '/'
   },
-
   module: {
     rules: [
       {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
         use: {
-          loader: 'babel-loader'
+          loader: 'babel-loader?cacheDirectory'
         }
       },
       {
@@ -32,18 +47,27 @@ module.exports = {
       },
       {
         test: /\.(jpg|png|gif|jpeg)$/,
-        loader: 'url-loader?limit=8192'
+        use: {
+          loader: "url-loader",
+          options: {
+            name: "[name].[ext]",
+            outputPath: "images/",
+            limit: 2048,
+          },
+        }
       }
     ]
   },
 
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, './public/index.html'), // 需要复制到内存的文件路径
-      filename: 'index.html' // 复制完成后的文件名
+      template: path.join(__dirname, './src/public/index.html'), // 需要复制到内存的文件路径
+      filename: 'index.html', // 复制完成后的文件名
+      title: '再回首恍然如梦',
+      inject: 'body'
     }),
+    new Dotenv (),
     new VueLoaderPlugin(),
-    new Dotenv ()
   ],
 
   resolve: {
@@ -51,3 +75,4 @@ module.exports = {
     extensions: ['.js', '.css', '.vue']
   }
 }
+
