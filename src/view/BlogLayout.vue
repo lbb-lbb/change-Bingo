@@ -1,6 +1,6 @@
 <template>
   <div class="card">
-    <div class="list">
+    <div class="list animate__animated animate__bounceInUp">
       <div class="m-b-15" v-for="(item1, index1) in this.filterData" :key="index1">
         <h2 class="m-b-5" :id="index1">{{index1}}</h2>
         <div class="content m-b-5" v-for="(item2, index2) in item1" :key="index2">
@@ -9,15 +9,18 @@
         </div>
       </div>
     </div>
-    <RightMenuLayout class="right-menu-layout" :list-title="filterData"/>
+    <RightMenuLayout class="right-menu-layout animate__animated animate__bounceInDown">
+      <classify-card :list-title="filterData" />
+    </RightMenuLayout>
   </div>
 </template>
 
 <script>
+import classifyCard from "../components/classifyCard";
 import RightMenuLayout from './RightMenuLayout'
 export default {
   name: 'BlogLayout',
-  components: { RightMenuLayout },
+  components: { RightMenuLayout, classifyCard },
   data() {
     return {
       data: ''

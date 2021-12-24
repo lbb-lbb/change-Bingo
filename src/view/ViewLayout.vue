@@ -1,8 +1,8 @@
 <template>
   <div class="card">
-    <div class="list">
+    <div class="list animate__animated animate__slideInLeft">
       <div class="head">
-        <el-avatar alt="头像" :src="article.head"></el-avatar>
+        <el-avatar shape="square" alt="头像" :src="article.head"></el-avatar>
         <div class="message">
           <div>
             <div><el-tag type="danger" size="mini" effect="plain">作者</el-tag> {{article && article.userName}}</div>
@@ -37,7 +37,9 @@
         </div>
       </div>
     </div>
-    <right-menu-layout class="right-menu-layout" :page-title="needList"/>
+    <right-menu-layout class="right-menu-layout animate__animated animate__slideInRight">
+      <page-catalog :page-title="needList" />
+    </right-menu-layout>
   </div>
 </template>
 
@@ -45,6 +47,7 @@
 import RightMenuLayout from './RightMenuLayout'
 import Comment from '../components/comment.vue'
 import CommentGroup from '../components/CommentGroup.vue'
+import PageCatalog from "../components/PageCatalog";
 import highlight from 'highlight.js'
 import 'highlight.js/styles/atom-one-dark.css'
 import { marked } from 'marked'
@@ -54,7 +57,8 @@ export default {
   components: {
     RightMenuLayout,
     Comment,
-    CommentGroup
+    CommentGroup,
+    PageCatalog
   },
   data() {
     return {
@@ -116,7 +120,7 @@ export default {
   flex-wrap: wrap;
 }
 .head {
-  padding: 20px;
+  padding-bottom: 20px;
   border-bottom: 1px solid #eee;
   .el-avatar {
     float: left;
@@ -141,7 +145,6 @@ export default {
   }
 }
 .main {
-  padding: 20px;
   .abstract {
     margin-top: 20px;
     margin-bottom: 10px;
@@ -153,6 +156,7 @@ export default {
     background-color: #13131A;
   }
   .title {
+    text-align: center;
     color: #6699CC;
     margin-bottom: 15px;
     margin-top: 15px;
@@ -171,6 +175,7 @@ export default {
   box-sizing: border-box;
   border-radius: 20px;
   background: #23232C;
+  padding: 20px;
 }
 .right-menu-layout{
   flex: 0 0 300px;
@@ -215,7 +220,8 @@ export default {
     margin: 10px 0;
   }
   p {
-    margin-bottom: 10x;
+    margin-bottom: 10px;
+    text-indent:2em
   }
   img {
     width: 100%;

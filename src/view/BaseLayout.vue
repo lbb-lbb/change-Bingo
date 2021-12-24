@@ -2,23 +2,25 @@
   <el-container>
     <el-header>
       <div class="header-left">
-        <div>
-          <i class="el-icon-s-fold" @click="$router.push('/')" />
-        </div>
+        <span
+          class="icon iconfont icon-shouye link"
+          style="font-size: 25px; margin-left: 0"
+          @click="$router.push('/')" />
         <div v-if="!getIsPhone">
           <router-link class="link" to="/home" exact replace>首页</router-link>
           <router-link class="link" to="/home/blog" exact replace>分类</router-link>
           <router-link class="link" to="/home/openSource" exact replace>归档</router-link>
           <router-link class="link" to="/home/wiki" exact replace>联系/留言</router-link>
+          <router-link class="link" to="/home/wiki" exact replace>友链</router-link>
+          <router-link class="link" to="/home/wiki" exact replace>作品</router-link>
           <router-link class="link" to="/home/about" exact replace>关于</router-link>
+          <span class="icon iconfont icon-denglu link" style="font-size: 25px" @click="login"></span>
         </div>
+        <span v-if="getIsPhone" class="icon iconfont icon-liebiao link" style="font-size: 25px" @click="drawer = !drawer" />
       </div>
-      <i v-if="getIsPhone" class="el-icon-s-fold" @click="drawer = !drawer" />
     </el-header>
     <el-main>
-      <transition name="fade-slide" mode="out-in" appear>
-        <router-view/>
-      </transition>
+      <router-view/>
     </el-main>
     <el-footer>
       <div class="footer"><a href="http://beian.miit.gov.cn">津ICP备2020008713号</a></div>
@@ -28,15 +30,19 @@
         wrapperClosable
         size="40%"
         :modal="false"
-        title="我是标题"
         :visible.sync="drawer"
         :with-header="false"
     >
       <div class="right-menu">
+        <div class="head">
+          <el-avatar shape="square" alt="头像" src="./public/头像.jpg"></el-avatar>
+        </div>
         <router-link class="link" to="/home" exact replace>首页</router-link>
         <router-link class="link" to="/home/blog" exact replace>分类</router-link>
         <router-link class="link" to="/home/openSource" exact replace>归档</router-link>
         <router-link class="link" to="/home/wiki" exact replace>联系/留言</router-link>
+        <router-link class="link" to="/home/wiki" exact replace>友链</router-link>
+        <router-link class="link" to="/home/wiki" exact replace>作品</router-link>
         <router-link class="link" to="/home/about" exact replace>关于</router-link>
       </div>
     </el-drawer>
@@ -65,6 +71,9 @@ export default {
   methods: {
     goPath(path) {
       this.$router.push(path)
+    },
+    login() {
+      window.open(`${location.origin}/login`)
     }
   },
 
@@ -96,12 +105,15 @@ export default {
     width: 100%;
     z-index: 100;
     color: #ffffff;
+    padding: 0 20px;
   }
 
   .el-header .header-left {
+    flex: 1 1 auto;
     align-items: center;
     display: flex;
-    cursor: pointer
+    cursor: pointer;
+    justify-content: space-between;
   }
 
   /deep/ .el-drawer__body{
@@ -128,11 +140,15 @@ export default {
   .link:hover {
     color: #ffffff;
     background-color: #6193BB;
+    border-radius: 13px;
   }
-
+  .head {
+    margin: 10px;
+  }
   .router-link-active {
     color: #ffffff;
     background-color: #6193BB;
+    border-radius: 13px;
   }
   .el-main{
     min-height: calc(100vh - 120px);

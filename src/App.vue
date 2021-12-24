@@ -1,8 +1,6 @@
 <template>
   <div>
-    <transition name="fade-slide" mode="out-in" appear>
-      <router-view/>
-    </transition>
+    <router-view/>
   </div>
 </template>
 
@@ -18,13 +16,13 @@ export default {
   },
   mounted () {
     window.addEventListener('resize', this.$util.throttle(() => {
-      if (document.body.offsetWidth < 475) {
+      if (document.body.offsetWidth < 600) {
         this.setIsPhone(true)
       } else {
         this.setIsPhone(false)
       }
     }, 300))
-    if (document.body.offsetWidth < 475) {
+    if (document.body.offsetWidth < 600) {
       this.setIsPhone(true)
     } else {
       this.setIsPhone(false)
@@ -51,24 +49,26 @@ body{
   background-image: url("./public/images/mainBg.jpg");
   color: #dfdfdf;
 }
-.fade-slide-leave-active,
-.fade-slide-enter-active {
-  transition: all 0.3s;
-}
 
-.fade-slide-enter-from {
-  opacity: 0;
-  transform: translateX(-30px);
+// 修改element ui全局的input样式
+.el-input .el-input__inner {
+  border-bottom-right-radius: 14px !important;
+  border-top-right-radius: 14px !important;
+  background-color: #13131A !important;
+  color: #dfdfdf !important;
+  border: none !important;
 }
-
-.fade-slide-leave-to {
-  opacity: 0
+.el-textarea__inner {
+  border-radius: 20px !important;
+  background-color: #13131A !important;
+  color: #dfdfdf !important;
+  border: none !important;
 }
-.el-input {
-  /deep/.el-input__inner {
-    border-radius: 14px !important;
-    background-color: #13131A !important;
-    color: #dfdfdf !important;
-  }
+.el-input-group__append, .el-input-group__prepend {
+  border-bottom-left-radius: 14px !important;
+  border-top-left-radius: 14px !important;
+  background-color: #454558 !important;
+  color: #fff;
+  border: none !important;
 }
 </style>

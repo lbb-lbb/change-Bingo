@@ -1,16 +1,20 @@
 <template>
   <div class="card">
     <div class="list">
-      <div v-for="(item, index) in data" class="card-list" :key="index">
+      <div v-for="item in data" class="card-list animate__animated animate__bounceInLeft" :key="item.id">
         <h2 slot="header" @click="goWatch(item.id)">{{item.title}}</h2>
         <div class="message-left">{{item.userName}}</div>
         <div class="message-right">评论：{{item.commentCount}}  阅读：{{item.readCount}}  喜欢：{{item.likeCount}}</div>
         <p class="abstract">{{item.abstract}}</p>
         <div class="tag-message message">
-          <i class="el-icon-date"></i>
-          <el-tag type="info" size="mini" color="#000" effect="dark">{{item.creatTime}}</el-tag>
-          <i class="el-icon-bank-card"></i>
-          <el-tag type="info" size="mini" color="#000" effect="dark">{{item.category}}</el-tag>
+          <div>
+            <i class="el-icon-bank-card"></i>
+            <el-tag type="info" size="mini" color="#000" effect="dark">{{item.category}}</el-tag>
+          </div>
+          <div>
+            <i class="el-icon-date"></i>
+            <el-tag type="info" size="mini" color="#000" effect="dark">{{item.creatTime}}</el-tag>
+          </div>
         </div>
       </div>
       <div class="page" v-show="pages.count > pages.pageSize * pages.pageNo">
@@ -25,17 +29,23 @@
         </el-pagination>
       </div>
     </div>
-    <RightMenuLayout class="right-menu-layout"/>
+    <RightMenuLayout class="right-menu-layout animate__animated animate__bounceInRight">
+      <user-card />
+      <user-card />
+      <user-card />
+    </RightMenuLayout>
   </div>
 </template>
 
 <script>
 import RightMenuLayout from './RightMenuLayout'
+import userCard from '../components/userCard'
 import { mapGetters } from 'vuex'
 export default {
   name: 'HomeLayout',
   components: {
-    RightMenuLayout
+    RightMenuLayout,
+    userCard
   },
   data() {
     return {
@@ -93,6 +103,7 @@ h2 {
   font-size: 18px;
   font-weight: 700;
   color: #fff;
+  cursor: pointer;
 }
 
 h2:hover {
@@ -102,6 +113,7 @@ h2:hover {
 p {
   color: #dfdfdf;
   font-size: 14px;
+  text-indent:2em;
 }
 
 .card {
@@ -155,7 +167,8 @@ p {
   text-align: center;
 }
 .tag-message{
-  color: #fff;
+  display: flex;
+  justify-content: space-between;
   margin: 10px 20px 20px 20px;
 }
 </style>

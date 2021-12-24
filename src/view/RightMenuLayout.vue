@@ -1,18 +1,16 @@
 <template>
   <div>
     <global-search/>
-    <Navigation v-bind="$attrs" />
+    <slot />
   </div>
 </template>
 
 <script>
-import Navigation from '../components/Navigation'
 import GlobalSearch from '../components/GlobalSearch'
 export default {
   name: 'RightMenuLayout',
   components: {
-    GlobalSearch,
-    Navigation
+    GlobalSearch
   }
 }
 </script>

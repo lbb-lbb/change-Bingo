@@ -1,7 +1,31 @@
 <template>
   <div>
-    <el-form :model="formData" :rules="rules" ref="ruleForm" size="small">
-      <el-form-item label="评论" prop="comment">
+    <el-form :model="formData" :rules="rules" ref="ruleForm" size="small" hide-required-asterisk>
+      <el-row :gutter="20">
+        <el-col :sm="12" :xs="24">
+          <el-form-item v-if="!isUser" prop="name">
+            <el-input
+              v-model="formData.name"
+              maxlength="20"
+              clearable
+            >
+              <template slot="prepend">称呼</template>
+            </el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :sm="12" :xs="24">
+          <el-form-item v-if="!isUser" prop="email">
+            <el-input
+              v-model="formData.email"
+              maxlength="50"
+              clearable
+            >
+              <template slot="prepend">邮箱</template>
+            </el-input>
+          </el-form-item>
+        </el-col>
+      </el-row>
+      <el-form-item label="" prop="comment">
         <el-input
           v-model="formData.comment"
           clearable
@@ -9,24 +33,7 @@
           type="textarea"
           placeholder="如评论不显示，请等候管理员人工审核"
           maxlength="400"
-          show-word-limit
           :autosize="{ minRows: 3, maxRows: 6 }"
-        />
-      </el-form-item>
-      <el-form-item v-if="!isUser" label="称呼" prop="name">
-        <el-input
-          v-model="formData.name"
-          maxlength="20"
-          clearable
-          show-word-limit
-        />
-      </el-form-item>
-      <el-form-item v-if="!isUser" label="联系邮箱" prop="email">
-        <el-input
-          v-model="formData.email"
-          maxlength="50"
-          clearable
-          show-word-limit
         />
       </el-form-item>
     </el-form>
@@ -107,6 +114,5 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style scoped lang="less">
 </style>

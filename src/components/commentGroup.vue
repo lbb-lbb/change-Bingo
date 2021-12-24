@@ -7,7 +7,7 @@
     <div class="m-b-20" v-for="item in commentGroup" :key="item.id">
       <div class="m-b-20 border-bottom">
         <div class="comment-space">
-          <el-avatar alt="头像" src="./public/头像.jpg"></el-avatar>
+          <el-avatar shape="square" alt="头像" src="./public/头像.jpg"></el-avatar>
           <div class="main">
             <div class="name">
               {{item.name}}
@@ -31,7 +31,7 @@
       </div>
       <div class="reply m-b-20 border-bottom" v-for="reply in item.reply" :key="reply.id">
         <div class="comment-space">
-          <el-avatar alt="头像" src="./public/头像.jpg"></el-avatar>
+          <el-avatar shape="square" alt="头像" src="./public/头像.jpg"></el-avatar>
           <div class="main">
             <div v-if="reply.replyGroup">
               <div class="name">{{reply.name}}  回复  {{reply.replyGroup[0].name}}<el-divider direction="vertical"></el-divider><span class="time">{{item.creatTime}}</span></div>
@@ -160,12 +160,10 @@ export default {
 .name {
   font-weight: 500;
   font-size: 14px;
-  color: #1d2129;
 }
 .comment {
   font-size: 14px;
   line-height: 22px;
-  color: #4e5969;
   margin-top: 8px;
   font-weight: normal;
 }
@@ -176,13 +174,12 @@ export default {
 }
 .reply-comment {
   display: flex;
-  background: #eaecf1;
   border-radius: 2px;
   padding: 0 12px;
   line-height: 34px;
   height: 34px;
   font-size: 14px;
-  color: #4e5969;
+  color: #86909c;
   margin-top: 8px;
 }
 .space {
@@ -191,7 +188,9 @@ export default {
 }
 .add-comment:hover {
   cursor: pointer;
-  color: #ca0002;
+  background-color: #6193BB;
+  border-radius: 5px;
+  padding: 3px;
 }
 .comment-space {
   display: flex;
@@ -210,10 +209,11 @@ export default {
     line-height: 20px;
     font-size: 12px;
     cursor: pointer;
-    color: #86909c;
+    padding: 3px;
   }
   .reply-button:hover {
-    color: #1e80ff;
+    background-color: #6193BB;
+    border-radius: 5px;
   }
 }
 .reply {

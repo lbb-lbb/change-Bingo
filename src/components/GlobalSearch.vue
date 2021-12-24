@@ -4,7 +4,7 @@
     <el-autocomplete
         v-model="data"
         size="small"
-        style="width: 100%;background: red"
+        style="width: 100%"
         popper-class="search-card"
         placeholder="搜索文章..."
         value-key="title"
@@ -40,7 +40,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="less">
 .card {
   border-radius: 20px;
   margin-bottom: 20px;
@@ -52,10 +52,18 @@ export default {
 .m-b-15 {
   margin-bottom: 15px
 }
+/deep/.el-input .el-input__inner {
+  border-radius: 14px !important;
+  background-color: #13131A !important;
+  color: #dfdfdf !important;
+  border: none !important;
+}
 </style>
 <style>
 .search-card {
   color: #4183c4 !important;
   font-weight: bold !important;
+  background-color: #13131A !important;
+  border: none;
 }
 </style>

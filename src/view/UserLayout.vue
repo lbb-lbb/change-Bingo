@@ -2,13 +2,16 @@
   <el-container>
     <el-header>
       <div class="header-left">
-        <i class="el-icon-s-fold" @click="$router.push('/')" />
+        <span
+          class="icon iconfont icon-shouye link"
+          style="font-size: 25px; margin-left: 0"
+          @click="$router.push('/user')" />
         <div v-if="!getIsPhone" class="header-right">
           <router-link class="link" to="/user/write">写文章</router-link>
           <router-link class="link" to="/user/notification">通知</router-link>
           <router-link v-if="!getLogin" class="link" to="/login">登录</router-link>
           <div v-else class="link">
-            <el-avatar alt="头像" :src="getUser.head"></el-avatar>
+            <el-avatar shape="square" alt="头像" :src="getUser.head"></el-avatar>
             <el-dropdown trigger="click" @command="handleCommand">
               <span class="el-dropdown-link">{{getUser.name}}<i class="el-icon-arrow-down el-icon--right"/></span>
               <el-dropdown-menu slot="dropdown">
@@ -18,21 +21,22 @@
             </el-dropdown>
           </div>
         </div>
+        <span v-if="getIsPhone" class="icon iconfont icon-liebiao link" style="font-size: 25px" @click="drawer = !drawer" />
       </div>
-      <i v-if="getIsPhone" class="el-icon-s-fold" @click="drawer = !drawer" />
       <el-drawer
           custom-class="right-drawer"
           wrapperClosable
           size="40%"
           :modal="false"
-          title="我是标题"
           :visible.sync="drawer"
           :with-header="false"
       >
         <router-link v-if="!getLogin" class="link" to="/login">登录</router-link>
-        <div v-else class="link">
-        <el-avatar alt="头像" :src="getUser.head"></el-avatar>
-          {{getUser.name}}
+        <div v-else>
+          <div class="head">
+            <el-avatar shape="square" alt="头像" src="./public/头像.jpg"></el-avatar>
+            <div>{{getUser.name}}</div>
+          </div>
         </div>
         <router-link class="link" to="/user/write">写文章</router-link>
         <router-link class="link" to="/user/notification">通知</router-link>
@@ -120,8 +124,10 @@ export default {
   }
   .el-header .header-left{
     align-items: center;
+    flex: 1 1 auto;
     display: flex;
-    cursor:pointer
+    cursor:pointer;
+    justify-content: space-between;
   }
   /deep/ .el-drawer__body{
     background: #23232C;
@@ -151,23 +157,31 @@ export default {
   .link:hover {
     color: #ffffff;
     background-color: #6193BB;
+    border-radius: 13px;
   }
   .router-link-active {
     color: #ffffff;
     background-color: #6193BB;
+    border-radius: 13px;
+  }
+  .head {
+    margin: 10px;
   }
   .el-main{
     min-height: calc(100vh - 120px);
     margin-top: 60px !important;
   }
   .el-footer{
-    background-color: #ffffff;
+    background: #23232C;
+    opacity: 0.7;
     font-size: 12px;
-    color: #86909c;
   }
   .footer{
     text-align: center;
     margin-top: 20px;
+    a {
+      color: #fff;
+    }
   }
   .el-menu {
     /deep/ .el-menu-item {

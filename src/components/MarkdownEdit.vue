@@ -5,14 +5,13 @@
         <el-input
           v-model="formData.title"
           placeholder="请输入标题"
-          show-word-limit
           maxlength="50"
         />
       </el-form-item>
       <el-form-item prop="abstract">
         <el-input
           type="textarea"
-          show-word-limit maxlength="500"
+          maxlength="500"
           :autosize="{minRows:3, minRows:6}"
           v-model="formData.abstract"
           placeholder="请输入摘要"
