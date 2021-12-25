@@ -188,7 +188,7 @@ export default {
 }
 .add-comment:hover {
   cursor: pointer;
-  background-color: #6193BB;
+  background-color: rgba(35,35,44,0.7);
   border-radius: 5px;
   padding: 3px;
 }
@@ -212,7 +212,7 @@ export default {
     padding: 3px;
   }
   .reply-button:hover {
-    background-color: #6193BB;
+    background-color: rgba(35,35,44,0.7);
     border-radius: 5px;
   }
 }

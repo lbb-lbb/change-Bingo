@@ -1,12 +1,14 @@
 <template>
-  <el-tabs :tab-position="getIsPhone ? 'top':'left'">
-    <el-tab-pane label="个人资料">
-      <UserInformation />
-    </el-tab-pane>
-    <el-tab-pane label="账号设置">
-      <UserAccount />
-    </el-tab-pane>
-  </el-tabs>
+  <div class="card">
+    <el-tabs :tab-position="getIsPhone ? 'top':'left'">
+      <el-tab-pane label="个人资料">
+        <UserInformation />
+      </el-tab-pane>
+      <el-tab-pane label="账号设置">
+        <UserAccount />
+      </el-tab-pane>
+    </el-tabs>
+  </div>
 </template>
 
 <script>
@@ -30,5 +32,11 @@ export default {
 </script>
 
 <style scoped>
-
+.card {
+  border-radius: 20px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  background: rgba(35,35,44,0.7);
+  padding: 20px;
+}
 </style>

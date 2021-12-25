@@ -174,7 +174,7 @@ export default {
   flex: 1 1 70%;
   box-sizing: border-box;
   border-radius: 20px;
-  background: #23232C;
+  background: rgba(35,35,44,0.7);
   padding: 20px;
 }
 .right-menu-layout{

@@ -141,19 +141,15 @@ export default {
           font-weight: 400;
           padding: 10px;
           margin-top: 8px;
-          background: #fafbfc;
           border-radius: 3px;
-          border: 1px solid #f1f1f2;
         }
         .reply-comment {
           display: flex;
-          background: #eaecf1;
           border-radius: 2px;
           padding: 0 12px;
           line-height: 34px;
           height: 34px;
           font-size: 12px;
-          color: #4e5969;
         }
       }
       .title {
@@ -167,14 +163,11 @@ export default {
         -webkit-box-orient: vertical;
         font-size: 14px;
         font-weight: 400;
-        color: #8a9aa9;
-        background: #f4f4f4;
         cursor: pointer;
       }
     }
     .action {
       display: flex;
-      color: #8a9aa9;
       font-size: 12px;
       justify-content: space-between;
       margin-top: 8px;

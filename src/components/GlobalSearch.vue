@@ -45,7 +45,7 @@ export default {
   border-radius: 20px;
   margin-bottom: 20px;
   overflow: hidden;
-  background: #23232C;
+  background: rgba(35,35,44,0.7);
   padding: 20px;
   height: 100px;
 }

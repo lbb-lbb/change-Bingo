@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="card">
     <el-tabs v-model="activeName">
       <el-tab-pane label="信息审核" name="first">
         <MessageInfo :type="0" />
@@ -34,5 +34,11 @@ export default {
 </script>
 
 <style scoped>
-
+.card {
+  border-radius: 20px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  background: rgba(35,35,44,0.7);
+  padding: 20px;
+}
 </style>

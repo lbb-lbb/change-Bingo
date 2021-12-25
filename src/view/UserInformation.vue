@@ -1,24 +1,28 @@
 <template>
-  <div style="padding: 20px">
-    <h2>个人资料</h2>
+  <div>
     <div class="container">
       <div class="form">
         <el-form :model="formData" ref="form">
-          <el-form-item label="用户名" prop="name">
-            <el-input maxlength="20" show-word-limit v-model="formData.name" placeholder="用户名" />
+          <el-form-item prop="name">
+            <el-input maxlength="20" v-model="formData.name" placeholder="用户名">
+              <template slot="prepend">用户名</template>
+            </el-input>
           </el-form-item>
-          <el-form-item label="标签" prop="tag">
-            <el-input maxlength="100" show-word-limit v-model="formData.tag" placeholder="多个标签请用逗号隔开" />
+          <el-form-item prop="tag">
+            <el-input maxlength="100" v-model="formData.tag" placeholder="多个标签请用逗号隔开">
+              <template slot="prepend">标签</template>
+            </el-input>
           </el-form-item>
-          <el-form-item label="个人介绍" prop="introduction">
+          <el-form-item prop="introduction">
             <el-input
               type="textarea"
               :autosize="{minRows:3, maxRows:6}"
               maxlength="500"
-              show-word-limit
               v-model="formData.introduction"
               placeholder="个人简介"
-            />
+            >
+              <template slot="prepend">个人介绍</template>
+            </el-input>
           </el-form-item>
         </el-form>
         <div>

@@ -117,7 +117,7 @@ export default {
   }
 
   /deep/ .el-drawer__body{
-    background: #23232C;
+    background: rgba(35,35,44,0.7);
   }
   .right-menu {
     height: 400px;
@@ -151,11 +151,11 @@ export default {
     border-radius: 13px;
   }
   .el-main{
-    min-height: calc(100vh - 120px);
+    min-height: calc(100vh - 60px);
     margin-top: 60px !important;
   }
   .el-footer{
-    background: #23232C;
+    background: rgba(35,35,44,0.7);
     opacity: 0.7;
     font-size: 12px;
   }

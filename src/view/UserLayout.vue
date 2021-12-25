@@ -7,15 +7,19 @@
           style="font-size: 25px; margin-left: 0"
           @click="$router.push('/user')" />
         <div v-if="!getIsPhone" class="header-right">
-          <router-link class="link" to="/user/write">写文章</router-link>
-          <router-link class="link" to="/user/notification">通知</router-link>
+          <router-link class="link" to="/user" exact replace>首页</router-link>
+          <router-link class="link" to="/user/article" exact replace>文章</router-link>
+          <router-link class="link" to="/user/write" exact replace>创作</router-link>
+          <router-link class="link" to="/user/zuo" exact replace>作品展示</router-link>
+          <router-link class="link" to="/user/notification" exact replace>评论管理</router-link>
+          <router-link class="link" to="/user/link" exact replace>友链</router-link>
+          <router-link class="link" to="/user/setting" exact replace>个人设置</router-link>
           <router-link v-if="!getLogin" class="link" to="/login">登录</router-link>
-          <div v-else class="link">
-            <el-avatar shape="square" alt="头像" :src="getUser.head"></el-avatar>
+          <div v-else class="user-btn">
+            <el-avatar shape="square" :src="getUser.head"></el-avatar>
             <el-dropdown trigger="click" @command="handleCommand">
               <span class="el-dropdown-link">{{getUser.name}}<i class="el-icon-arrow-down el-icon--right"/></span>
               <el-dropdown-menu slot="dropdown">
-                <el-dropdown-item command="setting">设置</el-dropdown-item>
                 <el-dropdown-item command="loginOut">注销</el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
@@ -34,13 +38,17 @@
         <router-link v-if="!getLogin" class="link" to="/login">登录</router-link>
         <div v-else>
           <div class="head">
-            <el-avatar shape="square" alt="头像" src="./public/头像.jpg"></el-avatar>
+            <el-avatar shape="square" :src="getUser.head"></el-avatar>
             <div>{{getUser.name}}</div>
           </div>
         </div>
-        <router-link class="link" to="/user/write">写文章</router-link>
-        <router-link class="link" to="/user/notification">通知</router-link>
-        <router-link class="link" to="/user/setting">设置</router-link>
+        <router-link class="link" to="/user" exact replace>首页</router-link>
+        <router-link class="link" to="/user/article" exact replace>文章</router-link>
+        <router-link class="link" to="/user/write" exact replace>创作</router-link>
+        <router-link class="link" to="/user/zuo" exact replace>作品展示</router-link>
+        <router-link class="link" to="/user/notification" exact replace>评论管理</router-link>
+        <router-link class="link" to="/user/link" exact replace>友链</router-link>
+        <router-link class="link" to="/user/setting" exact replace>个人设置</router-link>
         <div class="link" @click="handleCommand('loginOut')">注销</div>
       </el-drawer>
     </el-header>
@@ -130,7 +138,7 @@ export default {
     justify-content: space-between;
   }
   /deep/ .el-drawer__body{
-    background: #23232C;
+    background: rgba(35,35,44,0.7);
   }
   .right-menu {
     height: 400px;
@@ -149,15 +157,25 @@ export default {
     margin-left: 10px;
     color: #ffffff;
     cursor: pointer;
-    .el-dropdown-link {
-      margin-left: 5px;
-      color: #ffffff;
-    }
   }
   .link:hover {
     color: #ffffff;
     background-color: #6193BB;
     border-radius: 13px;
+  }
+  .user-btn {
+    display: flex;
+    align-items: center;
+    padding: 6px;
+    border-radius: 2px;
+    align-self: center;
+    margin-left: 10px;
+    color: #ffffff;
+    cursor: pointer;
+    .el-dropdown-link {
+      margin-left: 5px;
+      color: #ffffff;
+    }
   }
   .router-link-active {
     color: #ffffff;
@@ -168,11 +186,11 @@ export default {
     margin: 10px;
   }
   .el-main{
-    min-height: calc(100vh - 120px);
+    min-height: calc(100vh - 60px);
     margin-top: 60px !important;
   }
   .el-footer{
-    background: #23232C;
+    background: rgba(35,35,44,0.7);
     opacity: 0.7;
     font-size: 12px;
   }

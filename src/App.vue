@@ -68,7 +68,22 @@ body{
   border-bottom-left-radius: 14px !important;
   border-top-left-radius: 14px !important;
   background-color: #454558 !important;
-  color: #fff;
+  color: #fff !important;
   border: none !important;
+}
+.el-tabs__item {
+  color: #dfdfdf !important;
+}
+.el-tabs__item:hover {
+  color: #6193BB !important;
+}
+.el-tabs__item.is-active {
+  color: #6193BB !important;
+}
+.el-tabs__nav-wrap::after {
+  width: 0 !important;
+}
+.el-tabs__active-bar {
+  background-color: #6193BB !important;
 }
 </style>

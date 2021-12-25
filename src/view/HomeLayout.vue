@@ -17,7 +17,7 @@
           </div>
         </div>
       </div>
-      <div class="page" v-show="pages.count > pages.pageSize * pages.pageNo">
+      <div class="page">
         <el-pagination
             small
             background
@@ -133,7 +133,7 @@ p {
   border-radius: 20px;
   margin-bottom: 20px;
   overflow: hidden;
-  background: #23232C;
+  background: rgba(35,35,44,0.7);
 }
 .right-menu-layout {
   flex: 0 0 300px;

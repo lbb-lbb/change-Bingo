@@ -1,15 +1,20 @@
 <template>
-  <div style="padding: 20px">
-    <h2>个人资料</h2>
-    <el-form :model="formData" :rules="rules" ref="form">
-      <el-form-item label=旧密码 prop="oldPassword">
-        <el-input type="password" maxlength="16" v-model="formData.oldPassword" placeholder="请输入原密码" />
+  <div>
+    <el-form :model="formData" :rules="rules" ref="form" hide-required-asterisk>
+      <el-form-item prop="oldPassword">
+        <el-input type="password" maxlength="16" v-model="formData.oldPassword" placeholder="请输入原密码">
+          <template slot="prepend">旧密码</template>
+        </el-input>
       </el-form-item>
-      <el-form-item label="新密码" prop="password">
-        <el-input type="password" maxlength="16" v-model="formData.password" placeholder="请输入新密码" />
+      <el-form-item prop="password">
+        <el-input type="password" maxlength="16" v-model="formData.password" placeholder="请输入新密码">
+          <template slot="prepend">新密码</template>
+        </el-input>
       </el-form-item>
-      <el-form-item label="确认新密码" prop="password1">
-        <el-input type="password" v-model="formData.password1" placeholder="请再次输入新密码"/>
+      <el-form-item prop="password1">
+        <el-input type="password" v-model="formData.password1" placeholder="请再次输入新密码">
+          <template slot="prepend">确认新密码</template>
+        </el-input>
       </el-form-item>
     </el-form>
     <div>
