@@ -4,6 +4,12 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin.js')
 const Dotenv  = require('dotenv-webpack')
 module.exports = {
   entry: './src/main.js',
+  output: {
+    path: path.resolve(__dirname, './dist'),
+    filename: 'javascript/[name].bundle.js',
+    publicPath: '/',
+    clean: true
+  },
   optimization: {
     splitChunks: {
       chunks: 'async',
@@ -39,7 +45,9 @@ module.exports = {
       },
       {
         test: /\.vue$/,
-        use: ['vue-loader']
+        use: {
+          loader: 'vue-loader'
+        }
       },
       {
         test: /\.(woff|svg|eot|ttf)\??.*$/,
@@ -52,6 +60,7 @@ module.exports = {
           options: {
             name: "[name].[ext]",
             outputPath: "images/",
+            publicPath: "/images/", // 将图片访问的公共地址定位到n打包后的实际访问路径，解决访问图片资源失败的问题
             limit: 2048,
           },
         }
@@ -66,7 +75,7 @@ module.exports = {
       title: '再回首恍然如梦',
       inject: 'body'
     }),
-    new Dotenv (),
+    new Dotenv ({ path: './.env' }),
     new VueLoaderPlugin(),
   ],
 

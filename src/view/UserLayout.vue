@@ -138,7 +138,7 @@ export default {
     justify-content: space-between;
   }
   /deep/ .el-drawer__body{
-    background: rgba(35,35,44,0.7);
+    background: rgba(35,35,44,1);
   }
   .right-menu {
     height: 400px;

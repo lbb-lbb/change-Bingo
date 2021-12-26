@@ -10,7 +10,8 @@ import {Message} from 'element-ui'
 // import '../mock/index'
 import * as api from './api/index'
 import * as util from './utils/util'
-
+console.log(process.env.BASE_MODE)
+console.log(process.env.BASE_URL)
 Vue.prototype.$dao = api
 Vue.prototype.$message = Message
 Vue.prototype.$util = util

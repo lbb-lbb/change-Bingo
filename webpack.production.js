@@ -5,14 +5,8 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const miniCssExtractPlugin = require('mini-css-extract-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const webpack = require("webpack");
-const path = require("path");
+const Dotenv  = require('dotenv-webpack')
 module.exports = merge(common, {
-  output: {
-    path: path.resolve(__dirname, './dist'),
-    filename: 'javascript/[name].bundle.js',
-    publicPath: './',
-    clean: true
-  },
   module: {
     rules: [
       {
@@ -21,8 +15,11 @@ module.exports = merge(common, {
       }
     ]
   },
-
+  optimization: {
+    minimizer: [new miniCssExtractPlugin()]
+  },
   plugins: [
+    new Dotenv({ path: './.env.production' }),
     new miniCssExtractPlugin({
       filename: 'css/[name].css'
     }),

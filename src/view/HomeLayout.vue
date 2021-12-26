@@ -77,7 +77,6 @@ export default {
       }
     },
     getList(){
-      console.log(1)
       if (this.getLogin) {
         this.getUserPageData()
       } else {

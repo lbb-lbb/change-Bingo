@@ -2,6 +2,7 @@ const { merge } = require('webpack-merge')
 const common = require('./webpack.common')
 const webpack = require('webpack')
 const path = require("path");
+const Dotenv  = require('dotenv-webpack')
 module.exports = merge(common, {
   output: {
     path: path.resolve(__dirname, './dist'),
@@ -20,6 +21,7 @@ module.exports = merge(common, {
   },
   devtool: 'eval-source-map',
   plugins: [
+    new Dotenv({ path: './.env.development' }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({ "process.env.NODE_ENV": JSON.stringify("development") })
   ],

@@ -21,8 +21,6 @@ const err = (error) => {
 }
 
 service.interceptors.request.use(config => {
-  console.log(process.env.BASE_URL)
-  console.log(process.env.PASSWORD_IV)
   config.headers = { 'Content-type': 'application/json' }
   config.headers = { 'Authorization': `Bearer ${store.getters.getToken}` }
   return config
