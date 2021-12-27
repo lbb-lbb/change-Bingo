@@ -73,7 +73,8 @@ module.exports = {
       template: path.join(__dirname, './src/public/index.html'), // 需要复制到内存的文件路径
       filename: 'index.html', // 复制完成后的文件名
       title: '再回首恍然如梦',
-      inject: 'body'
+      inject: 'body',
+      favicon: path.resolve(__dirname, './src/public/favicon.ico')
     }),
     new Dotenv ({ path: './.env' }),
     new VueLoaderPlugin(),

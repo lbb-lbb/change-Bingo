@@ -39,10 +39,11 @@ export default {
 </style>
 <style lang="less">
 *{
-  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,
+  font-family: FiraCode, -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,
   "Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
   margin: 0;
   padding: 0;
+  line-height: 1.5715;
 }
 body{
   min-width: 300px;

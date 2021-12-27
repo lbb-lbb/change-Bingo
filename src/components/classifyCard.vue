@@ -66,7 +66,6 @@ li {
   padding: 3px 7px;
   font-size: 12px;
   font-weight: 700;
-  line-height: 1;
   color: #fff;
   text-align: center;
   white-space: nowrap;

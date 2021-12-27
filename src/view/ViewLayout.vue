@@ -224,7 +224,7 @@ export default {
     text-indent:2em
   }
   img {
-    width: 100%;
+    max-width: 100%;
   }
   code {
     border-radius: 20px
