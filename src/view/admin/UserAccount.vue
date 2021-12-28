@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import {Encrypt} from "../utils/secret";
+import {Encrypt} from "../../utils/secret";
 import {mapActions} from 'vuex'
 export default {
   name: 'UserAccount',
@@ -62,7 +62,7 @@ export default {
             oldPassword : Encrypt(this.formData.oldPassword),
             password : Encrypt(this.formData.password)
           }
-          let { success, message } = await this.$dao.setUserPassword(params)
+          let { success, message } = await this.$dao.adminUser.setUserPassword(params)
           if (success) {
             this.$message.success('修改成功, 3s后退出到登录页')
             this.setUser({})

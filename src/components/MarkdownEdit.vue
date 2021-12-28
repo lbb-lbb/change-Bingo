@@ -95,10 +95,9 @@ export default {
   },
   methods: {
     async uploadImage (pos, file) {
-      console.log(pos, file)
       let formData = new FormData();
       formData.append('file', file)
-      let res = await this.$dao.getUpload(formData)
+      let res = await this.$dao.adminUpload.getUpload(formData)
       if (res.success) {
         this.$refs.editor.$img2Url(pos, res.path)
       } else {
@@ -118,7 +117,7 @@ export default {
             category: this.formData.category,
             id: this.$route.query.id ? this.$route.query.id : ''
           }
-          let res = await this.$dao.createArticle(params)
+          let res = await this.$dao.adminArticle.createArticle(params)
           if (res.success) {
             if(res.id) {
               await this.$router.replace({path: '/user/write', query: {id: res.id}})
@@ -129,7 +128,7 @@ export default {
       })
     },
     async getArticleMessage () {
-      let res = await this.$dao.articleClassify()
+      let res = await this.$dao.adminArticle.articleClassify()
       if(res.success) {
         this.tags = res.result.tags
         this.category = res.result.category
@@ -137,7 +136,7 @@ export default {
     },
     async getArticleInfo () {
       if (this.$route.query.id) {
-        const { success, result } = await this.$dao.getArticleInfo({id: this.$route.query.id})
+        const { success, result } = await this.$dao.adminArticle.getArticleInfo({id: this.$route.query.id})
         if (success) {
           this.formData.content = result.content
           this.formData.abstract = result.abstract

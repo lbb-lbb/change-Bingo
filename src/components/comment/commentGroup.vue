@@ -111,7 +111,7 @@ export default {
         ...this.pages,
         id: this.id
       }
-      let { success, result, count } = await this.$dao.getComment(params)
+      let { success, result, count } = await this.$dao.fontComment.getComment(params)
       if (success) {
         this.commentGroup = result
         this.pages.count = count
@@ -137,7 +137,7 @@ export default {
         titleId: this.id,
         id: id
       }
-      let {success} = await this.$dao.changeComment(params)
+      let {success} = await this.$dao.adminComment.changeComment(params)
       if (success) {
         this.$message.success('删除成功')
         await this.getComment()

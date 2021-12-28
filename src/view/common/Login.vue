@@ -30,7 +30,7 @@
 
 <script>
 import { mapActions } from 'vuex'
-import { Encrypt, Decrypt } from '../utils/secret'
+import { Encrypt, Decrypt } from '../../utils/secret'
 export default {
   name: 'Login',
   data () {
@@ -51,7 +51,7 @@ export default {
       this.$refs.from.validate(async valid => {
         if (valid) {
           let params = { ...this.formData, password: Encrypt(this.formData.password) }
-          const { success, result, token } = await this.$dao.Login(params)
+          const { success, result, token } = await this.$dao.fontLogin.Login(params)
           if (success) {
             this.setUser(result)
             this.setToken(token)
@@ -69,7 +69,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url("../public/images/login.jpeg");
+  background-image: url("../../public/images/login.jpeg");
   position: absolute;
   z-index: 1;
   height: 100%;

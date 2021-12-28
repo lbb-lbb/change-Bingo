@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import UploadImage from '../components/UploadImage'
+import UploadImage from '../../components/UploadImage'
 import {mapGetters, mapActions} from 'vuex'
 export default {
   name: 'UserInformation',
@@ -61,7 +61,7 @@ export default {
         head: this.path
       }
 
-      let { success, result } = await this.$dao.setUserInfo(params)
+      let { success, result } = await this.$dao.adminUser.setUserInfo(params)
       if (success) {
         this.setUser(result)
         this.$message.success('修改成功')

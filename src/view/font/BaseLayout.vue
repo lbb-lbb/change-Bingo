@@ -8,11 +8,11 @@
           @click="$router.push('/')" />
         <div v-if="!getIsPhone">
           <router-link class="link" to="/home" exact replace>首页</router-link>
-          <router-link class="link" to="/home/blog" exact replace>分类</router-link>
-          <router-link class="link" to="/home/openSource" exact replace>归档</router-link>
-          <router-link class="link" to="/home/wiki" exact replace>联系/留言</router-link>
-          <router-link class="link" to="/home/wiki" exact replace>友链</router-link>
-          <router-link class="link" to="/home/wiki" exact replace>作品</router-link>
+          <router-link class="link" to="/home/classification" exact replace>分类</router-link>
+          <router-link class="link" to="/home/timeLine" exact replace>归档</router-link>
+          <router-link class="link" to="/home/msgCard" exact replace>留言板</router-link>
+          <router-link class="link" to="/home/friendLink" exact replace>友链</router-link>
+          <router-link class="link" to="/home/project" exact replace>作品</router-link>
           <router-link class="link" to="/home/about" exact replace>关于</router-link>
           <span class="icon iconfont icon-denglu link" style="font-size: 25px" @click="login"></span>
         </div>
@@ -38,11 +38,11 @@
           <el-avatar shape="square" alt="头像" src="./public/头像.jpg"></el-avatar>
         </div>
         <router-link class="link" to="/home" exact replace>首页</router-link>
-        <router-link class="link" to="/home/blog" exact replace>分类</router-link>
-        <router-link class="link" to="/home/openSource" exact replace>归档</router-link>
-        <router-link class="link" to="/home/wiki" exact replace>联系/留言</router-link>
-        <router-link class="link" to="/home/wiki" exact replace>友链</router-link>
-        <router-link class="link" to="/home/wiki" exact replace>作品</router-link>
+        <router-link class="link" to="/home/classification" exact replace>分类</router-link>
+        <router-link class="link" to="/home/timeLine" exact replace>归档</router-link>
+        <router-link class="link" to="/home/msgCard" exact replace>留言板</router-link>
+        <router-link class="link" to="/home/friendLink" exact replace>友链</router-link>
+        <router-link class="link" to="/home/project" exact replace>作品</router-link>
         <router-link class="link" to="/home/about" exact replace>关于</router-link>
       </div>
     </el-drawer>

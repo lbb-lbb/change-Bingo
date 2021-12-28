@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import GlobalSearch from '../components/GlobalSearch'
+import GlobalSearch from '../../components/rightCard/GlobalSearch'
 export default {
   name: 'RightMenuLayout',
   components: {

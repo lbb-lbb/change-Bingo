@@ -16,8 +16,8 @@
 </template>
 
 <script>
-import RightMenuLayout from './RightMenuLayout'
-import classifyCard from "../components/classifyCard";
+import RightMenuLayout from '../common/RightMenuLayout'
+import classifyCard from "../../components/rightCard/classifyCard";
 export default {
   name: 'TimeClassifyLayout',
   components: { RightMenuLayout, classifyCard },
@@ -53,7 +53,7 @@ export default {
     }
   },
   async created() {
-    const { success, result } = await this.$dao.getHomeData()
+    const { success, result } = await this.$dao.fontArticle.getHomeData()
     if (success) {
       this.data = result
     }

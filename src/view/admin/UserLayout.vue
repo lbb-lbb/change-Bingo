@@ -8,11 +8,11 @@
           @click="$router.push('/user')" />
         <div v-if="!getIsPhone" class="header-right">
           <router-link class="link" to="/user" exact replace>首页</router-link>
-          <router-link class="link" to="/user/article" exact replace>文章</router-link>
+          <router-link class="link" to="/user/articleList" exact replace>文章</router-link>
           <router-link class="link" to="/user/write" exact replace>创作</router-link>
-          <router-link class="link" to="/user/zuo" exact replace>作品展示</router-link>
+          <router-link class="link" to="/user/manageProject" exact replace>作品管理</router-link>
           <router-link class="link" to="/user/notification" exact replace>评论管理</router-link>
-          <router-link class="link" to="/user/link" exact replace>友链</router-link>
+          <router-link class="link" to="/user/manageFriendLink" exact replace>友链</router-link>
           <router-link class="link" to="/user/setting" exact replace>个人设置</router-link>
           <router-link v-if="!getLogin" class="link" to="/login">登录</router-link>
           <div v-else class="user-btn">
@@ -43,11 +43,11 @@
           </div>
         </div>
         <router-link class="link" to="/user" exact replace>首页</router-link>
-        <router-link class="link" to="/user/article" exact replace>文章</router-link>
+        <router-link class="link" to="/user/articleList" exact replace>文章</router-link>
         <router-link class="link" to="/user/write" exact replace>创作</router-link>
-        <router-link class="link" to="/user/zuo" exact replace>作品展示</router-link>
+        <router-link class="link" to="/user/manageProject" exact replace>作品管理</router-link>
         <router-link class="link" to="/user/notification" exact replace>评论管理</router-link>
-        <router-link class="link" to="/user/link" exact replace>友链</router-link>
+        <router-link class="link" to="/user/manageFriendLink" exact replace>友链</router-link>
         <router-link class="link" to="/user/setting" exact replace>个人设置</router-link>
         <div class="link" @click="handleCommand('loginOut')">注销</div>
       </el-drawer>

@@ -44,10 +44,10 @@
 </template>
 
 <script>
-import RightMenuLayout from './RightMenuLayout'
-import Comment from '../components/comment.vue'
-import CommentGroup from '../components/CommentGroup.vue'
-import PageCatalog from "../components/PageCatalog";
+import RightMenuLayout from '../common/RightMenuLayout'
+import Comment from '../../components/comment/comment.vue'
+import CommentGroup from '../../components/comment/commentGroup.vue'
+import PageCatalog from "../../components/rightCard/PageCatalog";
 import highlight from 'highlight.js'
 import 'highlight.js/styles/atom-one-dark.css'
 import { marked } from 'marked'
@@ -84,7 +84,7 @@ export default {
   },
   methods: {
     async getArticleInfo () {
-      const { success, result } = await this.$dao.getArticleInfo({id: this.$route.query.id})
+      const { success, result } = await this.$dao.fontArticle.getArticleInfo({id: this.$route.query.id})
       if (success) {
         this.article = result
         this.html = marked(result.content)
@@ -100,7 +100,7 @@ export default {
       this.$router.push({path: '/user/write', query: {id: this.$route.query.id}})
     },
     async deleteArticle() {
-      let res = await this.$dao.changeArticle({ status: 3, id: this.$route.query.id })
+      let res = await this.$dao.adminArticle.changeArticle({ status: 3, id: this.$route.query.id })
       if (res.success) {
         this.$message.success('删除成功')
       }

@@ -15,7 +15,6 @@
 </template>
 
 <script>
-import { getGlobalSearchData } from '../api'
 export default {
   name: 'GlobalSearch',
   data() {
@@ -26,7 +25,7 @@ export default {
   methods: {
     async goSearch(str, callback) {
       if (str) {
-        const { result } = await getGlobalSearchData({title: str})
+        const { result } = await this.$dao.fontArticle.getGlobalSearchData({title: str})
         callback(result)
       }
     },

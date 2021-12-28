@@ -96,7 +96,7 @@ export default {
             pid: this.pid,
             replyId: this.replyId
           }
-          const replayType = this.isUser ? this.$dao.replayComment : this.$dao.submitComment
+          const replayType = this.isUser ? this.$dao.adminComment.replayComment : this.$dao.fontComment.submitComment
           let { success, message } = await replayType(params)
           if (success) {
             this.$refs['ruleForm'].resetFields()

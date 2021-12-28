@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import MessageInfo from './MessageInfo'
+import MessageInfo from '../../components/MessageInfo'
 export default {
   name: 'message',
   components: {

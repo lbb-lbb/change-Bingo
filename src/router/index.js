@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import font from "./font/index";
+import admin from "./admin/index";
 
 Vue.use(VueRouter)
 
@@ -10,70 +12,24 @@ const routes = [
   },
   {
     path: '/home',
-    component: () => import('../view/BaseLayout'),
-    children: [
-      {
-        path: '',
-        name: 'Home',
-        component: () => import('../view/HomeLayout')
-      },
-      {
-        path: 'blog',
-        name: 'Blog',
-        component: () => import('../view/BlogLayout')
-      },
-      {
-        path: 'openSource',
-        name: 'OpenSource',
-        component: () => import('../view/TimeClassifyLayout')
-      },
-      {
-        path: 'wiki',
-        name: 'Wiki',
-        component: () => import('../view/WikiLayout')
-      },
-      {
-        path: 'about',
-        name: 'About',
-        component: () => import('../view/AboutLayout')
-      },
-      {
-        path: 'view',
-        name: 'View',
-        component: () => import('../view/ViewLayout')
-      }
-    ]
+    component: () => import('../view/font/BaseLayout'),
+    children: font
   },
   {
     path: '/login',
     name: 'Login',
-    component: () => import('../view/Login')
+    component: () => import('../view/common/Login'),
+    meta: {
+      title: '登录'
+    }
   },
   {
     path: '/user/',
-    component: () => import('../view/UserLayout'),
-    children: [
-      {
-        path: '',
-        name: 'userHome',
-        component: () => import('../view/HomeLayout')
-      },
-      {
-        path: 'notification',
-        name: 'Notification',
-        component: () => import('../components/Message')
-      },
-      {
-        path: 'setting',
-        name: 'Setting',
-        component: () => import('../view/Setting')
-      },
-      {
-        path: 'write',
-        name: 'Write',
-        component: () => import('../view/Write')
-      }
-    ]
+    component: () => import('../view/admin/UserLayout'),
+    meta: {
+      title: '后台管理页'
+    },
+    children: admin
   }
 ]
 // 解决报错

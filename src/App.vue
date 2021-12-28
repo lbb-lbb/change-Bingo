@@ -48,6 +48,9 @@ export default {
 body{
   min-width: 300px;
   background-image: url("./public/images/mainBg.jpg");
+  background-size:cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   color: #dfdfdf;
 }
 

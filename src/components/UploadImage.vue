@@ -58,7 +58,6 @@ export default {
       return isJPG && isLt2M;
     },
     removeImage() {
-      console.log(this.getUser.head);
       this.$emit('update:imageUrl', this.getUser.head)
       this.isShow = false
     }

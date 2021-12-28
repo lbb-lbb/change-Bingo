@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import MarkdownEdit from '../components/MarkdownEdit'
+import MarkdownEdit from '../../components/MarkdownEdit'
 export default {
   name: 'Write',
   components: {

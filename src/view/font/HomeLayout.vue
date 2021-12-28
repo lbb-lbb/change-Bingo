@@ -38,8 +38,8 @@
 </template>
 
 <script>
-import RightMenuLayout from './RightMenuLayout'
-import userCard from '../components/userCard'
+import RightMenuLayout from '../common/RightMenuLayout'
+import userCard from '../../components/rightCard/userCard'
 import { mapGetters } from 'vuex'
 export default {
   name: 'HomeLayout',
@@ -63,14 +63,14 @@ export default {
   },
   methods: {
     async getPageData() {
-      let { result, success, count } = await this.$dao.getHomeData(this.pages)
+      let { result, success, count } = await this.$dao.fontArticle.getHomeData(this.pages)
       if (success) {
         this.data = result
         this.pages.count = count
       }
     },
     async getUserPageData() {
-      let { result, success, count } = await this.$dao.getUserHomeData(this.pages)
+      let { result, success, count } = await this.$dao.adminArticle.getUserHomeData(this.pages)
       if (success) {
         this.data = result
         this.pages.count = count

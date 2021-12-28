@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import Comment from './comment.vue'
+import Comment from './comment/comment.vue'
 export default {
   name: 'MessageInfo',
   components: {Comment},
@@ -73,7 +73,7 @@ export default {
   },
   methods: {
     async getComment () {
-      let { success, result } = await this.$dao.commentList({...this.pages, status: this.type})
+      let { success, result } = await this.$dao.adminComment.commentList({...this.pages, status: this.type})
       if (success) {
         this.dataList = result
       } else {
@@ -86,7 +86,7 @@ export default {
         titleId: titleId,
         id: id
       }
-      let {success} = await this.$dao.changeComment(params)
+      let {success} = await this.$dao.adminComment.changeComment(params)
       if (success) {
         this.$message.success('提交成功')
         await this.getComment()

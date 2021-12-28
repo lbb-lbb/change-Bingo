@@ -8,11 +8,12 @@ import './public/css/icon/iconfont.css'
 import './public/css/font/index.css'
 import 'animate.css'
 import {Message} from 'element-ui'
+// 引入mock造数据
 // import '../mock/index'
+
+// vue原型链上挂载一使用常用的方法
 import * as api from './api/index'
 import * as util from './utils/util'
-console.log(process.env.BASE_MODE)
-console.log(process.env.BASE_URL)
 Vue.prototype.$dao = api
 Vue.prototype.$message = Message
 Vue.prototype.$util = util
