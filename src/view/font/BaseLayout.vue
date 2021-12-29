@@ -35,7 +35,8 @@
     >
       <div class="right-menu">
         <div class="head">
-          <el-avatar shape="square" alt="头像" src="./public/头像.jpg"></el-avatar>
+          <el-avatar shape="square" alt="头像" :src="getCommonUser.head"></el-avatar>
+          <div>{{getCommonUser.name}}</div>
         </div>
         <router-link class="link" to="/home" exact replace>首页</router-link>
         <router-link class="link" to="/home/classification" exact replace>分类</router-link>
@@ -50,7 +51,7 @@
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
+import {mapGetters,mapActions} from 'vuex'
 export default {
   name: 'BaseLayout',
   data () {
@@ -59,7 +60,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['getIsPhone'])
+    ...mapGetters(['getIsPhone', 'getCommonUser'])
   },
   watch: {
     'getIsPhone': function (val) {
@@ -69,13 +70,23 @@ export default {
     }
   },
   methods: {
+    ...mapActions(['setCommonUser']),
     goPath(path) {
       this.$router.push(path)
     },
     login() {
       window.open(`${location.origin}/login`)
+    },
+    async getCommonUserMessage() {
+      let { result, success } = await this.$dao.fontUserMs.getCommonUserMessage()
+      if (success) {
+        this.setCommonUser(result)
+      }
     }
   },
+  mounted() {
+    this.getCommonUserMessage()
+  }
 
 }
 </script>

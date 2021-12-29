@@ -1,5 +1,6 @@
 import axios from 'axios'
 import store from '../store/index'
+import {Message} from 'element-ui'
 const service = axios.create({
   baseURL: process.env.BASE_URL,
   timeout: 5000,
@@ -11,8 +12,25 @@ const err = (error) => {
     // const data = error.response.data
     switch (error.response.status) {
       case 500:
+        Message.error(error.response.data.message || '服务器异常')
         break
       case 401:
+        store.actions.setUser({})
+        store.actions.setToken('')
+        Message.error('登录失效了')
+        break
+      case 300:
+        Message.error(error.response.data.message || '系统异常')
+        break
+      default:
+        break
+    }
+    switch (error.response.data.state) {
+      case 500:
+        Message.error(error.response.data.message || '服务器异常')
+        break
+      case 300:
+        Message.error(error.response.data.message || '系统异常')
         break
       default:
         break
