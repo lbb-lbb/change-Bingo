@@ -29,7 +29,8 @@ import {
   Upload,
   Select,
   Option,
-  Drawer
+  Drawer,
+  Popover
 } from 'element-ui'
 
 Vue.use(Button)
@@ -62,3 +63,4 @@ Vue.use(Button)
   .use(Option)
   .use(Divider)
   .use(Drawer)
+  .use(Popover)

@@ -31,8 +31,7 @@
     </div>
     <RightMenuLayout class="right-menu-layout animate__animated animate__bounceInRight">
       <user-card />
-      <user-card />
-      <user-card />
+      <label-card />
     </RightMenuLayout>
   </div>
 </template>
@@ -40,12 +39,14 @@
 <script>
 import RightMenuLayout from '../common/RightMenuLayout'
 import userCard from '../../components/rightCard/userCard'
+import labelCard from "../../components/rightCard/labelCard";
 import { mapGetters } from 'vuex'
 export default {
   name: 'HomeLayout',
   components: {
     RightMenuLayout,
-    userCard
+    userCard,
+    labelCard
   },
   data() {
     return {

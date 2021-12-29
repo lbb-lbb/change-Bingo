@@ -32,12 +32,3 @@ export function changeArticle(params = {}) {
     data: params
   })
 }
-/**
- * 返回所有文章已有分类, 标签
- */
-export function articleClassify() {
-  return request({
-    url: 'admin/article/classifyList',
-    method: 'get'
-  })
-}

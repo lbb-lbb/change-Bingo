@@ -26,7 +26,7 @@ export default [
     {
         path: 'msgCard',
         name: 'msgCard',
-        component: () => import('../../view/font/WikiLayout'),
+        component: () => import('../../view/common/Message'),
         meta: {
             title: '留言板'
         }

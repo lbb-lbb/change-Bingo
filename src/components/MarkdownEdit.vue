@@ -128,7 +128,7 @@ export default {
       })
     },
     async getArticleMessage () {
-      let res = await this.$dao.adminArticle.articleClassify()
+      let res = await this.$dao.fontArticle.articleClassify()
       if(res.success) {
         this.tags = res.result.tags
         this.category = res.result.category

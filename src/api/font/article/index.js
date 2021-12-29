@@ -32,3 +32,13 @@ export function getGlobalSearchData(params = {}) {
         params: params
     })
 }
+
+/**
+ * 返回所有文章已有分类, 标签
+ */
+export function articleClassify() {
+    return request({
+        url: 'font/article/classifyList',
+        method: 'get'
+    })
+}

@@ -53,6 +53,9 @@ body{
   background-attachment: fixed;
   color: #dfdfdf;
 }
+strong {
+  color: #6193BB;
+}
 
 // 修改element ui全局的input样式
 .el-input .el-input__inner {

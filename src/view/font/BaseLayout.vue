@@ -8,6 +8,7 @@
           @click="$router.push('/')" />
         <div v-if="!getIsPhone">
           <router-link class="link" to="/home" exact replace>首页</router-link>
+          <router-link class="link" to="/home/article" exact replace>文章</router-link>
           <router-link class="link" to="/home/classification" exact replace>分类</router-link>
           <router-link class="link" to="/home/timeLine" exact replace>归档</router-link>
           <router-link class="link" to="/home/msgCard" exact replace>留言板</router-link>
@@ -39,6 +40,7 @@
           <div>{{getCommonUser.name}}</div>
         </div>
         <router-link class="link" to="/home" exact replace>首页</router-link>
+        <router-link class="link" to="/home/article" exact replace>文章</router-link>
         <router-link class="link" to="/home/classification" exact replace>分类</router-link>
         <router-link class="link" to="/home/timeLine" exact replace>归档</router-link>
         <router-link class="link" to="/home/msgCard" exact replace>留言板</router-link>
