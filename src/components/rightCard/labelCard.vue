@@ -1,8 +1,6 @@
 <template>
-<div class="card">
-  <ul>
-    <li v-for="item in labels" :key="item">{{item}}</li>
-  </ul>
+<div class="label-card">
+  <div class="label" v-for="item in labels" :key="item">{{item}}</div>
 </div>
 </template>
 
@@ -29,17 +27,17 @@ export default {
 </script>
 
 <style scoped>
-li {
+.label {
   display: inline-block;
   padding:5px;
   cursor: pointer;
 }
-li:hover {
+.label:hover {
   color: #ffffff;
   background-color: #6193BB;
   border-radius: 15px;
 }
-.card {
+.label-card {
   border-radius: 20px;
   margin-bottom: 20px;
   overflow: hidden;

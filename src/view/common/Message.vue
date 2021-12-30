@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="message-card">
   <comment-group id="liuYanBan" :is-user="getLogin" />
 </div>
 </template>
@@ -17,5 +17,11 @@ export default {
 </script>
 
 <style scoped>
-
+.message-card {
+  border-radius: 20px;
+  margin: 20px auto;
+  overflow: hidden;
+  background: rgba(35,35,44,0.7);
+  padding: 20px;
+}
 </style>

@@ -7,32 +7,37 @@ const service = axios.create({
   // withCredentials: true
 })
 
-const err = (error) => {
-  if (error.response) {
-    // const data = error.response.data
-    switch (error.response.status) {
+const err = (response) => {
+  console.log(response)
+  if (response.status === 200) {
+    switch (response.data.state) {
       case 500:
-        Message.error(error.response.data.message || '服务器异常')
+        Message.error(response.data.message || '服务器异常')
+        return
+      case 300:
+        Message.error(response.data.message || '系统异常')
+        return
+      default:
+        Message.error(response.data.message || '未知错误')
+        break
+    }
+  } else {
+    switch (response.status) {
+      case 500:
+        Message.error(response.data.message || '服务器异常')
         break
       case 401:
-        store.actions.setUser({})
-        store.actions.setToken('')
+        console.log(store)
+        store.dispatch('setUser', {})
+        store.dispatch('setToken', '')
+        store.dispatch('setLogin', false)
         Message.error('登录失效了')
         break
       case 300:
-        Message.error(error.response.data.message || '系统异常')
+        Message.error(response.data.message || '系统异常')
         break
       default:
-        break
-    }
-    switch (error.response.data.state) {
-      case 500:
-        Message.error(error.response.data.message || '服务器异常')
-        break
-      case 300:
-        Message.error(error.response.data.message || '系统异常')
-        break
-      default:
+        Message.error(response)
         break
     }
   }
@@ -45,7 +50,18 @@ service.interceptors.request.use(config => {
 })
 
 service.interceptors.response.use(response => {
-  return response.data
-}, err)
+  console.log(response)
+  if (response.status === 200) {
+    if (response.data.success) {
+      return response.data
+    } else {
+      err(response)
+    }
+  } else {
+    return new Promise.reject(response)
+  }
+}, error => {
+  err(error.response)
+})
 
 export default service

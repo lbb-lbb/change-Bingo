@@ -5,28 +5,25 @@
       <div>早上好，我是<strong>{{getCommonUser.name}}</strong>欢迎来到我的<strong>个人博客</strong></div>
     </div>
     <div class="message">
-      <el-popover
-          placement="top-start"
-          title="标题"
-          width="200"
-          trigger="hover"
-          content="这是一段内容,这是一段内容,这是一段内容,这是一段内容。">
-        <span class="icon iconfont icon-github-fill" slot="reference"></span>
+      <el-popover>
+        <span slot="reference" class="icon iconfont icon-github-fill" @click="goLink(getCommonUser.github)"></span>
       </el-popover>
       <el-popover
-          placement="top-start"
-          title="标题"
-          width="200"
+          placement="top"
+          popper-class="POPOVER_IMG"
+          :visible-arrow="false"
           trigger="hover"
-          content="这是一段内容,这是一段内容,这是一段内容,这是一段内容。">
+      >
+        <el-avatar :size="100" slot shape="square" alt="头像" :src="getCommonUser.qq"></el-avatar>
         <span class="icon iconfont icon-QQ-circle-fill" slot="reference"></span>
       </el-popover>
       <el-popover
-          placement="top-start"
-          title="标题"
-          width="200"
+          placement="top"
+          popper-class="POPOVER_IMG"
+          :visible-arrow="false"
           trigger="hover"
-          content="这是一段内容,这是一段内容,这是一段内容,这是一段内容。">
+      >
+        <el-avatar :size="100" slot shape="square" alt="头像" :src="getCommonUser.vx"></el-avatar>
         <span class="icon iconfont icon-weixin" slot="reference"></span>
       </el-popover>
     </div>
@@ -39,6 +36,11 @@ export default {
   name: "userCard",
   computed: {
     ...mapGetters(['getCommonUser'])
+  },
+  methods: {
+    goLink(link) {
+      window.open(link);
+    }
   }
 }
 </script>
@@ -62,7 +64,7 @@ export default {
   justify-content: space-around;
   align-items: end;
   .icon {
-    font-size: 35px;
+    font-size: 50px;
     padding:5px;
     cursor: pointer;
   }
@@ -70,5 +72,15 @@ export default {
     background-color: #6193BB;
     border-radius: 15px;
   }
+}
+</style>
+<style>
+.POPOVER_IMG {
+  width: 100px;
+  min-width: auto !important;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #6193BB;
+  margin: 0;
 }
 </style>

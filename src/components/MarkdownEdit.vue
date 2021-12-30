@@ -145,7 +145,6 @@ export default {
           this.formData.title = result.title
         }
       } else {
-        console.log(this.$options.data())
         this.formData = this.$options.data().formData
       }
     },

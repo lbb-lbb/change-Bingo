@@ -11,7 +11,6 @@
       <img v-if="imageUrl" :src="imageUrl" class="avatar">
       <i v-else class="el-icon-plus avatar-uploader-icon"></i>
     </el-upload>
-    <div v-if="isShow" class="remove" @click="removeImage">点击移除上传图片</div>
   </div>
 </template>
 
@@ -29,7 +28,7 @@ export default {
   },
   data() {
     return {
-      action: `${request.defaults.baseURL}/user/upload`,
+      action: `${request.defaults.baseURL}/admin/upload`,
       isShow: false,
     };
   },
@@ -86,7 +85,6 @@ export default {
   height: 90px;
   line-height: 90px;
   text-align: center;
-  border-radius: 50%;
   background-color: #8c939d;
 }
 .avatar-uploader-icon:hover {
@@ -96,7 +94,7 @@ export default {
   width: 90px;
   height: 90px;
   display: block;
-  border-radius: 50%;
+  border-radius: 6px;
 }
 .remove {
   cursor: pointer;

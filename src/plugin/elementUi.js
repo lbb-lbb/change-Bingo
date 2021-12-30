@@ -30,7 +30,8 @@ import {
   Select,
   Option,
   Drawer,
-  Popover
+  Popover,
+  Switch
 } from 'element-ui'
 
 Vue.use(Button)
@@ -64,3 +65,4 @@ Vue.use(Button)
   .use(Divider)
   .use(Drawer)
   .use(Popover)
+  .use(Switch)

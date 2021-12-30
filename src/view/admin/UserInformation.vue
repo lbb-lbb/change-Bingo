@@ -13,6 +13,11 @@
               <template slot="prepend">标签</template>
             </el-input>
           </el-form-item>
+          <el-form-item prop="github">
+            <el-input maxlength="100" v-model="formData.github" placeholder="个人github网址">
+              <template slot="prepend">github</template>
+            </el-input>
+          </el-form-item>
           <el-form-item prop="introduction">
             <el-input
               type="textarea"
@@ -30,7 +35,12 @@
         </div>
       </div>
       <div class="head">
-        <UploadImage @path="getUploadImagePath" :image-url.sync="path" />
+        <UploadImage @path="getUploadImagePath" :image-url.sync="headPath" />
+        <div class="tip">头像</div>
+        <UploadImage @path="getUploadImagePath" :image-url.sync="vxPath" />
+        <div class="tip">QQ</div>
+        <UploadImage @path="getUploadImagePath" :image-url.sync="qqPath" />
+        <div class="tip">微信</div>
       </div>
     </div>
   </div>
@@ -47,7 +57,9 @@ export default {
   data () {
     return {
       formData: {},
-      path: ''
+      headPath: '',
+      vxPath: '',
+      qqPath: ''
     }
   },
   computed: {
@@ -58,7 +70,9 @@ export default {
     async submit() {
       let params = {
         ...this.formData,
-        head: this.path
+        head: this.headPath,
+        vx: this.vxPath,
+        qq: this.qqPath
       }
 
       let { success, result } = await this.$dao.adminUser.setUserInfo(params)
@@ -73,7 +87,9 @@ export default {
   },
   created() {
     this.formData = this.getUser
-    this.path = this.getUser.head
+    this.headPath = this.getUser.head
+    this.qqPath = this.getUser.qq
+    this.vxPath = this.getUser.vx
   }
 }
 </script>
@@ -87,6 +103,10 @@ export default {
   .head {
     flex: 0 0 150px;
     text-align: center;
+  }
+  .tip {
+    font-size: 12px;
+    margin-bottom: 2px;
   }
 }
 </style>

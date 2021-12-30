@@ -27,7 +27,9 @@
           <div>{{article.creatTime}}</div>
         </div>
         <div class="abstract">{{article.abstract}}</div>
-        <div id="content" v-html="html"></div>
+        <div id="content">
+          <MarkedView :mark-down="html"/>
+        </div>
         <div class="end-tip">文章已经结束了</div>
         <div class="tag">
           标签：<el-tag v-for="item in tag" :key="item" type="danger" size="mini" effect="plain">{{item}}</el-tag>
@@ -48,9 +50,7 @@ import RightMenuLayout from '../common/RightMenuLayout'
 import Comment from '../../components/comment/comment.vue'
 import CommentGroup from '../../components/comment/commentGroup.vue'
 import PageCatalog from "../../components/rightCard/PageCatalog";
-import highlight from 'highlight.js'
-import 'highlight.js/styles/atom-one-dark.css'
-import { marked } from 'marked'
+import MarkedView from "../../components/MarkedView";
 import { mapGetters } from 'vuex'
 export default {
   name: 'ViewLayout',
@@ -58,7 +58,8 @@ export default {
     RightMenuLayout,
     Comment,
     CommentGroup,
-    PageCatalog
+    PageCatalog,
+    MarkedView
   },
   data() {
     return {
@@ -87,12 +88,10 @@ export default {
       const { success, result } = await this.$dao.fontArticle.getArticleInfo({id: this.$route.query.id})
       if (success) {
         this.article = result
-        this.html = marked(result.content)
+        this.html = result.content
         this.tag = result.tag.replace(/，/ig,',').split(',')
         this.$nextTick(() => {
           this.list = document.getElementById('content').children
-          highlight.highlightAll();
-
         })
       }
     },
@@ -206,28 +205,6 @@ export default {
   padding: 20px 20px 20px 35px ;
   .el-tag {
     margin-right: 5px;
-  }
-}
-</style>
-<style lang="less">
-#content {
-  h1, h2 {
-    margin: 15px 0;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #eee;
-  }
-  h3 {
-    margin: 10px 0;
-  }
-  p {
-    margin-bottom: 10px;
-    text-indent:2em
-  }
-  img {
-    max-width: 100%;
-  }
-  code {
-    border-radius: 20px
   }
 }
 </style>
