@@ -19,7 +19,7 @@ module.exports = merge(common, {
       }
     ]
   },
-  devtool: 'eval-source-map',
+  devtool: 'inline-source-map',
   plugins: [
     new Dotenv({ path: './.env.development' }),
     new webpack.HotModuleReplacementPlugin(),

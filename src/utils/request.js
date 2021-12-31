@@ -8,7 +8,6 @@ const service = axios.create({
 })
 
 const err = (response) => {
-  console.log(response)
   if (response.status === 200) {
     switch (response.data.state) {
       case 500:
@@ -50,7 +49,6 @@ service.interceptors.request.use(config => {
 })
 
 service.interceptors.response.use(response => {
-  console.log(response)
   if (response.status === 200) {
     if (response.data.success) {
       return response.data

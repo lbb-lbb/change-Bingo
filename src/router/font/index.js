@@ -34,7 +34,7 @@ export default [
     {
         path: 'friendLink',
         name: 'friendLink',
-        component: () => import('../../view/font/WikiLayout'),
+        component: () => import('../../view/common/LinkLayout'),
         meta: {
             title: '友链'
         }
@@ -42,7 +42,7 @@ export default [
     {
         path: 'project',
         name: 'project',
-        component: () => import('../../view/font/WikiLayout'),
+        component: () => import('../../view/common/ProjectLayout'),
         meta: {
             title: '开发项目展示'
         }

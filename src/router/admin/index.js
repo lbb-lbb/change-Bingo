@@ -27,7 +27,7 @@ export default [
     {
         path: 'manageProject',
         name: 'manageProject',
-        component: () => import('../../view/admin/Message'),
+        component: () => import('../../view/common/ProjectLayout'),
         meta: {
             title: '项目管理'
         }
@@ -43,7 +43,7 @@ export default [
     {
         path: 'manageFriendLink',
         name: 'manageFriendLink',
-        component: () => import('../../view/admin/Message'),
+        component: () => import('../../view/common/LinkLayout'),
         meta: {
             title: '友链管理'
         }
