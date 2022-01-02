@@ -56,6 +56,9 @@ body{
 strong {
   color: #6193BB;
 }
+.icon {
+  color: #ffffff;
+}
 
 // 修改element ui全局的input样式
 .el-input .el-input__inner {

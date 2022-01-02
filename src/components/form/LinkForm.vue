@@ -92,5 +92,6 @@ export default {
 <style>
 .modal-body {
   background: rgba(35,35,44,1);
+  border-radius: 20px;
 }
 </style>
