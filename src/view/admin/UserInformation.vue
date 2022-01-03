@@ -29,6 +29,26 @@
               <template slot="prepend">个人介绍</template>
             </el-input>
           </el-form-item>
+          <el-form-item prop="longIntroduction">
+            <el-input
+                type="textarea"
+                :autosize="{minRows:3}"
+                v-model="formData.longIntroduction"
+                placeholder="个人简介"
+            >
+              <template slot="prepend">个人介绍（长）</template>
+            </el-input>
+          </el-form-item>
+          <el-form-item prop="blogIntroduction">
+            <el-input
+                type="textarea"
+                :autosize="{minRows:3}"
+                v-model="formData.blogIntroduction"
+                placeholder="个人简介"
+            >
+              <template slot="prepend">关于博客</template>
+            </el-input>
+          </el-form-item>
         </el-form>
         <div>
           <el-button type="primary" size="small" @click="submit">保存修改</el-button>

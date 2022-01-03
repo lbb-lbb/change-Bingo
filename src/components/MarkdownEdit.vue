@@ -141,7 +141,7 @@ export default {
           this.formData.content = result.content
           this.formData.abstract = result.abstract
           this.formData.tag = result.tag.split(',')
-          this.formData.category = result.category.split(',')
+          this.formData.category = result.category
           this.formData.title = result.title
         }
       } else {

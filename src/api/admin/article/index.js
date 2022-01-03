@@ -11,6 +11,14 @@ export function getUserHomeData(params = {}) {
   })
 }
 
+export function getArticleInfo(params = {}) {
+  return request({
+    url: '/admin/article/info',
+    method: 'get',
+    params: params
+  })
+}
+
 /**
  * 创建文章
  */

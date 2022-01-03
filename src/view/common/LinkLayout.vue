@@ -137,7 +137,8 @@ export default {
   }
   .action-button {
     align-self: end;
-    justify-self: end
+    justify-self: end;
+    cursor: pointer;
   }
 }
 .page {

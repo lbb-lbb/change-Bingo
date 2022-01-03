@@ -3,18 +3,13 @@
     <div>
       <el-form :model="formData" :rules="rules" ref="form" hide-required-asterisk>
         <el-form-item prop="name">
-          <el-input maxlength="50" v-model="formData.name" placeholder="网站名称">
-            <template slot="prepend">昵称</template>
+          <el-input maxlength="50" v-model="formData.name" placeholder="项目名称">
+            <template slot="prepend">项目名称</template>
           </el-input>
         </el-form-item>
         <el-form-item prop="link">
-          <el-input maxlength="255" v-model="formData.link" placeholder="网站地址">
-            <template slot="prepend">网站地址</template>
-          </el-input>
-        </el-form-item>
-        <el-form-item prop="head">
-          <el-input maxlength="255" v-model="formData.head" placeholder="头像地址">
-            <template slot="prepend">头像地址</template>
+          <el-input maxlength="255" v-model="formData.link" placeholder="链接地址">
+            <template slot="prepend">链接地址</template>
           </el-input>
         </el-form-item>
         <el-form-item prop="remark">
@@ -32,7 +27,7 @@
 
 <script>
 export default {
-  name: "LinkForm",
+  name: "projectForm",
   data() {
     return {
       formData: {},
@@ -54,7 +49,7 @@ export default {
     submit() {
       this.$refs.form.validate(async valid => {
         if (valid) {
-          let { success, message } = await this.$dao.adminLink.createLink(this.formData)
+          let { success, message } = await this.$dao.adminProject.createProject(this.formData)
           if (success) {
             this.$message.success('提交成功')
             this.close()
