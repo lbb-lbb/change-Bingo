@@ -1,6 +1,6 @@
 <template>
 <div class="label-card">
-  <div class="label" v-for="item in labels" :key="item">{{item}}</div>
+  <div class="label" v-for="item in labels" :key="item" @click="goWatch(item)">{{item}}</div>
 </div>
 </template>
 
@@ -18,6 +18,13 @@ export default {
       if(res.success) {
         this.labels = [...new Set([...res.result.category, ...res.result.tags])]
       }
+    },
+    goWatch(name) {
+      this.$router.push({
+        path: '/home/article',
+        name: 'article',
+        params: { tag: name },
+      })
     }
   },
   mounted() {
@@ -41,7 +48,7 @@ export default {
   border-radius: 20px;
   margin-bottom: 20px;
   overflow: hidden;
-  background: rgba(35,35,44,0.7);
+  background: rgba(35,35,44,1);
   padding: 20px;
 }
 </style>

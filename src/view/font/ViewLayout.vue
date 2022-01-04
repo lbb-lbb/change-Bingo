@@ -6,7 +6,7 @@
         <div class="message">
           <div>
             <div><el-tag type="danger" size="mini" effect="plain">作者</el-tag> {{article && article.userName}}</div>
-            <div>写了多少篇文章的人，回复了多少人</div>
+            <div>{{article && article.introduction}}</div>
           </div>
           <div v-if="getLogin" class="action">
             <div @click="editArticle">
@@ -32,7 +32,8 @@
         </div>
         <div class="end-tip">文章已经结束了</div>
         <div class="tag">
-          标签：<el-tag v-for="item in tag" :key="item" type="danger" size="mini" effect="plain">{{item}}</el-tag>
+          <span style="background-color: #6193BB" @click="goWatch(article.category)">{{article.category}}</span>
+          <span v-for="item in tag" :key="item" @click="goWatch(item)">{{item}}</span>
         </div>
         <div>
           <CommentGroup :is-user="getLogin" :id="this.$route.query.id" />
@@ -103,6 +104,13 @@ export default {
       if (res.success) {
         this.$message.success('删除成功')
       }
+    },
+    goWatch(name) {
+      this.$router.push({
+        path: '/home/article',
+        name: 'article',
+        params: { tag: name },
+      })
     }
   },
   mounted() {
@@ -173,7 +181,7 @@ export default {
   flex: 1 1 70%;
   box-sizing: border-box;
   border-radius: 20px;
-  background: rgba(35,35,44,0.7);
+  background: rgba(35,35,44,1);
   padding: 20px;
 }
 .right-menu-layout{
@@ -192,6 +200,7 @@ export default {
   display: flex;
   content: " ";
   border-top: 1px dashed #ccc;
+  border-bottom-width: 5px;
   height: 1px;
 }.end-tip:after {
    flex: 1;
@@ -201,10 +210,13 @@ export default {
    height: 1px;
  }
 .tag {
-  border: 1px dashed #ccc;
-  padding: 20px 20px 20px 35px ;
-  .el-tag {
-    margin-right: 5px;
+  span{
+    margin: 0 5px 20px 0;
+    display: inline-block;
+    cursor: pointer;
+    background-color: #13131A;
+    padding: 10px;
+    border-radius: 10px;
   }
 }
 </style>

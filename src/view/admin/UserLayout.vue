@@ -190,7 +190,7 @@ export default {
     margin-top: 60px !important;
   }
   .el-footer{
-    background: rgba(35,35,44,0.7);
+    background: rgba(35,35,44,1);
     opacity: 0.7;
     font-size: 12px;
   }

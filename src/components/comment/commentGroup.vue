@@ -154,7 +154,6 @@ export default {
 
 <style scoped lang="less">
 .top {
-  border-top: 1px dashed #ccc;
   padding: 20px 0;
 }
 .name {
@@ -188,9 +187,6 @@ export default {
 }
 .add-comment:hover {
   cursor: pointer;
-  background-color: rgba(35,35,44,0.7);
-  border-radius: 5px;
-  padding: 3px;
 }
 .comment-space {
   display: flex;
@@ -212,7 +208,7 @@ export default {
     padding: 3px;
   }
   .reply-button:hover {
-    background-color: rgba(35,35,44,0.7);
+    background-color: rgba(35,35,44,1);
     border-radius: 5px;
   }
 }

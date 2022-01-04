@@ -8,6 +8,14 @@ export default [
         }
     },
     {
+        path: 'article',
+        name: 'article',
+        component: () => import('../../view/font/ArticleLayout'),
+        meta: {
+            title: '文章'
+        }
+    },
+    {
         path: 'classification',
         name: 'classification',
         component: () => import('../../view/font/BlogLayout'),

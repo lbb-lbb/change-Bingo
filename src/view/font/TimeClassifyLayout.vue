@@ -80,7 +80,7 @@ export default {
   padding: 20px;
   border-radius: 20px;
   overflow: hidden;
-  background: rgba(35,35,44,0.7);
+  background: rgba(35,35,44,1);
   color: #dfdfdf;
 }
 .right-menu-layout{

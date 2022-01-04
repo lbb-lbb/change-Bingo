@@ -48,7 +48,7 @@ li {
   border-radius: 20px;
   margin-bottom: 20px;
   overflow: hidden;
-  background: rgba(35,35,44,0.7);
+  background: rgba(35,35,44,1);
   padding: 20px;
 }
 .classify {
@@ -70,7 +70,7 @@ li {
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
-  background-color: #777;
+  background-color: #454558;
   border-radius: 10px;
 }
 </style>
