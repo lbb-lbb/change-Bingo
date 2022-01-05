@@ -36,7 +36,7 @@ export default new Vuex.Store({
       util.setSessionStorage('isPhone', data)
     },
     setCommonUser(state, data) {
-      state.user = data
+      state.commonUser = data
       util.setSessionStorage('commonUser', data)
     },
   },

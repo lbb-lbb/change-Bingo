@@ -1,11 +1,11 @@
 <template>
   <div class="article-card">
     <el-row :gutter="12">
-      <el-col :xs="22" :sm="23">
+      <el-col :xs="21" :sm="23">
         <el-input style="width: 100%" v-model="pages.title" @change="getPageData" placeholder="搜索文章..." />
       </el-col>
-      <el-col :xs="2" :sm="1">
-        <span class="icon iconfont icon-liebiao" style="font-size: 25px" @click="resetPage" />
+      <el-col :xs="3" :sm="1">
+        <span class="reset icon iconfont icon-zhongzhi" style="font-size: 25px" @click="resetPage" />
       </el-col>
     </el-row>
     <el-row :gutter="12">
@@ -133,6 +133,15 @@ export default {
 }
 .el-row {
   margin-bottom: 10px;
+}
+.reset {
+  cursor: pointer;
+  border-radius: 10px;
+  background-color: #13131A;
+  padding: 5px;
+}
+.reset:hover {
+  background-color: #6193BB;
 }
 .article {
   display: flex;

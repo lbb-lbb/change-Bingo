@@ -1,14 +1,13 @@
 <template>
   <div>
     <div class="container" v-for="item in dataList" :key="item.id">
-      <el-avatar class="head" alt="头像" src="../public/头像.jpg"></el-avatar>
+      <el-avatar :size="50" shape="square" class="head" alt="头像" :src="item.head || defaultHead"></el-avatar>
       <div class="main">
         <div class="content">
           <div class="message">
-            <div v-if="item.replyGroup">{{item.name}} 回复了 {{item.replyGroup.name}} 的评论</div>
-            <div v-else>{{item.name}}评论了你的文章</div>
+            <div><strong>{{item.name}}</strong></div>
             <div class="comment">{{item.comment}}</div>
-            <div class="reply-comment" v-if="item.replyGroup">“{{item.replyGroup.comment}}”</div>
+            <div class="reply-comment" v-if="item.replyGroup">{{item.replyGroup.name}}：“{{item.replyGroup.comment}}”</div>
           </div>
           <div class="title" :title="item.title" @click="goWatch(item.titleId)">{{item.title}}</div>
         </div>
@@ -68,7 +67,8 @@ export default {
         count: 0
       },
       showComment: '',
-      dataList: []
+      dataList: [],
+      defaultHead: require('../public/images/head.jpeg').default
     }
   },
   methods: {
@@ -125,7 +125,7 @@ export default {
   margin-bottom: 10px;
   border-bottom: 1px solid #ccc;
   .head {
-    flex: 0 0 40px;
+    flex: 0 0 50px;
     margin-right: 10px;
   }
   .main {

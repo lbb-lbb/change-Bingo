@@ -7,6 +7,14 @@ export function setSessionStorage(name,value) {
   sessionStorage.setItem(name ,JSON.stringify(value))
 }
 
+export function getLocalStorage (name) {
+  return JSON.parse(localStorage.getItem(name))
+}
+
+export function setLocalStorage(name,value) {
+  localStorage.setItem(name ,JSON.stringify(value))
+}
+
 // 节流
 export function throttle(fn, wait) {
   let timer = null;

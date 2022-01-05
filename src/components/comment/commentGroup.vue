@@ -5,13 +5,12 @@
       <div v-if="!isUser" class="add-comment" @click="addComment">添加新评论</div>
     </div>
     <div class="m-b-20" v-for="item in commentGroup" :key="item.id">
-      <div class="m-b-20 border-bottom">
+      <div class="m-b-20">
         <div class="comment-space">
-          <el-avatar shape="square" alt="头像" src="./public/头像.jpg"></el-avatar>
+          <el-avatar :size="50" shape="square" alt="头像" :src="item.head || defaultHead"></el-avatar>
           <div class="main">
             <div class="name">
-              {{item.name}}
-              <el-divider direction="vertical"></el-divider>
+              <strong>{{item.name}}</strong>
               <span class="time">{{item.creatTime}}</span>
             </div>
             <div class="comment">{{item.comment}}</div>
@@ -29,19 +28,23 @@
         </div>
         <Comment :is-user="isUser" v-if="showComment === item.id" :title-id="id" :pid="item.id" @submit="submit" />
       </div>
-      <div class="reply m-b-20 border-bottom" v-for="reply in item.reply" :key="reply.id">
+      <div class="reply m-b-20" v-for="reply in item.reply" :key="reply.id">
         <div class="comment-space">
-          <el-avatar shape="square" alt="头像" src="./public/头像.jpg"></el-avatar>
+          <el-avatar :size="50" shape="square" alt="头像" :src="reply.userHead || reply.head || defaultHead"></el-avatar>
           <div class="main">
-            <div v-if="reply.replyGroup">
-              <div class="name">{{reply.name}}  回复  {{reply.replyGroup[0].name}}<el-divider direction="vertical"></el-divider><span class="time">{{item.creatTime}}</span></div>
+            <div class="name">
+              <strong>{{reply.userName || reply.name}}</strong>
+              <span class="userTag" v-if="reply.userHead ">博主</span>
+              <span class="time">{{reply.creatTime}}</span>
             </div>
-            <div class="name" v-else>{{reply.name}}<el-divider direction="vertical"></el-divider><span class="time">{{item.creatTime}}</span></div>
-            <div class="comment">{{reply.comment}}</div>
-            <div v-if="reply.replyGroup" class="comment reply-comment">
-              “{{reply.replyGroup[0].comment.length> 20 ?
-              reply.replyGroup[0].comment.substr(0, 20) + '...'
-              : reply.replyGroup[0].comment}}”</div>
+            <div class="comment">
+              <div>{{reply.comment}}</div>
+              <div v-if="reply.replyGroup" class="comment reply-comment">
+                {{reply.replyGroup[0].name}}：“{{reply.replyGroup[0].comment.length> 20 ?
+                reply.replyGroup[0].comment.substr(0, 20) + '...'
+                : reply.replyGroup[0].comment}}”
+              </div>
+            </div>
             <div>
               <div class="reply-button" @click="replyComment(reply.id)">
                 <span class="icon iconfont icon-xiaohuifu" style="font-size: 12px"></span>
@@ -98,7 +101,8 @@ export default {
         count: 0
       },
       commentGroup: [],
-      showComment: ''
+      showComment: '',
+      defaultHead: require('../../public/images/head.jpeg').default
     }
   },
   methods: {
@@ -159,12 +163,24 @@ export default {
 .name {
   font-weight: 500;
   font-size: 14px;
+  padding: 5px 10px;
+  .userTag {
+    font-size: 12px;
+    padding: 5px;
+    background-color: #6193BB;
+    border-radius: 5px;
+    margin-right: 10px;
+  }
+  strong {
+    margin-right: 10px;
+  }
 }
 .comment {
   font-size: 14px;
-  line-height: 22px;
-  margin-top: 8px;
   font-weight: normal;
+  background-color: #13131A;
+  padding: 20px;
+  border-radius: 10px;
 }
 .time {
   font-size: 14px;
@@ -172,14 +188,7 @@ export default {
   font-weight: normal;
 }
 .reply-comment {
-  display: flex;
-  border-radius: 2px;
-  padding: 0 12px;
-  line-height: 34px;
-  height: 34px;
-  font-size: 14px;
   color: #86909c;
-  margin-top: 8px;
 }
 .space {
   display: flex;
@@ -192,10 +201,10 @@ export default {
   display: flex;
   justify-items: center;
   .el-avatar {
-    flex: 0 0 40px;
+    flex: 0 0 50px;
   }
   .main {
-    margin-left: 5px;
+    margin-left: 10px;
     flex: 1 1 auto;
   }
   .reply-button {
