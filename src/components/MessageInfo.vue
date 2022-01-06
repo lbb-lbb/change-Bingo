@@ -12,7 +12,7 @@
           <div class="title" :title="item.title" @click="goWatch(item.titleId)">{{item.title}}</div>
         </div>
         <div class="action">
-          <div>{{item.creatTime}}</div>
+          <div>{{$util.dayJs.unix(item.creatTime).fromNow()}}</div>
           <div>
             <div v-if="type === 0" class="action-button" @click="submitComment(1, item.id, item.titleId)">审核通过</div>
             <div v-if="type === 1 || type === 2" class="action-button" @click="replyComment(item.id)">

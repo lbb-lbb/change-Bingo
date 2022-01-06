@@ -1,5 +1,5 @@
 <template>
-  <div class="link-card">
+  <div class="link-card animate__animated animate__bounceInLeft">
     <div class="add-button">
       <el-button v-if="getLogin" type="text" @click="add">新增</el-button>
     </div>

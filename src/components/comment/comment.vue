@@ -53,7 +53,7 @@
       </el-form-item>
       <el-form-item label="">
         <div style="text-align: right">
-          <el-button type="primary" size="small" @click="submitForm">发表评论</el-button>
+          <el-button round type="primary" size="mini" @click="submitForm">发表评论</el-button>
         </div>
       </el-form-item>
     </el-form>

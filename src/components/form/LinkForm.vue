@@ -4,33 +4,35 @@
       <el-form :model="formData" :rules="rules" ref="form" hide-required-asterisk>
         <el-form-item prop="name">
           <el-input maxlength="50" v-model="formData.name" placeholder="网站名称">
-            <template slot="prepend">昵称</template>
+            <template v-if="!getIsPhone" slot="prepend">昵称</template>
           </el-input>
         </el-form-item>
         <el-form-item prop="link">
           <el-input maxlength="255" v-model="formData.link" placeholder="网站地址">
-            <template slot="prepend">网站地址</template>
+            <template v-if="!getIsPhone" slot="prepend">网站地址</template>
           </el-input>
         </el-form-item>
         <el-form-item prop="head">
           <el-input maxlength="255" v-model="formData.head" placeholder="头像地址">
-            <template slot="prepend">头像地址</template>
+            <template v-if="!getIsPhone" slot="prepend">头像地址</template>
           </el-input>
         </el-form-item>
         <el-form-item prop="remark">
           <el-input type="textarea" maxlength="500" :autosize="{minRows: 3, minRows: 6}" v-model="formData.remark" placeholder="描述">
-            <template slot="prepend">描述</template>
+            <template v-if="!getIsPhone" slot="prepend">描述</template>
           </el-input>
         </el-form-item>
       </el-form>
       <div>
-        <el-button type="primary" size="small" @click="submit">确认</el-button>
+        <el-button round size="mini" @click="close">取消</el-button>
+        <el-button round type="primary" size="mini" @click="submit">确认</el-button>
       </div>
     </div>
   </el-dialog>
 </template>
 
 <script>
+import {mapGetters} from "vuex";
 export default {
   name: "LinkForm",
   data() {
@@ -49,6 +51,9 @@ export default {
       },
       visible: false,
     }
+  },
+  computed: {
+    ...mapGetters(['getIsPhone'])
   },
   methods: {
     submit() {

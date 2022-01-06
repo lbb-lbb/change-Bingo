@@ -217,6 +217,7 @@ export default {
     background-color: #13131A;
     padding: 10px;
     border-radius: 10px;
+    font-size: 12px;
   }
 }
 </style>

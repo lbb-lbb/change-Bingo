@@ -4,14 +4,14 @@
       <div>{{pages.count}}条评论</div>
       <div v-if="!isUser" class="add-comment" @click="addComment">添加新评论</div>
     </div>
-    <div class="m-b-20" v-for="item in commentGroup" :key="item.id">
+    <div class="m-b-20 animate__animated animate__bounceInUp" v-for="item in commentGroup" :key="item.id">
       <div class="m-b-20">
         <div class="comment-space">
           <el-avatar :size="50" shape="square" alt="头像" :src="item.head || defaultHead"></el-avatar>
           <div class="main">
             <div class="name">
               <strong>{{item.name}}</strong>
-              <span class="time">{{item.creatTime}}</span>
+              <span class="time">{{$util.dayJs.unix(item.creatTime).fromNow()}}</span>
             </div>
             <div class="comment">{{item.comment}}</div>
             <div>
@@ -35,7 +35,7 @@
             <div class="name">
               <strong>{{reply.userName || reply.name}}</strong>
               <span class="userTag" v-if="reply.userHead ">博主</span>
-              <span class="time">{{reply.creatTime}}</span>
+              <span class="time">{{$util.dayJs.unix(reply.creatTime).fromNow()}}</span>
             </div>
             <div class="comment">
               <div>{{reply.comment}}</div>
@@ -78,6 +78,7 @@
 
 <script>
 import Comment from './comment.vue'
+
 export default {
   name: 'commentGroup',
   components: {
@@ -152,6 +153,7 @@ export default {
   },
   mounted () {
     this.getComment()
+    console.log(this.$util.dayJs(1641283757).fromNow())
   }
 }
 </script>

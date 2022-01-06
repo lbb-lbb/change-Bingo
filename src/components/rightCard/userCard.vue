@@ -2,7 +2,7 @@
   <div class="user-card">
     <div class="introduction">
       <el-avatar :size="50" shape="square" alt="头像" :src="getCommonUser.head"></el-avatar>
-      <div>早上好，我是<strong>{{getCommonUser.name}}</strong>欢迎来到我的<strong>个人博客</strong></div>
+      <div>{{ greetings }}，我是<strong>{{getCommonUser.name}}</strong>欢迎来到我的<strong>个人博客</strong></div>
     </div>
     <div class="message">
       <el-popover>
@@ -34,8 +34,22 @@
 import { mapGetters } from 'vuex'
 export default {
   name: "userCard",
+  data () {
+    return {
+      hour: new Date().getHours()
+    }
+  },
   computed: {
-    ...mapGetters(['getCommonUser'])
+    ...mapGetters(['getCommonUser']),
+    greetings() {
+      return this.hour < 6 ? '凌晨好'
+        : this.hour < 9 ? '早上好'
+          : this.hour < 11 ? '上午好'
+            : this.hour < 13 ? '中午好'
+              : this.hour < 17 ? '下午好'
+                : this.hour < 19 ? '傍晚好'
+                  : '晚上好';
+    }
   },
   methods: {
     goLink(link) {
