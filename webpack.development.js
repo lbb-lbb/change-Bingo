@@ -15,7 +15,17 @@ module.exports = merge(common, {
     rules: [
       {
         test: /\.(less|css)$/,
-        use: ['style-loader', 'css-loader', 'less-loader']
+        use: [
+          'style-loader',
+          'css-loader',
+          'less-loader',
+          {
+            loader: 'sass-resources-loader',
+            options: {
+              resources: './src/public/css/style/common.less'
+            }
+          }
+        ]
       }
     ]
   },

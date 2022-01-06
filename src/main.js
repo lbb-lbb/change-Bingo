@@ -6,6 +6,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 import './plugin/elementUi'
 import './public/css/icon/iconfont.css'
 import './public/css/font/index.css'
+import './public/css/style/common.less'
 import 'animate.css'
 import {Message} from 'element-ui'
 // 引入mock造数据
