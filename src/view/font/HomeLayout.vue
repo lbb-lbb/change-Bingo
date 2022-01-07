@@ -100,7 +100,7 @@ export default {
 <style lang="less" scoped>
 h2 {
   margin: 10px 20px;
-  font-size: 18px;
+  font-size: var(--font-title);
   font-weight: 700;
   color: #fff;
   cursor: pointer;
@@ -112,7 +112,7 @@ h2:hover {
 
 p {
   color: #dfdfdf;
-  font-size: 14px;
+  font-size: var(--font-page);
   text-indent:2em;
 }
 
@@ -133,7 +133,7 @@ p {
   border-radius: 20px;
   margin-bottom: 20px;
   overflow: hidden;
-  background: rgba(35,35,44,1);
+  background: var(--base-background-color);
 }
 .right-menu-layout {
   flex: 0 0 300px;
@@ -152,15 +152,15 @@ p {
   display: inline-block;
   text-align: left;
   margin: 5px 20px;
-  font-size: 14px;
-  color: #dfdfdf;
+  font-size: var(--font-min);
+  color: var(--base-font-color);
 }
 .message-right {
   display: inline-block;
   text-align: right;
   margin: 5px 20px;
   font-size: 12px;
-  color: #dfdfdf;
+  color: var(--base-font-color);
 }
 .page{
   margin: 10px auto;

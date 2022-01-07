@@ -179,5 +179,8 @@ export default {
     flex: 0 0 50px;
     margin-right: 10px;
   }
+  .el-form {
+    flex: 1 1 auto;
+  }
 }
 </style>

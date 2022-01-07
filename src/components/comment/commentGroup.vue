@@ -7,21 +7,21 @@
     <div class="m-b-20 animate__animated animate__bounceInUp" v-for="item in commentGroup" :key="item.id">
       <div class="m-b-20">
         <div class="comment-space">
-          <el-avatar :size="50" shape="square" alt="头像" :src="item.head || defaultHead"></el-avatar>
+          <el-avatar shape="square" alt="头像" :src="item.head || defaultHead"></el-avatar>
           <div class="main">
             <div class="name">
               <strong>{{item.name}}</strong>
               <span class="time">{{$util.dayJs.unix(item.creatTime).fromNow()}}</span>
             </div>
-            <div class="comment">{{item.comment}}</div>
+            <div class="comment">
+              <LongStrDeal :title="item.comment" lineHeight="18" eclipse="3" />
+            </div>
             <div>
               <div class="reply-button" @click="replyComment(item.id)">
-                <span class="icon iconfont icon-xiaohuifu" style="font-size: 12px"></span>
-                {{showComment === item.id ? '取消回复' : '回复'}}
+                <span class="icon iconfont icon-xiaohuifu" style="font-size: 12px"> {{showComment === item.id ? '取消回复' : '回复'}}</span>
               </div>
               <div v-if="isUser" class="reply-button" @click="deleteComment(3, item.id)">
-                <span class="icon iconfont icon-shanchu1" style="font-size: 12px;"></span>
-                删除
+                <span class="icon iconfont icon-shanchu1" style="font-size: 12px;"> 删除</span>
               </div>
             </div>
           </div>
@@ -30,7 +30,7 @@
       </div>
       <div class="reply m-b-20" v-for="reply in item.reply" :key="reply.id">
         <div class="comment-space">
-          <el-avatar :size="50" shape="square" alt="头像" :src="reply.userHead || reply.head || defaultHead"></el-avatar>
+          <el-avatar shape="square" alt="头像" :src="reply.userHead || reply.head || defaultHead"></el-avatar>
           <div class="main">
             <div class="name">
               <strong>{{reply.userName || reply.name}}</strong>
@@ -38,21 +38,17 @@
               <span class="time">{{$util.dayJs.unix(reply.creatTime).fromNow()}}</span>
             </div>
             <div class="comment">
-              <div>{{reply.comment}}</div>
-              <div v-if="reply.replyGroup" class="comment reply-comment">
-                {{reply.replyGroup[0].name}}：“{{reply.replyGroup[0].comment.length> 20 ?
-                reply.replyGroup[0].comment.substr(0, 20) + '...'
-                : reply.replyGroup[0].comment}}”
+              <LongStrDeal :title="item.comment" lineHeight="18" eclipse="3" />
+              <div class="content reply-comment">
+                <LongStrDeal v-if="reply.replyGroup" :title="`＠${reply.replyGroup[0].name}：${reply.replyGroup[0].comment}`" lineHeight="18" eclipse="3" />
               </div>
             </div>
             <div>
               <div class="reply-button" @click="replyComment(reply.id)">
-                <span class="icon iconfont icon-xiaohuifu" style="font-size: 12px"></span>
-                {{showComment === reply.id ? '取消回复' : '回复'}}
+                <span class="icon iconfont icon-xiaohuifu" style="font-size: 12px"> {{showComment === reply.id ? '取消回复' : '回复'}}</span>
               </div>
               <div v-if="isUser" class="reply-button" @click="deleteComment(3, reply.id)">
-                <span class="icon iconfont icon-shanchu1" style="font-size: 12px;"></span>
-                删除
+                <span class="icon iconfont icon-shanchu1" style="font-size: 12px;"> 删除</span>
               </div>
             </div>
           </div>
@@ -78,11 +74,12 @@
 
 <script>
 import Comment from './comment.vue'
-
+import LongStrDeal from "../LongStrDeal";
 export default {
   name: 'commentGroup',
   components: {
-    Comment
+    Comment,
+    LongStrDeal
   },
   props: {
     id: {
@@ -153,7 +150,6 @@ export default {
   },
   mounted () {
     this.getComment()
-    console.log(this.$util.dayJs(1641283757).fromNow())
   }
 }
 </script>
@@ -164,33 +160,35 @@ export default {
 }
 .name {
   font-weight: 500;
-  font-size: 14px;
+  font-size: var(--font-min);
   padding: 5px 10px;
   .userTag {
     font-size: 12px;
     padding: 5px;
     background-color: #6193BB;
     border-radius: 5px;
-    margin-right: 10px;
+    margin-right: var(--margin-right);
   }
   strong {
-    margin-right: 10px;
+    margin-right: var(--margin-right);
   }
 }
 .comment {
-  font-size: 14px;
+  font-size: var(--font-min);
   font-weight: normal;
   background-color: #13131A;
-  padding: 20px;
+  padding: var(--padding);
   border-radius: 10px;
 }
 .time {
-  font-size: 14px;
+  font-size: var(--font-min);
   color: #86909c;
   font-weight: normal;
 }
 .reply-comment {
   color: #86909c;
+  box-sizing: border-box;
+  margin-left: var(--margin-left);
 }
 .space {
   display: flex;
@@ -198,29 +196,30 @@ export default {
 }
 .add-comment:hover {
   cursor: pointer;
+  color: #6193BB;
 }
 .comment-space {
   display: flex;
   justify-items: center;
   .el-avatar {
-    flex: 0 0 50px;
+    flex: 0 0 var(--head-width);
+    height: var(--head-width)
   }
   .main {
-    margin-left: 10px;
+    margin-left: var(--margin-left);
     flex: 1 1 auto;
   }
   .reply-button {
     display: inline-block;
-    margin-right: 16px;
+    margin-right: var(--margin-right);
     max-width: 70px;
     line-height: 20px;
     font-size: 12px;
     cursor: pointer;
     padding: 3px;
   }
-  .reply-button:hover {
-    background-color: rgba(35,35,44,1);
-    border-radius: 5px;
+  .reply-button, span:hover {
+    color: #6193BB;
   }
 }
 .reply {
@@ -231,7 +230,7 @@ export default {
 }
 .border-bottom {
   border-bottom: 1px solid #ccc;
-  margin-bottom: 15px;
+  margin-bottom: var(--margin-bottom);
   padding: 5px 0;
 }
 

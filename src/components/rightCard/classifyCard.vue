@@ -26,11 +26,13 @@ export default {
 h3 {
   width: 100%;
   margin-bottom: 10px;
+  font-size: var(--font-title);
 }
 a{
   display: block;
   text-decoration: none;
   color: #dfdfdf;
+  font-size: var(--font-page);
 }
 a:hover {
   color: #4183c4;
@@ -48,7 +50,7 @@ li {
   border-radius: 20px;
   margin-bottom: 20px;
   overflow: hidden;
-  background: rgba(35,35,44,1);
+  background: var(--base-background-color);
   padding: 20px;
 }
 .classify {
@@ -64,7 +66,7 @@ li {
   display: inline-block;
   min-width: 10px;
   padding: 3px 7px;
-  font-size: 12px;
+  font-size: var(--font-min);
   font-weight: 700;
   color: #fff;
   text-align: center;

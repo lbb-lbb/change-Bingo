@@ -3,17 +3,17 @@
     <el-form :model="formData" :rules="rules" ref="form" hide-required-asterisk>
       <el-form-item prop="oldPassword">
         <el-input type="password" maxlength="16" v-model="formData.oldPassword" placeholder="请输入原密码">
-          <template slot="prepend">旧密码</template>
+          <template v-if="!getIsPhone" slot="prepend">旧密码</template>
         </el-input>
       </el-form-item>
       <el-form-item prop="password">
         <el-input type="password" maxlength="16" v-model="formData.password" placeholder="请输入新密码">
-          <template slot="prepend">新密码</template>
+          <template v-if="!getIsPhone" slot="prepend">新密码</template>
         </el-input>
       </el-form-item>
       <el-form-item prop="password1">
         <el-input type="password" v-model="formData.password1" placeholder="请再次输入新密码">
-          <template slot="prepend">确认新密码</template>
+          <template v-if="!getIsPhone" slot="prepend">确认新密码</template>
         </el-input>
       </el-form-item>
     </el-form>
@@ -25,7 +25,7 @@
 
 <script>
 import {Encrypt} from "../../utils/secret";
-import {mapActions} from 'vuex'
+import {mapActions, mapGetters} from 'vuex'
 export default {
   name: 'UserAccount',
   components: {
@@ -52,6 +52,9 @@ export default {
         ]
       }
     }
+  },
+  computed: {
+    ...mapGetters(['getIsPhone'])
   },
   methods: {
     ...mapActions(['setUser']),

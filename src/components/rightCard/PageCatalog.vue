@@ -28,11 +28,14 @@ export default {
 <style scoped>
 h3 {
   width: 100%;
+  margin-bottom: 10px;
+  font-size: var(--font-title);
 }
 a{
   display: block;
   text-decoration: none;
   color: #dfdfdf;
+  font-size: var(--font-page);
 }
 a:hover {
   color: #4183c4;
@@ -50,7 +53,7 @@ li {
   border-radius: 20px;
   margin-bottom: 20px;
   overflow: hidden;
-  background: rgba(35,35,44,1);
+  background: var(--base-background-color);
   padding: 20px !important;
 }
 .H1 {

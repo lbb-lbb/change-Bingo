@@ -32,7 +32,8 @@ import {
   Drawer,
   Popover,
   Switch,
-  Dialog
+  Dialog,
+  Tooltip
 } from 'element-ui'
 
 Vue.use(Button)
@@ -68,3 +69,4 @@ Vue.use(Button)
   .use(Popover)
   .use(Switch)
   .use(Dialog)
+  .use(Tooltip)

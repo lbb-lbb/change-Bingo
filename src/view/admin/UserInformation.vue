@@ -5,17 +5,17 @@
         <el-form :model="formData" ref="form">
           <el-form-item prop="name">
             <el-input maxlength="20" v-model="formData.name" placeholder="用户名">
-              <template slot="prepend">用户名</template>
+              <template v-if="!getIsPhone" slot="prepend">用户名</template>
             </el-input>
           </el-form-item>
           <el-form-item prop="tag">
             <el-input maxlength="100" v-model="formData.tag" placeholder="多个标签请用逗号隔开">
-              <template slot="prepend">标签</template>
+              <template v-if="!getIsPhone" slot="prepend">标签</template>
             </el-input>
           </el-form-item>
           <el-form-item prop="github">
             <el-input maxlength="100" v-model="formData.github" placeholder="个人github网址">
-              <template slot="prepend">github</template>
+              <template v-if="!getIsPhone" slot="prepend">github</template>
             </el-input>
           </el-form-item>
           <el-form-item prop="introduction">
@@ -26,7 +26,7 @@
               v-model="formData.introduction"
               placeholder="个人简介"
             >
-              <template slot="prepend">个人介绍</template>
+              <template v-if="!getIsPhone" slot="prepend">个人介绍</template>
             </el-input>
           </el-form-item>
           <el-form-item prop="longIntroduction">
@@ -36,7 +36,7 @@
                 v-model="formData.longIntroduction"
                 placeholder="个人简介"
             >
-              <template slot="prepend">个人介绍（长）</template>
+              <template v-if="!getIsPhone" slot="prepend">个人介绍（长）</template>
             </el-input>
           </el-form-item>
           <el-form-item prop="blogIntroduction">
@@ -46,7 +46,7 @@
                 v-model="formData.blogIntroduction"
                 placeholder="个人简介"
             >
-              <template slot="prepend">关于博客</template>
+              <template v-if="!getIsPhone" slot="prepend">关于博客</template>
             </el-input>
           </el-form-item>
         </el-form>
@@ -83,7 +83,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['getUser'])
+    ...mapGetters(['getUser', 'getIsPhone'])
   },
   methods: {
     ...mapActions(['setUser']),
@@ -119,13 +119,14 @@ export default {
   display: flex;
   .form {
     flex: 1 1 auto;
+    margin-right: var(--margin-right);
   }
   .head {
-    flex: 0 0 150px;
+    flex: 0 0 var(--head-width);
     text-align: center;
   }
   .tip {
-    font-size: 12px;
+    font-size: var(--font-min);
     margin-bottom: 2px;
   }
 }

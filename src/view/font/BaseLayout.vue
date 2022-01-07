@@ -37,7 +37,7 @@
       <div class="right-menu">
         <div class="head">
           <el-avatar shape="square" alt="头像" :src="getCommonUser.head"></el-avatar>
-          <div>{{getCommonUser.name}}</div>
+          <div><strong>{{getCommonUser.name}}</strong></div>
         </div>
         <router-link class="link" to="/home" exact replace>首页</router-link>
         <router-link class="link" to="/home/article" exact replace>文章</router-link>
@@ -130,7 +130,7 @@ export default {
   }
 
   /deep/ .el-drawer__body{
-    background: rgba(35,35,44,1);
+    background: var(--base-background-color);
   }
   .right-menu {
     height: 400px;
@@ -168,9 +168,9 @@ export default {
     margin-top: 60px !important;
   }
   .el-footer{
-    background: rgba(35,35,44,1);
+    background: var(--base-background-color);
     opacity: 0.7;
-    font-size: 12px;
+    font-size: var(--font-min);
   }
   .footer{
     text-align: center;

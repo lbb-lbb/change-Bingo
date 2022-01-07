@@ -1,15 +1,26 @@
 <template>
   <div>
     <div class="container" v-for="item in dataList" :key="item.id">
-      <el-avatar :size="50" shape="square" class="head" alt="头像" :src="item.head || defaultHead"></el-avatar>
+      <el-avatar shape="square" class="head" alt="头像" :src="item.head || defaultHead"></el-avatar>
       <div class="main">
         <div class="content">
           <div class="message">
             <div><strong>{{item.name}}</strong></div>
-            <div class="comment">{{item.comment}}</div>
-            <div class="reply-comment" v-if="item.replyGroup">{{item.replyGroup.name}}：“{{item.replyGroup.comment}}”</div>
+            <div class="comment">
+              <div>
+                <LongStrDeal :title="item.comment" lineHeight="18" eclipse="3" />
+              </div>
+              <div class="reply-comment" v-if="item.replyGroup">
+                <LongStrDeal :title="`＠${item.replyGroup.name}：${item.replyGroup.comment}`" lineHeight="18" eclipse="3" />
+              </div>
+            </div>
           </div>
-          <div class="title" :title="item.title" @click="goWatch(item.titleId)">{{item.title}}</div>
+          <div v-if="item.titleId !== 'liuYanBan'&&!getIsPhone" class="title" :title="item.title" @click="goWatch(item.titleId)">
+            {{item.title}}
+          </div>
+          <div v-else-if="getIsPhone" :title="item.title" @click="goWatch(item.titleId)">
+            <span class="icon iconfont icon-wenzhangguanli" style="font-size: 12px;"> </span>
+          </div>
         </div>
         <div class="action">
           <div>{{$util.dayJs.unix(item.creatTime).fromNow()}}</div>
@@ -46,9 +57,14 @@
 
 <script>
 import Comment from './comment/comment.vue'
+import {mapGetters} from "vuex";
+import LongStrDeal from "./LongStrDeal";
 export default {
   name: 'MessageInfo',
-  components: {Comment},
+  components: {
+    Comment,
+    LongStrDeal
+  },
   props: {
     type: {
       type: Number,
@@ -70,6 +86,9 @@ export default {
       dataList: [],
       defaultHead: require('../public/images/head.jpeg').default
     }
+  },
+  computed: {
+    ...mapGetters(['getIsPhone'])
   },
   methods: {
     async getComment () {
@@ -121,12 +140,13 @@ export default {
 <style scoped lang="less">
 .container {
   display: flex;
-  padding: 0 20px 10px 20px;
+  padding: var(--padding);
   margin-bottom: 10px;
-  border-bottom: 1px solid #ccc;
   .head {
-    flex: 0 0 50px;
-    margin-right: 10px;
+    height: var(--head-width);
+    width: var(--head-width);
+    flex: 0 0 var(--head-width);
+    margin-right: var(--margin-left);
   }
   .main {
     flex: 1 1 auto;
@@ -134,36 +154,41 @@ export default {
       display: flex;
       justify-content: space-between;
       .message {
-        flex: 1 1 auto;
+        flex: 1 1 90%;
         margin: 8px 10px 0 0;
+        strong {
+          font-size: var(--font-min)
+        }
         .comment {
-          font-size: 15px;
+          font-size: var(--font-min);
           font-weight: 400;
           padding: 10px;
           margin-top: 8px;
-          border-radius: 3px;
+          background-color: #13131A;
+          border-radius: 20px;
         }
         .reply-comment {
-          display: flex;
-          border-radius: 2px;
-          padding: 0 12px;
-          line-height: 34px;
-          height: 34px;
+          color: #86909c;
+          margin-left: var(--margin-left);
+          margin-top: var(--margin-left);
           font-size: 12px;
         }
       }
       .title {
-        padding: 6px;
-        border-radius: 2px;
-        flex: 0 0 75px;
+        font-size: var(--font-min);
+        cursor: pointer;
+        border-radius: 10px;
+        color: #86909c;
+        background: #13131A;
+        text-align: center;
         overflow: hidden;
         text-overflow: ellipsis;
         display: -webkit-box;
-        -webkit-line-clamp: 6;
+        -webkit-line-clamp: 4;
+        word-break:break-all;
         -webkit-box-orient: vertical;
-        font-size: 14px;
-        font-weight: 400;
-        cursor: pointer;
+        flex: 0 0 10%;
+        height: auto;
       }
     }
     .action {
@@ -177,7 +202,7 @@ export default {
         display: inline-block;
       }
       .action-button:hover {
-        color: #1e80ff;
+        color: #6193BB;
       }
     }
   }

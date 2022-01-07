@@ -18,14 +18,42 @@ export default {
     window.addEventListener('resize', this.$util.throttle(() => {
       if (document.body.offsetWidth < 600) {
         this.setIsPhone(true)
+        document.body.style.setProperty('--head-width', '40px');
+        document.body.style.setProperty('--font-title', '16px');
+        document.body.style.setProperty('--font-page', '14px');
+        document.body.style.setProperty('--font-min', '12px');
+        document.body.style.setProperty('--padding', '5px');
+        document.body.style.setProperty('--margin', '5px');
+        document.body.style.setProperty('--margin-left', '5px');
       } else {
         this.setIsPhone(false)
+        document.body.style.setProperty('--head-width', '70px');
+        document.body.style.setProperty('--font-title', '22px');
+        document.body.style.setProperty('--font-page', '18px');
+        document.body.style.setProperty('--font-min', '14px');
+        document.body.style.setProperty('--padding', '20px');
+        document.body.style.setProperty('--margin', '20px');
+        document.body.style.setProperty('--margin-left', '10px')
       }
     }, 300))
     if (document.body.offsetWidth < 600) {
       this.setIsPhone(true)
+      document.body.style.setProperty('--head-width', '40px');
+      document.body.style.setProperty('--font-title', '16px');
+      document.body.style.setProperty('--font-page', '14px');
+      document.body.style.setProperty('--font-min', '12px');
+      document.body.style.setProperty('--padding', '5px');
+      document.body.style.setProperty('--margin', '5px');
+      document.body.style.setProperty('--margin-left', '5px');
     } else {
       this.setIsPhone(false)
+      document.body.style.setProperty('--head-width', '70px');
+      document.body.style.setProperty('--font-title', '22px');
+      document.body.style.setProperty('--font-page', '18px');
+      document.body.style.setProperty('--font-min', '14px');
+      document.body.style.setProperty('--padding', '20px');
+      document.body.style.setProperty('--margin', '20px');
+      document.body.style.setProperty('--margin-left', '10px');
     }
   },
   destroyed () {
@@ -46,12 +74,21 @@ export default {
   line-height: 1.5715;
 }
 body{
+  --font-title: 22px;
+  --font-page: 18px;
+  --font-min: 14px;
+  --margin: 20px;
+  --padding: 20px;
+  --margin-left: 10px;
+  --head-width: 70px;
+  --base-font-color: #dfdfdf;
+  --base-background-color: #23232C;
   min-width: 300px;
   background-image: url("./public/images/mainBg.jpg");
   background-size:cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  color: #dfdfdf;
+  color: var(--base-font-color);
 }
 strong {
   color: #6193BB;

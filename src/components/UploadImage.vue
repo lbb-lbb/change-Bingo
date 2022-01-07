@@ -81,9 +81,9 @@ export default {
 .avatar-uploader-icon {
   font-size: 28px;
   color: #ffffff;
-  width: 90px;
-  height: 90px;
-  line-height: 90px;
+  width: var(--head-width);
+  height: var(--head-width);
+  line-height: var(--head-width);
   text-align: center;
   background-color: #8c939d;
 }
@@ -91,14 +91,14 @@ export default {
   background-color: #8c939d;
 }
 .avatar {
-  width: 90px;
-  height: 90px;
+  width: var(--head-width);
+  height: var(--head-width);
   display: block;
   border-radius: 6px;
 }
 .remove {
   cursor: pointer;
-  font-size: 12px;
+  font-size: var(--font-min);
   color: #999999;
 }
 </style>

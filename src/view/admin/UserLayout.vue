@@ -39,7 +39,7 @@
         <div v-else>
           <div class="head">
             <el-avatar shape="square" :src="getUser.head"></el-avatar>
-            <div>{{getUser.name}}</div>
+            <div><strong>{{getUser.name}}</strong></div>
           </div>
         </div>
         <router-link class="link" to="/user" exact replace>首页</router-link>
@@ -138,7 +138,7 @@ export default {
     justify-content: space-between;
   }
   /deep/ .el-drawer__body{
-    background: rgba(35,35,44,1);
+    background: var(--base-background-color);
   }
   .right-menu {
     height: 400px;
@@ -190,9 +190,9 @@ export default {
     margin-top: 60px !important;
   }
   .el-footer{
-    background: rgba(35,35,44,1);
+    background: var(--base-background-color);
     opacity: 0.7;
-    font-size: 12px;
+    font-size: var(--font-min);
   }
   .footer{
     text-align: center;

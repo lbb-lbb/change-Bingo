@@ -38,7 +38,7 @@ export default {
   border-radius: 20px;
   margin-bottom: 20px;
   overflow: hidden;
-  background: rgba(35,35,44,1);
-  padding: 20px;
+  background: var(--base-background-color);
+  padding: var(--padding);
 }
 </style>

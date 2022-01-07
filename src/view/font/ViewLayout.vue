@@ -135,7 +135,7 @@ export default {
   .message {
     display: flex;
     justify-content: space-between;
-    font-size: 12px;
+    font-size: var(--font-min);
     color: #999999;
     margin-left: 50px;
     .action {
@@ -172,7 +172,7 @@ export default {
     color: #16a085
   }
   .message {
-    font-size: 12px;
+    font-size: var(--font-min);
     color: #999999;
     margin-bottom: 15px;
   }
@@ -181,7 +181,7 @@ export default {
   flex: 1 1 70%;
   box-sizing: border-box;
   border-radius: 20px;
-  background: rgba(35,35,44,1);
+  background: var(--base-background-color);
   padding: 20px;
 }
 .right-menu-layout{
@@ -217,7 +217,7 @@ export default {
     background-color: #13131A;
     padding: 10px;
     border-radius: 10px;
-    font-size: 12px;
+    font-size: var(--font-min);
   }
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <el-dialog :visible.sync="visible" custom-class="modal-body" :close-on-click-modal="false">
+  <el-dialog :visible.sync="visible" append-to-body  custom-class="modal-body" :close-on-click-modal="false">
     <div>
       <el-form :model="formData" :rules="rules" ref="form" hide-required-asterisk>
         <el-form-item prop="name">
@@ -91,7 +91,7 @@ export default {
 </style>
 <style>
 .modal-body {
-  background: rgba(35,35,44,1);
+  background: var(--base-background-color);
   border-radius: 20px;
 }
 </style>

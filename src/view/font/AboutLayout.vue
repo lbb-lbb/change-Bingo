@@ -6,10 +6,10 @@
       active-text="关于我"
       inactive-text="关于本站">
     </el-switch>
-    <div v-if="value" class="animate__animated animate__bounceInRight">
+    <div v-show="value" class="animate__animated animate__bounceInRight">
       <MarkedView :mark-down="getCommonUser.longIntroduction" />
     </div>
-    <div v-else class="animate__animated animate__bounceInLeft">
+    <div v-show="!value" class="animate__animated animate__bounceInLeft">
       <MarkedView :mark-down="getCommonUser.blogIntroduction" />
     </div>
   </div>
@@ -38,10 +38,13 @@ export default {
 .about-card {
   border-radius: 20px;
   overflow: hidden;
-  background: rgba(35,35,44,1);
+  background: var(--base-background-color);
   padding: 20px;
   max-width: 800px;
   margin: 20px auto;
+}
+.el-switch {
+  margin-bottom: 20px;
 }
 /deep/.el-switch__core:after {
   background-color: #454558;
@@ -54,7 +57,7 @@ export default {
 /deep/.el-switch__label {
   color: #696969;
 }
-.el-switch__label * {
+/deep/.el-switch__label *{
   font-size: 20px !important;
 }
 /deep/.el-switch__label.is-active {

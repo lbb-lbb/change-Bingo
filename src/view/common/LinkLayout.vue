@@ -6,7 +6,7 @@
     <el-row :gutter="10">
       <el-col :xs="24" :md="8" v-for="item in LinkList" :key="item.id">
         <div class="link-main">
-          <el-avatar :size="70" shape="square" alt="头像" :src="item.head"></el-avatar>
+          <el-avatar shape="square" alt="头像" :src="item.head"></el-avatar>
           <div class="right-box">
             <div class="name" :title="item.name" @click="goLink(item.link)"><strong>{{item.name}}</strong></div>
             <div  class="remark" :title="item.remark">{{item.remark}}</div>
@@ -93,7 +93,7 @@ export default {
 .link-card {
   border-radius: 20px;
   overflow: hidden;
-  background: rgba(35,35,44,1);
+  background: var(--base-background-color);
   padding: 20px;
   max-width: 800px;
   margin: 20px auto;
@@ -109,7 +109,7 @@ export default {
   display: flex;
   position: relative;
   .el-avatar {
-    flex: 0 0 70px;
+    flex: 0 0 var(--head-width);
   }
   .right-box {
     flex: 1 1 auto;
@@ -121,13 +121,14 @@ export default {
     text-overflow: ellipsis !important;
     white-space: nowrap;
     cursor: pointer;
+    font-size: var(--font-page)
   }
   .name:hover {
     text-decoration: underline;
     text-decoration-color: #6193BB;
   }
   .remark {
-    font-size: 14px;
+    font-size: var(--font-min);
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -143,5 +144,9 @@ export default {
 }
 .page {
   text-align: center;
+}
+.el-avatar {
+  width: var(--head-width);
+  height: var(--head-width);
 }
 </style>

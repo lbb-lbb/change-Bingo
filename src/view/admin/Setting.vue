@@ -36,7 +36,7 @@ export default {
   border-radius: 20px;
   margin-bottom: 20px;
   overflow: hidden;
-  background: rgba(35,35,44,1);
+  background: var(--base-background-color);
   padding: 20px;
 }
 </style>

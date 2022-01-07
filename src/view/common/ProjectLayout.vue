@@ -92,7 +92,7 @@ export default {
 .link-card {
   border-radius: 20px;
   overflow: hidden;
-  background: rgba(35,35,44,1);
+  background: var(--base-background-color);
   padding: 20px;
   max-width: 800px;
   margin: 20px auto;
@@ -113,6 +113,7 @@ export default {
     overflow: hidden;
   }
   .name {
+    font-size: var(--font-page);
     overflow: hidden !important;
     text-overflow: ellipsis !important;
     white-space: nowrap;
@@ -123,7 +124,7 @@ export default {
     text-decoration-color: #6193BB;
   }
   .remark {
-    font-size: 14px;
+    font-size: var(--font-min);
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -139,5 +140,9 @@ export default {
 }
 .page {
   text-align: center;
+}
+.el-avatar {
+  width: var(--head-width);
+  height: var(--head-width);
 }
 </style>

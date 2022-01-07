@@ -62,6 +62,12 @@ export default {
 </script>
 
 <style lang="less" scoped>
+h2 {
+  font-size: var(--font-title);
+}
+p {
+  font-size: var(--font-page);
+}
 .card {
   display: flex;
   flex-wrap: wrap;
@@ -80,7 +86,7 @@ export default {
   padding: 20px;
   border-radius: 20px;
   overflow: hidden;
-  background: rgba(35,35,44,1);
+  background: var(--base-background-color);
   color: #dfdfdf;
 }
 .right-menu-layout{
