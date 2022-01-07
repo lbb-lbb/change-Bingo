@@ -1,6 +1,6 @@
 <template>
   <div class="comment-form">
-    <el-avatar :size="50" shape="square" alt="头像" :src="headPath"></el-avatar>
+    <el-avatar shape="square" alt="头像" :src="headPath"></el-avatar>
     <el-form :model="formData" :rules="rules" ref="ruleForm" size="small" hide-required-asterisk>
       <el-row :gutter="20">
         <el-col :sm="8" :xs="24">
@@ -176,7 +176,9 @@ export default {
 .comment-form {
   display: flex;
   .el-avatar {
-    flex: 0 0 50px;
+    height: var(--head-width);
+    width: var(--head-width);
+    flex: 0 0 var(--head-width);
     margin-right: 10px;
   }
   .el-form {

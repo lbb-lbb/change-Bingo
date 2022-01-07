@@ -24,7 +24,7 @@
       <router-view/>
     </el-main>
     <el-footer>
-      <div class="footer"><a href="http://beian.miit.gov.cn">津ICP备2020008713号</a></div>
+      <div class="footer"><a href="http://beian.miit.gov.cn">粤ICP备2022001860号</a></div>
     </el-footer>
     <el-drawer
         custom-class="right-drawer"
@@ -47,6 +47,7 @@
         <router-link class="link" to="/home/friendLink" exact replace>友链</router-link>
         <router-link class="link" to="/home/project" exact replace>作品</router-link>
         <router-link class="link" to="/home/about" exact replace>关于</router-link>
+        <div class="link" @click="login">登录</div>
       </div>
     </el-drawer>
   </el-container>

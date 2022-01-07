@@ -58,7 +58,7 @@
       </transition>
     </el-main>
     <el-footer>
-      <div class="footer"><a href="http://beian.miit.gov.cn">津ICP备2020008713号</a></div>
+      <div class="footer"><a href="http://beian.miit.gov.cn">粤ICP备2022001860号</a></div>
     </el-footer>
   </el-container>
 </template>
