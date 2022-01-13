@@ -26,7 +26,6 @@
           <div>评论：{{article.commentCount}}  阅读：{{article.readCount}}  喜欢：{{article.likeCount}}</div>
           <div>{{article.creatTime}}</div>
         </div>
-        <div class="abstract">{{article.abstract}}</div>
         <div id="content">
           <MarkedView :mark-down="html"/>
         </div>
@@ -152,16 +151,6 @@ export default {
   }
 }
 .main {
-  .abstract {
-    margin-top: 20px;
-    margin-bottom: 10px;
-    padding: 0 10px 5px 10px;
-    color: #dfdfdf;
-    border-radius: 10px;
-    border-left: 4px solid #dfdfdf;
-    border-right: 4px solid #dfdfdf;
-    background-color: #13131A;
-  }
   .title {
     text-align: center;
     color: #6699CC;

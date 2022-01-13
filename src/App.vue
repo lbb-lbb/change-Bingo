@@ -20,6 +20,7 @@ export default {
         this.setIsPhone(true)
         document.body.style.setProperty('--head-width', '40px');
         document.body.style.setProperty('--font-title', '16px');
+        document.body.style.setProperty('--font-title-h3', '15px');
         document.body.style.setProperty('--font-page', '14px');
         document.body.style.setProperty('--font-min', '12px');
         document.body.style.setProperty('--padding', '5px');
@@ -28,7 +29,8 @@ export default {
       } else {
         this.setIsPhone(false)
         document.body.style.setProperty('--head-width', '70px');
-        document.body.style.setProperty('--font-title', '22px');
+        document.body.style.setProperty('--font-title', '28px');
+        document.body.style.setProperty('--font-title-h3', '22px');
         document.body.style.setProperty('--font-page', '18px');
         document.body.style.setProperty('--font-min', '14px');
         document.body.style.setProperty('--padding', '20px');
@@ -40,6 +42,7 @@ export default {
       this.setIsPhone(true)
       document.body.style.setProperty('--head-width', '40px');
       document.body.style.setProperty('--font-title', '16px');
+      document.body.style.setProperty('--font-title-h3', '15px');
       document.body.style.setProperty('--font-page', '14px');
       document.body.style.setProperty('--font-min', '12px');
       document.body.style.setProperty('--padding', '5px');
@@ -48,7 +51,8 @@ export default {
     } else {
       this.setIsPhone(false)
       document.body.style.setProperty('--head-width', '70px');
-      document.body.style.setProperty('--font-title', '22px');
+      document.body.style.setProperty('--font-title', '28px');
+      document.body.style.setProperty('--font-title-h3', '22px');
       document.body.style.setProperty('--font-page', '18px');
       document.body.style.setProperty('--font-min', '14px');
       document.body.style.setProperty('--padding', '20px');
@@ -74,7 +78,8 @@ export default {
   line-height: 1.5715;
 }
 body{
-  --font-title: 22px;
+  --font-title: 28px;
+  --font-title-h3: 22px;
   --font-page: 18px;
   --font-min: 14px;
   --margin: 20px;

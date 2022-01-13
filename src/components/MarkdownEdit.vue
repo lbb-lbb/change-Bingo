@@ -8,15 +8,6 @@
           maxlength="50"
         />
       </el-form-item>
-      <el-form-item prop="abstract">
-        <el-input
-          type="textarea"
-          maxlength="500"
-          :autosize="{minRows:3, minRows:6}"
-          v-model="formData.abstract"
-          placeholder="请输入摘要"
-        />
-      </el-form-item>
       <el-form-item prop="category">
         <el-select
           style="width: 100%"
@@ -139,7 +130,7 @@ export default {
         const { success, result } = await this.$dao.adminArticle.getArticleInfo({id: this.$route.query.id})
         if (success) {
           this.formData.content = result.content
-          this.formData.abstract = result.abstract
+          this.formData.abstract = result.content.slice(0, 300)
           this.formData.tag = result.tag.split(',')
           this.formData.category = result.category
           this.formData.title = result.title
