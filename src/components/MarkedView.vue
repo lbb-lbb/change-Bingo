@@ -34,12 +34,17 @@ export default {
 </style>
 <style lang="less">
 #content {
+  * {
+    font-size: var(--font-page);
+  }
   h1, h2 {
+    font-size: var(--font-title);
     margin: 15px 0;
     padding-bottom: 10px;
     border-bottom: 1px solid #eee;
   }
   h3 {
+    font-size: var(--font-page);
     margin: 10px 0;
   }
   p {
