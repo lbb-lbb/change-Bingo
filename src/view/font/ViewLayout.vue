@@ -26,7 +26,7 @@
           <div>评论：{{article.commentCount}}  阅读：{{article.readCount}}  喜欢：{{article.likeCount}}</div>
           <div>{{article.creatTime}}</div>
         </div>
-        <div id="content">
+        <div>
           <MarkedView :mark-down="html"/>
         </div>
         <div class="end-tip">文章已经结束了</div>
@@ -91,7 +91,7 @@ export default {
         this.html = result.content
         this.tag = result.tag.replace(/，/ig,',').split(',')
         this.$nextTick(() => {
-          this.list = document.getElementById('content').children
+          this.list = document.querySelector('.MARKDOWN-CONTENT').children
         })
       }
     },

@@ -66,7 +66,7 @@
         @current-change="getComment()">
       </el-pagination>
     </div>
-    <div v-if="!isUser">
+    <div v-if="!isUser" style="margin-top: 20px;">
       <Comment :title-id="id" ref="comment" @submit="submit" />
     </div>
   </div>
