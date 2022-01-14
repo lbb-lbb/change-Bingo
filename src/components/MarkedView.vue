@@ -4,7 +4,7 @@
 
 <script>
 import { marked } from 'marked'
-import highlight from 'highlight.js'
+import highlight from 'highlight.js/lib/common'
 import 'highlight.js/styles/atom-one-dark.css'
 export default {
   name: "MarkedView",
@@ -36,6 +36,7 @@ export default {
 #content {
   * {
     font-size: var(--font-page);
+    list-style-position:inside;
   }
   h1, h2 {
     font-size: var(--font-title);
