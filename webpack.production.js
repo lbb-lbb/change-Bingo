@@ -1,12 +1,21 @@
 const { merge } = require('webpack-merge')
 const common = require('./webpack.common')
-const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const miniCssExtractPlugin = require('mini-css-extract-plugin')
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin') // 生产压缩一些文件
+const { CleanWebpackPlugin } = require('clean-webpack-plugin') // 清除dist
+const miniCssExtractPlugin = require('mini-css-extract-plugin') // 将css拆分成独立文件
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin; // 打包分析工具
+const CompressionPlugin = require('compression-webpack-plugin') // 生产gzip文件以便nginx直接加载返回
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin"); // 压缩css
 const webpack = require("webpack");
-const Dotenv  = require('dotenv-webpack')
+const Dotenv  = require('dotenv-webpack') // 加载.env文件
 module.exports = merge(common, {
+  optimization: {
+    minimizer: [
+      // For webpack@5 you can use the `...` syntax to extend existing minimizers (i.e. `terser-webpack-plugin`), uncomment the next line
+      // `...`,
+      new CssMinimizerPlugin()
+    ],
+  },
   module: {
     rules: [
       {
@@ -25,13 +34,11 @@ module.exports = merge(common, {
       }
     ]
   },
-  optimization: {
-    minimizer: [new miniCssExtractPlugin()]
-  },
   plugins: [
     new Dotenv({ path: './.env.production' }),
     new miniCssExtractPlugin({
-      filename: 'css/[name].css'
+      filename: 'css/[name].[contenthash].css',
+      chunkFilename: 'css/[id].[contenthash].css'
     }),
     new webpack.DefinePlugin({ "process.env.NODE_ENV": JSON.stringify("production") }),
     new BundleAnalyzerPlugin(),
@@ -54,6 +61,13 @@ module.exports = merge(common, {
           reduce_vars: true
         }
       }
+    }),
+    new CompressionPlugin({
+      filename: "[path][base].gz",
+      algorithm: "gzip",
+      test: /\.js$|\.css$|\.html$/,
+      threshold: 10240,
+      minRatio: 0.8,
     })
   ],
 

@@ -6,34 +6,36 @@ module.exports = {
   entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, './dist'),
-    filename: 'javascript/[name].bundle.js',
+    filename: 'javascript/[name].[contenthash].js',
     publicPath: '/',
+    chunkFilename: 'javascript/[name].[contenthash].js',
     clean: true
   },
-  optimization: {
-    splitChunks: {
-      chunks: 'async',
-      minSize: 20000,
-      minRemainingSize: 0,
-      minChunks: 1,
-      maxAsyncRequests: 30,
-      maxInitialRequests: 30,
-      enforceSizeThreshold: 50000,
-      cacheGroups: {
-        defaultVendors: {
-          test: /[\\/]node_modules[\\/]/,
-          priority: -10,
-          reuseExistingChunk: true,
-        },
-        commons: {
-          name: "commons",
-          chunks: "initial",
-          minChunks: 2
-        }
-      },
-    }
-
-  },
+  // 默认的优化，直接使用
+  // optimization: {
+  //   splitChunks: {
+  //     chunks: 'async',
+  //     minSize: 20000,
+  //     minRemainingSize: 0,
+  //     minChunks: 1,
+  //     maxAsyncRequests: 30,
+  //     maxInitialRequests: 30,
+  //     enforceSizeThreshold: 50000,
+  //     cacheGroups: {
+  //       defaultVendors: {
+  //         test: /[\\/]node_modules[\\/]/,
+  //         priority: -10,
+  //         reuseExistingChunk: true,
+  //       },
+  //       commons: {
+  //         name: "commons",
+  //         chunks: "initial",
+  //         minChunks: 2
+  //       }
+  //     },
+  //   }
+  //
+  // },
   module: {
     rules: [
       {
