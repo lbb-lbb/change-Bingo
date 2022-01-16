@@ -1,6 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin.js')
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const Dotenv  = require('dotenv-webpack')
 module.exports = {
   entry: './src/main.js',
@@ -11,31 +12,51 @@ module.exports = {
     chunkFilename: 'javascript/[name].[contenthash].js',
     clean: true
   },
+  optimization: {
+    splitChunks: {
+      // include all types of chunks
+      chunks: 'all',
+      minSize: 30 * 1024,
+      minChunks: 1,
+      maxSize: 100 * 1024,
+      maxAsyncRequests: 5,
+      maxInitialRequests: 3,
+      /*maxSize: 100 * 1024,
+      minChunks: 2,
+      maxAsyncRequests: 30,
+      maxInitialRequests: 30,
+      enforceSizeThreshold: 50000,*/
+
+    },
+    minimizer: [
+      new CssMinimizerPlugin()
+    ]
+  },
   // 默认的优化，直接使用
-  // optimization: {
-  //   splitChunks: {
-  //     chunks: 'async',
-  //     minSize: 20000,
-  //     minRemainingSize: 0,
-  //     minChunks: 1,
-  //     maxAsyncRequests: 30,
-  //     maxInitialRequests: 30,
-  //     enforceSizeThreshold: 50000,
-  //     cacheGroups: {
-  //       defaultVendors: {
-  //         test: /[\\/]node_modules[\\/]/,
-  //         priority: -10,
-  //         reuseExistingChunk: true,
-  //       },
-  //       commons: {
-  //         name: "commons",
-  //         chunks: "initial",
-  //         minChunks: 2
-  //       }
-  //     },
-  //   }
-  //
-  // },
+  /*optimization: {
+    splitChunks: {
+      chunks: 'async',
+      minSize: 20000,
+      minRemainingSize: 0,
+      minChunks: 1,
+      maxAsyncRequests: 30,
+      maxInitialRequests: 30,
+      enforceSizeThreshold: 50000,
+      cacheGroups: {
+        defaultVendors: {
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10,
+          reuseExistingChunk: true,
+        },
+        commons: {
+          name: "commons",
+          chunks: "initial",
+          minChunks: 2
+        }
+      },
+    }
+
+  },*/
   module: {
     rules: [
       {
@@ -60,7 +81,7 @@ module.exports = {
         use: {
           loader: "url-loader",
           options: {
-            name: "[name].[ext]",
+            name: "[name].[contenthash].[ext]",
             outputPath: "images/",
             publicPath: "/images/", // 将图片访问的公共地址定位到n打包后的实际访问路径，解决访问图片资源失败的问题
             limit: 2048,
