@@ -119,14 +119,16 @@ p {
 .card {
   display: flex;
   flex-wrap: wrap;
-  min-height: 100vh;
   margin-top: 20px;
 }
 
 .list {
   box-sizing: border-box;
-  margin: 0 auto;
   flex: 1 1 70%;
+  margin: 0 auto;
+  border-radius: 20px;
+  overflow: hidden;
+  color: #dfdfdf;
 }
 .card-list {
   min-height: 200px;

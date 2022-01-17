@@ -124,6 +124,7 @@ export default {
   padding: 20px 0;
   display: flex;
   flex-wrap: wrap;
+  margin-top: 20px;
 }
 .head {
   padding-bottom: 20px;
@@ -167,11 +168,14 @@ export default {
   }
 }
 .list{
-  flex: 1 1 70%;
   box-sizing: border-box;
-  border-radius: 20px;
-  background: var(--base-background-color);
+  flex: 1 1 70%;
+  margin: 0 auto;
   padding: 20px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--base-background-color);
+  color: #dfdfdf;
 }
 .right-menu-layout{
   flex: 0 0 300px;
