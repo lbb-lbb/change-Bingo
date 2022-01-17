@@ -65,7 +65,7 @@ export default {
   margin-bottom: 20px;
   overflow: hidden;
   background: var(--base-background-color);
-  padding: 20px;
+  padding: var(--padding);
 }
 .introduction {
   display: flex;

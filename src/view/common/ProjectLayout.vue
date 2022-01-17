@@ -93,7 +93,7 @@ export default {
   border-radius: 20px;
   overflow: hidden;
   background: var(--base-background-color);
-  padding: 20px;
+  padding: var(--padding);
   max-width: 800px;
   margin: 20px auto;
 }

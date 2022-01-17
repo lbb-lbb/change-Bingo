@@ -51,7 +51,7 @@ li {
   margin-bottom: 20px;
   overflow: hidden;
   background: var(--base-background-color);
-  padding: 20px;
+  padding: var(--padding);
 }
 .classify {
   background-color: #13131a;

@@ -171,7 +171,7 @@ export default {
   box-sizing: border-box;
   flex: 1 1 70%;
   margin: 0 auto;
-  padding: 20px;
+  padding: var(--padding);
   border-radius: 20px;
   overflow: hidden;
   background: var(--base-background-color);

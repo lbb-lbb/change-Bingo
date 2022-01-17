@@ -128,7 +128,7 @@ export default {
   margin: 20px auto;
   overflow: hidden;
   background: var(--base-background-color);
-  padding: 20px;
+  padding: var(--padding);
   max-width: 800px;
 }
 .el-row {

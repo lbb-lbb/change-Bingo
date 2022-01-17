@@ -92,7 +92,7 @@ export default {
   box-sizing: border-box;
   width: 360px;
   height: 300px;
-  padding: 20px;
+  padding: var(--padding);
   background-color: #fff;
   border-radius: 3px;
   box-shadow: 0 4px 20px 0px rgb(0 0 0 / 14%);

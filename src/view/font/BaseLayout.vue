@@ -167,6 +167,7 @@ export default {
   .el-main{
     min-height: calc(100vh - 60px);
     margin-top: 60px !important;
+    padding: var(--padding)
   }
   .el-footer{
     background: var(--base-background-color);
