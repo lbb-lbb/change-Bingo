@@ -8,7 +8,7 @@
     </el-switch>
     <div v-show="value" class="animate__animated animate__bounceInRight">
       <MarkedView :mark-down="getCommonUser.longIntroduction" />
-      <div>
+      <div class="share">
         <h2 class="m-b-10">本站链接</h2>
         <p class="m-b-10">如果想与我交换友链，可以在留言板给我留言哦😀😀</p>
         <p class="m-b-10">我的友链</p>
@@ -22,7 +22,7 @@
     </div>
     <div v-show="!value" class="animate__animated animate__bounceInLeft">
       <MarkedView :mark-down="getCommonUser.blogIntroduction" />
-      <div>
+      <div class="share">
         <h2 class="m-b-10">本站链接</h2>
         <p class="m-b-10">如果想与我交换友链，可以在留言板给我留言哦😀😀</p>
         <p class="m-b-10">我的友链</p>
@@ -67,6 +67,16 @@ export default {
 }
 .el-switch {
   margin-bottom: 20px;
+}
+.share {
+  min-width: 200px;
+  max-width: 980px;
+  padding: 45px;
+}
+@media (max-width: 767px) {
+  .share {
+    padding: 15px;
+  }
 }
 .m-b-10 {
   margin-bottom: 10px;
