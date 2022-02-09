@@ -23,7 +23,7 @@
       <div class="main">
         <h2 class="title">{{ article && article.title }}</h2>
         <div class="message" style="display: flex; justify-content: space-between">
-          <div>评论：{{article.commentCount}}  阅读：{{article.readCount}}  喜欢：{{article.likeCount}}</div>
+          <div style="visibility: hidden">评论：{{article.commentCount}}  阅读：{{article.readCount}}  喜欢：{{article.likeCount}}</div>
           <div>{{article.creatTime}}</div>
         </div>
         <div>

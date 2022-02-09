@@ -4,7 +4,7 @@
       <div v-for="item in data" class="card-list animate__animated animate__bounceInLeft" :key="item.id">
         <h2 slot="header" @click="goWatch(item.id)">{{item.title}}</h2>
         <div class="message-left">{{item.userName}}</div>
-        <div class="message-right">评论：{{item.commentCount}}  阅读：{{item.readCount}}  喜欢：{{item.likeCount}}</div>
+        <div v-if="false" class="message-right">评论：{{item.commentCount}}  阅读：{{item.readCount}}  喜欢：{{item.likeCount}}</div>
         <p class="abstract">{{item.abstract}}</p>
         <div class="tag-message message">
           <div>
