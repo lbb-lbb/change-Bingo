@@ -52,8 +52,8 @@ export default {
   min-width: 200px;
   max-width: 980px;
   padding: 45px;
-  background: var(--base-background-color);
-  color: var(--base-font-color);
+  background: var(--base-background-color) !important;
+  color: var(--base-font-color) !important;
 }
 
 @media (max-width: 767px) {

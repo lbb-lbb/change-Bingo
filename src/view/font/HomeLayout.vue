@@ -148,7 +148,7 @@ p {
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
-  margin: 20px;
+  margin: var(--padding) 20px;
 }
 .message-left {
   display: inline-block;
