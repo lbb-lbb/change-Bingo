@@ -110,6 +110,7 @@ export default {
         if(valid) {
           let params = {
             ...this.formData,
+            abstract: this.formData.content.slice(0, 300).replace(/<a(.*?)>(.*?)<\/a>/g, '$2').replace(/[# |**|`|>|/\n]/g, ''),
             status: status,
             tag: this.formData.tag.join(','),
             category: this.formData.category,
@@ -137,7 +138,6 @@ export default {
         const { success, result } = await this.$dao.adminArticle.getArticleInfo({id: this.$route.query.id})
         if (success) {
           this.formData.content = result.content
-          this.formData.abstract = result.content.slice(0, 300)
           this.formData.tag = result.tag.split(',')
           this.formData.category = result.category
           this.formData.title = result.title

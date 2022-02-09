@@ -230,7 +230,7 @@ export default {
 }
 .border-bottom {
   border-bottom: 1px solid #ccc;
-  margin-bottom: var(--margin-bottom);
+  margin-bottom: 20px;
   padding: 5px 0;
 }
 
