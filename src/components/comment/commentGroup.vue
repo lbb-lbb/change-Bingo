@@ -38,7 +38,7 @@
               <span class="time">{{$util.dayJs.unix(reply.creatTime).fromNow()}}</span>
             </div>
             <div class="comment">
-              <LongStrDeal :title="item.comment" lineHeight="18" eclipse="3" />
+              <LongStrDeal :title="reply.comment" lineHeight="18" eclipse="3" />
               <div class="content reply-comment">
                 <LongStrDeal v-if="reply.replyGroup" :title="`＠${reply.replyGroup[0].name}：${reply.replyGroup[0].comment}`" lineHeight="18" eclipse="3" />
               </div>
