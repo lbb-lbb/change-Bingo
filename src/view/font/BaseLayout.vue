@@ -21,7 +21,9 @@
       </div>
     </el-header>
     <el-main>
-      <router-view/>
+      <keep-alive>
+        <router-view/>
+      </keep-alive>
     </el-main>
     <el-footer>
       <div class="footer"><a href="http://beian.miit.gov.cn">粤ICP备2022001860号</a></div>
