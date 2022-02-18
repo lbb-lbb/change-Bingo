@@ -7,14 +7,14 @@
           style="font-size: 25px; margin-left: 0"
           @click="$router.push('/')" />
         <div v-if="!getIsPhone">
-          <router-link class="link" to="/home" exact replace>首页</router-link>
-          <router-link class="link" to="/home/article" exact replace>文章</router-link>
-          <router-link class="link" to="/home/classification" exact replace>分类</router-link>
-          <router-link class="link" to="/home/timeLine" exact replace>归档</router-link>
-          <router-link class="link" to="/home/msgCard" exact replace>留言板</router-link>
-          <router-link class="link" to="/home/friendLink" exact replace>友链</router-link>
-          <router-link class="link" to="/home/project" exact replace>作品</router-link>
-          <router-link class="link" to="/home/about" exact replace>关于</router-link>
+          <router-link class="link" to="/home" exact >首页</router-link>
+          <router-link class="link" to="/home/article" exact >文章</router-link>
+          <router-link class="link" to="/home/classification" exact >分类</router-link>
+          <router-link class="link" to="/home/timeLine" exact >归档</router-link>
+          <router-link class="link" to="/home/msgCard" exact >留言板</router-link>
+          <router-link class="link" to="/home/friendLink" exact >友链</router-link>
+          <router-link class="link" to="/home/project" exact >作品</router-link>
+          <router-link class="link" to="/home/about" exact >关于</router-link>
           <span class="icon iconfont icon-denglu link" style="font-size: 25px" @click="login"></span>
         </div>
         <span v-if="getIsPhone" class="icon iconfont icon-liebiao link" style="font-size: 25px" @click="drawer = !drawer" />
@@ -41,14 +41,14 @@
           <el-avatar shape="square" alt="头像" :src="getCommonUser.head"></el-avatar>
           <div><strong>{{getCommonUser.name}}</strong></div>
         </div>
-        <router-link class="link" to="/home" exact replace>首页</router-link>
-        <router-link class="link" to="/home/article" exact replace>文章</router-link>
-        <router-link class="link" to="/home/classification" exact replace>分类</router-link>
-        <router-link class="link" to="/home/timeLine" exact replace>归档</router-link>
-        <router-link class="link" to="/home/msgCard" exact replace>留言板</router-link>
-        <router-link class="link" to="/home/friendLink" exact replace>友链</router-link>
-        <router-link class="link" to="/home/project" exact replace>作品</router-link>
-        <router-link class="link" to="/home/about" exact replace>关于</router-link>
+        <router-link class="link" to="/home" exact >首页</router-link>
+        <router-link class="link" to="/home/article" exact >文章</router-link>
+        <router-link class="link" to="/home/classification" exact >分类</router-link>
+        <router-link class="link" to="/home/timeLine" exact >归档</router-link>
+        <router-link class="link" to="/home/msgCard" exact >留言板</router-link>
+        <router-link class="link" to="/home/friendLink" exact >友链</router-link>
+        <router-link class="link" to="/home/project" exact >作品</router-link>
+        <router-link class="link" to="/home/about" exact >关于</router-link>
         <div class="link" @click="login">登录</div>
       </div>
     </el-drawer>

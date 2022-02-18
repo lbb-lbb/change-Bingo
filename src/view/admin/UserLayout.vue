@@ -7,13 +7,13 @@
           style="font-size: 25px; margin-left: 0"
           @click="$router.push('/user')" />
         <div v-if="!getIsPhone" class="header-right">
-          <router-link class="link" to="/user" exact replace>首页</router-link>
-          <router-link class="link" to="/user/articleList" exact replace>文章</router-link>
-          <router-link class="link" to="/user/write" exact replace>创作</router-link>
-          <router-link class="link" to="/user/manageProject" exact replace>作品管理</router-link>
-          <router-link class="link" to="/user/notification" exact replace>评论管理</router-link>
-          <router-link class="link" to="/user/manageFriendLink" exact replace>友链</router-link>
-          <router-link class="link" to="/user/setting" exact replace>个人设置</router-link>
+          <router-link class="link" to="/user" exact >首页</router-link>
+          <router-link class="link" to="/user/articleList" exact >文章</router-link>
+          <router-link class="link" to="/user/write" exact >创作</router-link>
+          <router-link class="link" to="/user/manageProject" exact >作品管理</router-link>
+          <router-link class="link" to="/user/notification" exact >评论管理</router-link>
+          <router-link class="link" to="/user/manageFriendLink" exact >友链</router-link>
+          <router-link class="link" to="/user/setting" exact >个人设置</router-link>
           <router-link v-if="!getLogin" class="link" to="/login">登录</router-link>
           <div v-else class="user-btn">
             <el-avatar shape="square" :src="getUser.head"></el-avatar>
@@ -42,13 +42,13 @@
             <div><strong>{{getUser.name}}</strong></div>
           </div>
         </div>
-        <router-link class="link" to="/user" exact replace>首页</router-link>
-        <router-link class="link" to="/user/articleList" exact replace>文章</router-link>
-        <router-link class="link" to="/user/write" exact replace>创作</router-link>
-        <router-link class="link" to="/user/manageProject" exact replace>作品管理</router-link>
-        <router-link class="link" to="/user/notification" exact replace>评论管理</router-link>
-        <router-link class="link" to="/user/manageFriendLink" exact replace>友链</router-link>
-        <router-link class="link" to="/user/setting" exact replace>个人设置</router-link>
+        <router-link class="link" to="/user" exact >首页</router-link>
+        <router-link class="link" to="/user/articleList" exact >文章</router-link>
+        <router-link class="link" to="/user/write" exact >创作</router-link>
+        <router-link class="link" to="/user/manageProject" exact >作品管理</router-link>
+        <router-link class="link" to="/user/notification" exact >评论管理</router-link>
+        <router-link class="link" to="/user/manageFriendLink" exact >友链</router-link>
+        <router-link class="link" to="/user/setting" exact >个人设置</router-link>
         <div class="link" @click="handleCommand('loginOut')">注销</div>
       </el-drawer>
     </el-header>
