@@ -64,6 +64,7 @@ export default {
   data() {
     return {
       article: '',
+      articleId: this.$route.query.id,
       tag: [],
       list: '',
       html: ''
@@ -85,7 +86,7 @@ export default {
   },
   methods: {
     async getArticleInfo () {
-      const { success, result } = await this.$dao.fontArticle.getArticleInfo({id: this.$route.query.id})
+      const { success, result } = await this.$dao.fontArticle.getArticleInfo({id: this.articleId})
       if (success) {
         this.article = result
         this.html = result.content
@@ -110,6 +111,12 @@ export default {
         name: 'article',
         params: { tag: name },
       })
+    }
+  },
+  activated() {
+    if (this.articleId !== this.$route.query.id) {
+      this.articleId = this.$route.query.id
+      this.getArticleInfo()
     }
   },
   mounted() {
