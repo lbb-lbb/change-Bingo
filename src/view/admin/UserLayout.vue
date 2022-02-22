@@ -57,9 +57,12 @@
         <router-view/>
       </transition>
     </el-main>
-    <el-footer>
-      <div class="footer"><a href="http://beian.miit.gov.cn">粤ICP备2022001860号</a></div>
-    </el-footer>
+    <div class="footer">
+      <a href="http://beian.miit.gov.cn">粤ICP备2022001860号</a>
+      <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030602006591">
+        <img src="//lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web/img/police.d0289dc.png" style="display: inline-block; vertical-align: bottom"/>
+        <p style="display: inline-block">粤公网安备 44030602006591号</p></a>
+    </div>
   </el-container>
 </template>
 
