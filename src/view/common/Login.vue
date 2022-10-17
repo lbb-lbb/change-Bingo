@@ -1,38 +1,18 @@
 <template>
   <div class="Mask">
-    <div class="container">
-      <div class="main">
-        <div class="title">
-          <h2>Login</h2>
-          <div>
-            <span class="icon iconfont icon-github-fill"></span>
-            <span class="icon iconfont icon-QQ-circle-fill"></span>
-            <span class="icon iconfont icon-weixin"></span>
-          </div>
-        </div>
-        <el-form :model="formData" :rules="rules" size="small" ref="from" inline hide-required-asterisk>
-          <el-form-item prop="name">
-            <template slot="label"><span class="icon iconfont icon-yonghu" /></template>
-            <el-input v-model="formData.name" placeholder="请输入用户名" />
-          </el-form-item>
-          <el-form-item prop="password">
-            <template slot="label"><span class="icon iconfont icon-mima" /></template>
-            <el-input v-model="formData.password" type="password" placeholder="请输入密码" />
-          </el-form-item>
-        </el-form>
-        <div class="footer">
-          <el-button round size="middle" type="text" @click="login">Sign In</el-button>
-        </div>
-      </div>
-    </div>
+    <tinymce />
   </div>
 </template>
 
 <script>
 import { mapActions } from 'vuex'
 import { Encrypt, Decrypt } from '../../utils/secret'
+import Tinymce from "../../tinymce";
 export default {
   name: 'Login',
+  components: {
+    Tinymce
+  },
   data () {
     return {
       formData: {

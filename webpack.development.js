@@ -41,7 +41,8 @@ module.exports = merge(common, {
     // },
     hot: true,
     open: true,
-    historyApiFallback: true
+    historyApiFallback: true,
+    contentBase: [path.resolve(__dirname,'public')]
   }
 
 })

@@ -33,3 +33,76 @@
 - [ ] 深入node.js，重构一下后端代码，优化逻辑
 - [ ] 增加时间轴，将自己工作经历，项目代入
 - [ ] 引入部署工具自动化部署前后端（例如Jenkins...）
+```shell
+user  nginx;                        # 运行用户，默认即是nginx，可以不进行设置
+worker_processes  1;                # Nginx 进程数，一般设置为和 CPU 核数一样
+error_log  /var/log/nginx/error.log warn;   # Nginx 的错误日志存放目录
+pid        /var/run/nginx.pid;      # Nginx 服务启动时的 pid 存放位置
+
+events {
+    use epoll;     # 使用epoll的I/O模型(如果你不知道Nginx该使用哪种轮询方法，会自动选择一个最适合你操作系统的)
+    worker_connections 1024;   # 每个进程允许最大并发数
+}
+
+http {   # 配置使用最频繁的部分，代理、缓存、日志定义等绝大多数功能和第三方模块的配置都在这里设置
+    # 设置日志模式
+    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                      '$status $body_bytes_sent "$http_referer" '
+                      '"$http_user_agent" "$http_x_forwarded_for"';
+
+    access_log  /var/log/nginx/access.log  main;   # Nginx访问日志存放位置
+
+    sendfile            on;   # 开启高效传输模式
+    tcp_nopush          on;   # 减少网络报文段的数量
+    tcp_nodelay         on;
+    keepalive_timeout   65;   # 保持连接的时间，也叫超时时间，单位秒
+    types_hash_max_size 2048;
+
+    include             /etc/nginx/mime.types;      # 文件扩展名与类型映射表
+    default_type        application/octet-stream;   # 默认文件类型
+
+    include /etc/nginx/conf.d/*.conf;   # 加载子配置项
+    
+    gzip on;    # 开启gzip资源资源
+    gzip_min_length 1k;    # 大于多少就压缩
+    gzip_comp_level 2;    #压缩的等级,数字选择范围是1-9,数字越小压缩的速度越快,消耗cpu就越大
+    gzip_types image/jpeg image/gif image/png; # 指定需要压缩的资源
+    gzip_disable "MSIE [1-6]\."; #配置禁用gzip条件，支持正则。此处表示ie6及以下不启用gzip（因为ie低版本不支持）
+    
+    server {
+    	listen       80;       # 配置监听的端口
+    	server_name  localhost;    # 配置的域名
+    	
+    	location / {
+    		root   /usr/share/nginx/html;  # 网站根目录
+    		index  index.html index.htm;   # 默认首页文件
+    		deny 172.168.22.11;   # 禁止访问的ip地址，可以为all
+    		allow 172.168.33.44； # 允许访问的ip地址，可以为all
+    	}
+    	
+    	error_page 500 502 503 504 /50x.html;  # 默认50x对应的访问页面
+    	error_page 400 404 error.html;   # 同上
+    }
+    
+    # HTTPS server
+
+    server {
+        listen       443 ssl;
+        server_name  localhost;
+  
+        ssl_certificate      cert.pem;    # ssl证书 证书文件在服务器的路径
+        ssl_certificate_key  cert.key;    # 证书密钥 密钥文件在服务器的路径
+   
+        ssl_session_cache    shared:SSL:1m;    # 设置ssl会话缓存的类型和大小
+        ssl_session_timeout  5m;    # ssl会话超时时间
+   
+        sl_ciphers  HIGH:!aNULL:!MD5;   # 选择加密套件
+        ssl_prefer_server_ciphers  on;    # 设置协商加密算法
+   
+        location / {
+           root   html;
+           index  index.html index.htm;
+        }
+   }
+}
+```

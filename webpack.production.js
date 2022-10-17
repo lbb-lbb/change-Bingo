@@ -8,6 +8,7 @@ const CompressionPlugin = require('compression-webpack-plugin') // 生产gzip文
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin"); // 压缩css
 const webpack = require("webpack");
 const Dotenv  = require('dotenv-webpack') // 加载.env文件
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 module.exports = merge(common, {
   optimization: {
     minimizer: [
@@ -68,6 +69,18 @@ module.exports = merge(common, {
       test: /\.js$|\.css$|\.html$/,
       threshold: 10240,
       minRatio: 0.8,
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          // 从public中复制文件
+          from: './public',
+
+          // 把复制的文件存放到dis里面
+          to: 'dist'
+        }
+
+      ],
     })
   ],
 

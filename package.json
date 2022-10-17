@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@tinymce/tinymce-vue": "^3.0.1",
     "axios": "^0.21.1",
     "element-ui": "^2.14.1",
     "less": "^4.1.0",
@@ -29,6 +30,7 @@
     "babel-plugin-component": "^1.1.1",
     "clean-webpack-plugin": "^4.0.0",
     "compression-webpack-plugin": "^9.2.0",
+    "copy-webpack-plugin": "^11.0.0",
     "crypto-js": "^4.1.1",
     "css-loader": "^5.0.1",
     "css-minimizer-webpack-plugin": "^3.3.1",
